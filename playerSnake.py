@@ -16,8 +16,15 @@ class PlayerSnake:
         pass
 
     def display(self):
-        for pos in self.positions:
-            dev.draw_image(pos[0]*11 + 7, pos[1]*11 + 7, textures.snakeHead)
+        # Tail
+        dev.draw_image(
+            self.positions[0][0]*11 + 7, self.positions[0][1]*11 + 7, textures.snakeTail)
+        # Head
+        dev.draw_image(
+            self.positions[-1][0]*11 + 7, self.positions[-1][1]*11 + 7, textures.snakeHead)
+        # Body
+        for pos in self.positions[1:-2]:
+            dev.draw_image(pos[0]*11 + 7, pos[1]*11 + 7, textures.snakeLine)
 
     def move(self, rallonger):
         self.positions.append(

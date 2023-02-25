@@ -82,6 +82,10 @@ def button_handler(event, resume):
             pomme = None
             rallonger = True
 
+        if not rallonger:
+            dev.draw_image(
+                playerSnake.positions[0][0]*11 + 7, playerSnake.positions[0][1]*11 + 7, textures.grass)
+
         playerSnake.move(rallonger)
         playerSnake.display()
 

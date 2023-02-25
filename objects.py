@@ -77,6 +77,11 @@ class PommeVitesse(Pommes):
     # tex = textures.speedApple
     pass
 
+class PommeRetrecir(Pommes):
+    # tex= textures.PommeRetrecir
+    
+    pass
+
 
 def getRandomPomme():
     nbRandom = int(random()*120+1)

@@ -93,7 +93,7 @@ def button_handler(event, resume):
             pomme = objects.getRandomPomme()
             pomme.display()
         elif playerSnake.positions[-1] == pomme.getPosition():
-            playerSnake.manger(pomme, blocks)
+            playerSnake.manger(pomme, blocks,tileIsSpecial)
             pomme = None
             rallonger = True
 

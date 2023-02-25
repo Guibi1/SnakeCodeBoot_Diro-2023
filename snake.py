@@ -9,6 +9,8 @@ import objects
 import textures
 
 bg = '#000'  # general background color
+width = 11
+height = 18
 
 # game state
 
@@ -56,12 +58,22 @@ def init_game():
     ui.center(x, dev.font_height*5, 'TODO!', '#FFF', bg)
 
 
-def display():
-    for y in range(18):
-        for x in range(11):
-            dev.draw_image(7 + x * 11, 7 + y * 11, textures.)
+tileIsSpecial = []
+for x in range(width):
+    row = []
+    tileIsSpecial.append(row)
+    for y in range(height):
+        row.append(random() > 0.8)
 
-display()
+
+def display():
+    for y in range(height):
+        for x in range(width):
+            if (tileIsSpecial[x][y]):
+                dev.draw_image(7 + x * 11, 7 + y * 11, textures.grassFlower)
+            else:
+                dev.draw_image(7 + x * 11, 7 + y * 11, textures.grass)
+
 
 tick_counter = 1
 playerSnake = player.PlayerSnake()

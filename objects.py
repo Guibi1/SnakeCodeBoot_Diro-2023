@@ -1,9 +1,10 @@
 import ttgo as dev
+import textures
 
 
 
 class Objects():
-    tex = ""
+    tex = "#0f0"
     x = 0
     y = 0
 
@@ -11,7 +12,7 @@ class Objects():
         return (self.x, self.y)
 
     def display(self):
-        dev.fill_rect(self.x*11 + 7, self.y*11 + 7, 11, 11, "#0f0")
+        dev.draw_image(self.x * 11 + 7, self.y * 11 + 7, self.tex)
 
 
 class Blocs(Objects):
@@ -39,17 +40,17 @@ class PommeBloc(Pommes):
 
 
 class PommeNormale(Pommes):
-    tex = ""
+    tex = textures.apple
     score = 1
 
 
 class Pomme10(Pommes):
-    tex = ""
+    tex = textures.gapple
     score = 10
 
 
 class PommePoison(Pommes):
-    tex = ""
+    tex = textures.toxicApple
 
 
 class PommeChrono(Pommes):

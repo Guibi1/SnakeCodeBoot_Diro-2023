@@ -10,7 +10,7 @@ class PlayerSnake:
     nextX = 1
     nextY = 0
     positions = [(0, 0), (0, 1)]
-    score=0
+    score = 0
 
     def __init__(self):
         pass

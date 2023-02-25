@@ -1,7 +1,7 @@
 from PIL import Image
 from numpy import asarray
 
-fileName = "test.png"
+fileName = "assets/snake_head.png"
 
 # Load image
 image = Image.open(fileName)
@@ -9,18 +9,20 @@ imageArray = asarray(image)
 buffer = ""
 
 # Process image
-for row in imageArray:
+for i, row in enumerate(imageArray):
     for color in row:
         if color[3] == 0:
-            buffer.append("#000")
+            buffer += "#000"
         else:
-            buffer.append("#"+hex(round(color[0] / 255 * 15))[2] + hex(
-                round(color[1] / 255 * 15))[2] + hex(round(color[2] / 255 * 15))[2])
-    buffer += "\n"
+            buffer += "#"+hex(round(color[0] / 255 * 15))[2] + hex(
+                round(color[1] / 255 * 15))[2] + hex(round(color[2] / 255 * 15))[2]
+
+    if i + 1 != len(imageArray):
+        buffer += "\n"
 
 # Write output
-output = open("imageBuffer.txt", "w")
-print("\"", file=output)
+output = open("assets/imageBuffer.txt", "w")
+print("\"\"\"", file=output, end="")
 print(buffer, file=output, end="")
-print("\"", file=output)
+print("\"\"\"", file=output, end="")
 output.close()

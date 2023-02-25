@@ -4,9 +4,8 @@ import mate
 import apps
 import ui
 import random
-import playerSnake
+import playerSnake as player
 import objects
-
 
 bg = '#000'  # general background color
 
@@ -57,14 +56,13 @@ def init_game():
 
 
 tick_counter = 1
-playerSnake = playerSnake.PlayerSnake()
+playerSnake = player.PlayerSnake()
 playerSnake.display()
-pomme = objects.getRandomPomme()
-pomme.display()
+pomme = None
 
 
 def button_handler(event, resume):
-    global ping_timer, pong_timer, tick_counter
+    global ping_timer, pong_timer, tick_counter, pomme
     if me is None:
         return  # not yet playing or no longer playing
     if event == 'cancel':
@@ -76,10 +74,12 @@ def button_handler(event, resume):
             return
 
         rallonger = False
-        if playerSnake.positions[-1] == pomme.getPosition():
-            playerSnake.manger(pomme)
+        if pomme is None:
             pomme = objects.getRandomPomme()
             pomme.display()
+        elif playerSnake.positions[-1] == pomme.getPosition():
+            pomme = None
+            playerSnake.manger(pomme)
             rallonger = True
 
         playerSnake.move(rallonger)
@@ -134,8 +134,8 @@ def button_handler(event, resume):
         elif event == 'right_ok':
             pass
 
-        ui.center(dev.screen_width - 30, dev.font_height *
-                  5, f"Score: {playerSnake.score}", '#FFF', bg)
+        ui.center(dev.screen_width//2, dev.screen_height -
+                  16, f"Score {playerSnake.score}", '#FFF', bg)
         resume()
 
 

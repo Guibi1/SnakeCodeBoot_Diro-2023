@@ -137,6 +137,6 @@ levels = {
     "grass": {
         "normal": grass,
         "special": grassFlower,
-        "block": fence,
+        "block": fence
     }
 }

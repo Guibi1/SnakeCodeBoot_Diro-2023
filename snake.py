@@ -3,7 +3,6 @@ import net
 import mate
 import apps
 import ui
-import random
 import playerSnake as player
 import objects
 import textures
@@ -71,9 +70,11 @@ def display():
     for y in range(height):
         for x in range(width):
             if (tileIsSpecial[x][y]):
-                dev.draw_image(7 + x * 11, 7 + y * 11, textures.grassFlower)
+                dev.draw_image(7 + x * 11, 7 + y * 11,
+                               textures.levels[currentLevel]["special"])
             else:
-                dev.draw_image(7 + x * 11, 7 + y * 11, textures.grass)
+                dev.draw_image(7 + x * 11, 7 + y * 11,
+                               textures.levels[currentLevel]["normal"])
 
 
 display()

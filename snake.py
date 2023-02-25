@@ -79,6 +79,7 @@ def button_handler(event, resume):
             pomme.display()
         elif playerSnake.positions[-1] == pomme.getPosition():
             pomme = None
+            playerSnake.manger(pomme)
             rallonger = True
 
         playerSnake.move(rallonger)
@@ -134,7 +135,7 @@ def button_handler(event, resume):
             pass
 
         ui.center(dev.screen_width//2, dev.screen_height -
-                  16, "Score 0", '#FFF', bg)
+                  16, f"Score {playerSnake.score}", '#FFF', bg)
         resume()
 
 

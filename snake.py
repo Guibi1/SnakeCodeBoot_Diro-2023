@@ -6,6 +6,7 @@ import ui
 import random
 import playerSnake as player
 import objects
+import textures
 
 bg = '#000'  # general background color
 
@@ -54,6 +55,13 @@ def init_game():
     ui.center(x, dev.font_height*4, 'SNAKE', '#FFF', bg)
     ui.center(x, dev.font_height*5, 'TODO!', '#FFF', bg)
 
+
+def display():
+    for y in range(18):
+        for x in range(11):
+            dev.draw_image(7 + x * 11, 7 + y * 11, textures.)
+
+display()
 
 tick_counter = 1
 playerSnake = player.PlayerSnake()

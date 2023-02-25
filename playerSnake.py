@@ -17,7 +17,7 @@ class PlayerSnake:
             dev.fill_rect(pos[0]*11 + 7, pos[1]*11 + 7, 11, 11, "#f00")
 
     def move(self):
-        positions.append((self.positions[-1][0] + self.nextX, self.positions[-1][1] + self.nextY))
+        self.positions.append((self.positions[-1][0] + self.nextX, self.positions[-1][1] + self.nextY))
 
     def movingTo(self):
         if self.positions[-1][0] > self.positions[-2][0]:

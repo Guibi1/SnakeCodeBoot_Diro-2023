@@ -168,30 +168,27 @@ def message_handler(peer, msg):
         else:
             print('system message', msg)  # ignore other messages from system
     elif type(msg) is list and msg[0] == msg_type:
-        if me == None:
-            random.seed(random_seed ^ msg[1])  # set same RNG on both nodes
-            # determine if we are player 0 or 1
-            start_game_soon(master() ^ random.randrange(2))
-        elif msg[1] == 'quit':
+        if msg[1] == 'quit':
             leave()
         elif msg[1] == 'ping':
             reset_mate_timeout()
+        elif me == None:
+            random.seed(random_seed ^ msg[1])  # set same RNG on both nodes
+            # determine if we are player 0 or 1
+            start_game_soon(master() ^ random.randrange(2))
         else:
             print('received', peer, msg)
 
 
 def found_mate():
-    global random_seed
-
     init_game()
-
-    # exchange random seeds so both nodes have the same RNG
-    random_seed = random.randrange(0x1000000)
     net.send(mate.id, [msg_type, random_seed])
 
 
 def snake_networked():
-    global msg_type
+    global msg_type, random_seed
+    # exchange random seeds so both nodes have the same RNG
+    random_seed = random.randrange(0x1000000)
     msg_type = 'SNAKENET'
     mate.find(msg_type, message_handler)
 

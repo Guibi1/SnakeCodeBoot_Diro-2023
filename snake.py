@@ -5,6 +5,7 @@ import apps
 import ui
 import random
 import playerSnake
+import objects
 
 bg = '#000'  # general background color
 

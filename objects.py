@@ -44,7 +44,7 @@ class PommeNormale(Pommes):
 
 
 class Pomme10(Pommes):
-    tex = textures.gaplle
+    tex = textures.gapple
     score = 10
 
 

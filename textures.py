@@ -271,6 +271,16 @@ levels = {
         "normal": grass,
         "special": grassFlower,
         "block": fence,
+        "apples": {
+            "mid": apple,
+            "god": gapple,
+            "portal": apple,
+            "poison": toxicApple,
+            "chrono": chronoApple,
+            "block": apple,
+            "speed": apple,
+            "multi": apple
+        },
         "snakeHead": {
             "B": snakeHeadGrass0,
             "R": snakeHeadGrass90,

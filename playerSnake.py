@@ -53,5 +53,3 @@ class PlayerSnake:
         elif isinstance(pomme, objects.PommeBloc):
             bloc = objects.Blocs(self.positions[0][0], self.positions[0][-1])
             blocks.append(bloc)
-
-

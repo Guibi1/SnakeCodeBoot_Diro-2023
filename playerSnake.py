@@ -36,11 +36,15 @@ class PlayerSnake:
         elif self.positions[-1][1] < self.positions[-2][1]:
             return "T"
     
-    def manger(self,pomme):
+    def manger(self,pomme, blocks):
         if isinstance(pomme,objects.PommeNormale):
             self.score+=1
             
         elif isinstance(pomme,objects.Pomme10):
             self.score+=10
             
+        elif isinstance(pomme,objects.PommeBloc):
+            bloc=objects.Blocs(self.positions[0][0], self.positions[0][-1])
+            blocks.append(bloc)
        
+ 

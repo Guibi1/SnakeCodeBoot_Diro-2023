@@ -12,16 +12,14 @@ def colorToStr(color):
 
 def convert(angle: int):
     # Load image
-    bg = background.rotate(angle)
-    image = Image.open(fileName)
-    imageArray = asarray(image)
+    imageArray = asarray(image.rotate(angle))
     buffer = ""
 
     # Process image
     for y, row in enumerate(imageArray):
         for x, color in enumerate(row):
             if color[3] == 0:
-                buffer += colorToStr(bg.getpixel((x, y)))
+                buffer += colorToStr(background.getpixel((x, y)))
             else:
                 buffer += colorToStr(color)
 
@@ -36,6 +34,8 @@ def convert(angle: int):
 
 output = open("assets/imageBuffer.txt", "w")
 background = Image.open(bgFileName)
+image = Image.open(fileName)
+
 
 convert(0)
 convert(90)

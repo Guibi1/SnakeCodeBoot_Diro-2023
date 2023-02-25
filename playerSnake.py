@@ -23,7 +23,7 @@ class PlayerSnake:
         dev.draw_image(
             self.positions[-1][0]*11 + 7, self.positions[-1][1]*11 + 7, textures.snakeHead)
         # Body
-        for pos in self.positions[1:-2]:
+        for pos in self.positions[1:-1]:
             dev.draw_image(pos[0]*11 + 7, pos[1]*11 + 7, textures.snakeLine)
 
     def move(self, rallonger):

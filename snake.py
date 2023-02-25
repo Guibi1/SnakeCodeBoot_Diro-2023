@@ -3,12 +3,12 @@ import net
 import mate
 import apps
 import ui
-import random
 import playerSnake as player
 import objects
 import textures
 
 bg = '#000'  # general background color
+currentLevel = "grass"
 width = 11
 height = 18
 
@@ -63,17 +63,7 @@ for x in range(width):
     row = []
     tileIsSpecial.append(row)
     for y in range(height):
-        row.append(random() > 0.8)
-
-
-def display():
-    for y in range(height):
-        for x in range(width):
-            if (tileIsSpecial[x][y]):
-                dev.draw_image(7 + x * 11, 7 + y * 11, textures.grassFlower)
-            else:
-                dev.draw_image(7 + x * 11, 7 + y * 11, textures.grass)
-
+        row.append(random() > 0.9)
 
 tick_counter = 1
 playerSnake = player.PlayerSnake()
@@ -90,6 +80,10 @@ def button_handler(event, resume):
         quit()
     elif event == 'tick':
         tick_counter += 1
+
+        ui.center(dev.screen_width//2, dev.screen_height -
+                  16, "Score " + str(playerSnake.score), '#FFF', bg)
+
         if tick_counter % 5 != 0:
             dev.after(ui.time_delta, resume)  # need to wait...
             return
@@ -104,14 +98,15 @@ def button_handler(event, resume):
             rallonger = True
 
         if not rallonger:
-            dev.draw_image(
-                playerSnake.positions[0][0]*11 + 7, playerSnake.positions[0][1]*11 + 7, textures.grass)
+            if tileIsSpecial[playerSnake.positions[0][0]][playerSnake.positions[0][1]]:
+                dev.draw_image(
+                    playerSnake.positions[0][0]*11 + 7, playerSnake.positions[0][1]*11 + 7, textures.levels[currentLevel]["special"])
+            else:
+                dev.draw_image(
+                    playerSnake.positions[0][0]*11 + 7, playerSnake.positions[0][1]*11 + 7, textures.levels[currentLevel]["normal"])
 
         playerSnake.move(rallonger)
         playerSnake.display()
-
-        ui.center(dev.screen_width//2, dev.screen_height -
-                  16, "Score " + str(playerSnake.score), '#FFF', bg)
 
         if networked:
             pong_timer -= 1
@@ -172,6 +167,14 @@ def start_game(player):
     reset_mate_timeout()
     ui.track_button_presses(button_handler)  # start tracking button presses
     dev.clear_screen(bg)
+    for y in range(height):
+        for x in range(width):
+            if (tileIsSpecial[x][y]):
+                dev.draw_image(7 + x * 11, 7 + y * 11,
+                               textures.levels[currentLevel]["special"])
+            else:
+                dev.draw_image(7 + x * 11, 7 + y * 11,
+                               textures.levels[currentLevel]["normal"])
 
 
 def snake_non_networked():

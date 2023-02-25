@@ -7,6 +7,7 @@ import random
 import playerSnake
 import objects
 
+
 bg = '#000'  # general background color
 
 # game state
@@ -57,6 +58,9 @@ def init_game():
 
 tick_counter = 1
 playerSnake = playerSnake.PlayerSnake()
+playerSnake.display()
+pomme = objects.getRandomPomme()
+pomme.display()
 
 
 def button_handler(event, resume):
@@ -71,7 +75,13 @@ def button_handler(event, resume):
             dev.after(ui.time_delta, resume)  # need to wait...
             return
 
-        playerSnake.move()
+        rallonger = False
+        if playerSnake.positions[-1] == pomme.getPosition():
+            pomme = objects.getRandomPomme()
+            pomme.display()
+            rallonger = True
+
+        playerSnake.move(rallonger)
         playerSnake.display()
 
         ui.center(dev.screen_width//2, dev.font_height *

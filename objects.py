@@ -1,10 +1,17 @@
+import ttgo as dev
+
+
 class Objects():
     tex = ""
     x = 0
     y = 0
-    
-    def getPostion(self):
+
+    def getPosition(self):
         return (self.x, self.y)
+
+    def display(self):
+        for pos in self.positions:
+            dev.fill_rect(self.x*11 + 7, self.y*11 + 7, 11, 11, "#0f0")
 
 
 class Blocs(Objects):

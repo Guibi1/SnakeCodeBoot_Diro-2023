@@ -45,3 +45,15 @@ toxicApple = """#000#000#000#000#000#000#323#343#000#000#000
 #212#869#869#868#647#424#425#637#868#536#000
 #000#000#748#868#868#868#868#868#868#000#000
 #000#212#000#536#536#000#536#757#000#000#000"""
+
+chronoApple = """#000#000#000#000#000#000#472#8d4#000#000#000
+#000#000#ddd#ddd#000#444#6a3#8d4#ccc#000#000
+#000#444#ddd#ccc#ddd#444#7c4#ddd#ccc#444#000
+#000#eee#444#ddd#ccc#ddd#eee#ccc#444#ccc#ccc
+#ddd#ddd#ddd#ddd#444#ddd#ddd#eee#ccc#ccc#ccc
+#444#444#ccc#ddd#444#444#ddd#ddd#ddd#444#444
+#ccc#ccc#ddd#ddd#ddd#000#ddd#ddd#ccc#ccc#eee
+#000#ddd#ddd#444#ddd#ddd#444#ddd#eee#ccc#ddd
+#000#eee#444#ddd#ddd#ddd#ccc#444#ddd#eee#000
+#000#000#ddd#ddd#ddd#444#ddd#ddd#ddd#000#000
+#000#000#000#eee#ddd#000#ddd#ddd#000#000#000""" 

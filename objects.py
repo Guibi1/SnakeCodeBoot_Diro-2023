@@ -2,7 +2,6 @@ import ttgo as dev
 import textures
 
 
-
 class Objects():
     tex = "#0f0"
     x = 0
@@ -16,7 +15,7 @@ class Objects():
 
 
 class Blocs(Objects):
-    tex = ""
+    tex = textures.fence
 
     def __init__(self, x, y):
         self.x = x
@@ -54,35 +53,29 @@ class PommePoison(Pommes):
 
 
 class PommeChrono(Pommes):
-    tex = ""
+    tex = textures.chronoApple
 
 
 class PommeMulti(Pommes):
-    tex = ""
-
     def __init__(self):
-        pommemulti1 = PommeNormale()
-        pommemulti2 = PommeNormale()
-        pommemulti3 = PommeNormale()
+        self.p1 = getRandomPomme()
+        self.p2 = getRandomPomme()
+        self.p3 = getRandomPomme()
+
+    def display(self):
+        self.p1.display()
+        self.p2.display()
+        self.p3.display()
 
 
 class PommePortail(Pommes):
-    tex = ""
+    # tex = textures.portal?
+    pass
 
 
 class PommeVitesse(Pommes):
-    tex = ""
-
-
-obj1 = PommeNormale()
-obj2 = Pomme10()
-obj3 = PommePoison()
-obj4 = PommeChrono()
-obj5 = PommeMulti()
-obj6 = PommeVitesse()
-obj7 = PommeBloc()
-obj8 = Blocs(10, 10)
-obj9 = PommePortail()
+    # tex = textures.speedApple
+    pass
 
 
 def getRandomPomme():

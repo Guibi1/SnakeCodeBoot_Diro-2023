@@ -2,6 +2,7 @@ import ttgo as dev
 import net
 import ui
 import random
+import textures
 
 
 class PlayerSnake:
@@ -14,7 +15,7 @@ class PlayerSnake:
 
     def display(self):
         for pos in self.positions:
-            dev.fill_rect(pos[0]*11 + 7, pos[1]*11 + 7, 11, 11, "#f00")
+            dev.draw_image(pos[0]*11 + 7, pos[1]*11 + 7, textures.snakeHead)
 
     def move(self, rallonger):
         self.positions.append(

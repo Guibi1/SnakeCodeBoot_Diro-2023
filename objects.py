@@ -39,17 +39,17 @@ class PommeBloc(Pommes):
 
 
 class PommeNormale(Pommes):
-    tex = ""
+    tex = textures.apple
     score = 1
 
 
 class Pomme10(Pommes):
-    tex = ""
+    tex = textures.gaplle
     score = 10
 
 
 class PommePoison(Pommes):
-    tex = ""
+    tex = textures.toxicApple
 
 
 class PommeChrono(Pommes):

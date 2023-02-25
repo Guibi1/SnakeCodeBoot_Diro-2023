@@ -78,15 +78,16 @@ def button_handler(event, resume):
             pomme = objects.getRandomPomme()
             pomme.display()
         elif playerSnake.positions[-1] == pomme.getPosition():
-            pomme = None
             playerSnake.manger(pomme)
+            pomme = None
             rallonger = True
 
         playerSnake.move(rallonger)
         playerSnake.display()
 
-        ui.center(dev.screen_width//2, dev.font_height *
-                  7, str(tick_counter), '#FFF', bg)
+        ui.center(dev.screen_width//2, dev.screen_height -
+                  16, "Score " + str(playerSnake.score), '#FFF', bg)
+
         if networked:
             pong_timer -= 1
             if pong_timer < 0:
@@ -133,9 +134,6 @@ def button_handler(event, resume):
             pass
         elif event == 'right_ok':
             pass
-
-        ui.center(dev.screen_width//2, dev.screen_height -
-                  16, f"Score {playerSnake.score}", '#FFF', bg)
         resume()
 
 

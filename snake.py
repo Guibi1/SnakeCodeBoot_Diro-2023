@@ -77,6 +77,7 @@ def button_handler(event, resume):
 
         rallonger = False
         if playerSnake.positions[-1] == pomme.getPosition():
+            playerSnake.manger(pomme)
             pomme = objects.getRandomPomme()
             pomme.display()
             rallonger = True

@@ -59,10 +59,11 @@ tick_counter = 1
 playerSnake = player.PlayerSnake()
 playerSnake.display()
 pomme = None
+blocks = []
 
 
 def button_handler(event, resume):
-    global ping_timer, pong_timer, tick_counter, pomme
+    global ping_timer, pong_timer, tick_counter, pomme, blocks
     if me is None:
         return  # not yet playing or no longer playing
     if event == 'cancel':
@@ -78,7 +79,7 @@ def button_handler(event, resume):
             pomme = objects.getRandomPomme()
             pomme.display()
         elif playerSnake.positions[-1] == pomme.getPosition():
-            playerSnake.manger(pomme)
+            playerSnake.manger(pomme, blocks)
             pomme = None
             rallonger = True
 

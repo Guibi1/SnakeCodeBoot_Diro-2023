@@ -19,7 +19,6 @@ me = None  # is 0 when non-networked, and 0 or 1 when networked
 # the following global variables are useful for the networked version
 
 networked = False  # are we playing over the network?
-random_seed = 0      # to get same random order on both nodes, set later
 msg_type = None   # type of the messages sent between the nodes, set later
 ping_timer = 0      # used to check that the mate is still with us
 pong_timer = 0
@@ -68,6 +67,7 @@ for x in range(width):
 tick_counter = 1
 playerSnake = player.PlayerSnake()
 playerSnake.display()
+otherSnakes = []
 pomme = None
 blocks = []
 
@@ -92,8 +92,11 @@ def button_handler(event, resume):
         if pomme is None:
             pomme = objects.getRandomPomme()
             pomme.display()
+            if networked:
+                net.send(mate.id, [msg_type, "newPomme",
+                         pomme.sorte, pomme.x, pomme.y])
         elif playerSnake.positions[-1] == pomme.getPosition():
-            playerSnake.manger(pomme, blocks)
+            playerSnake.manger(pomme, blocks,tileIsSpecial)
             pomme = None
             rallonger = True
 
@@ -107,6 +110,9 @@ def button_handler(event, resume):
 
         playerSnake.move(rallonger)
         playerSnake.display()
+        if networked:
+            net.send(mate.id, [msg_type, "snakePositions",
+                     playerSnake.positions])
 
         if networked:
             pong_timer -= 1
@@ -200,23 +206,31 @@ def message_handler(peer, msg):
             leave()
         elif msg[1] == 'ping':
             reset_mate_timeout()
+        elif msg[1] == 'snakePositions':
+            if tileIsSpecial[otherSnakes[peer][0][0]][otherSnakes[peer][0][1]]:
+                dev.draw_image(
+                    otherSnakes[peer][0][0]*11 + 7, otherSnakes[peer][0][1]*11 + 7, textures.levels[currentLevel]["special"])
+            else:
+                dev.draw_image(
+                    otherSnakes[peer][0][0]*11 + 7, otherSnakes[peer][0][1]*11 + 7, textures.levels[currentLevel]["normal"])
+            otherSnakes[peer] = msg[2]
+            player.displaySnake(otherSnakes[peer])
+        elif msg[1] == 'newPomme':
+            pomme = objects.Apple(msg[2], msg[3], msg[4])
+            pomme.display()
         elif me == None:
-            random.seed(random_seed ^ msg[1])  # set same RNG on both nodes
-            # determine if we are player 0 or 1
-            start_game_soon(master() ^ random.randrange(2))
+            start_game_soon(master() ^ int(random() * 2))
         else:
             print('received', peer, msg)
 
 
 def found_mate():
     init_game()
-    net.send(mate.id, [msg_type, random_seed])
+    net.send(mate.id, [msg_type, ""])
 
 
 def snake_networked():
-    global msg_type, random_seed
-    # exchange random seeds so both nodes have the same RNG
-    random_seed = random.randrange(0x1000000)
+    global msg_type
     msg_type = 'SNAKENET'
     mate.find(msg_type, message_handler)
 

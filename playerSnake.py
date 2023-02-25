@@ -6,6 +6,30 @@ import objects
 import textures
 
 
+def displaySnake(positions):
+    def movingTo(i=-1):
+        if positions[i][0] > positions[i-1][0]:
+            return "R"
+        elif positions[i][0] < positions[i-1][0]:
+            return "L"
+
+        if positions[i][1] > positions[i-1][1]:
+            return "B"
+        elif positions[i][1] < positions[i-1][1]:
+            return "T"
+
+    # Tail
+    dev.draw_image(
+        positions[0][0]*11 + 7, positions[0][1]*11 + 7, textures.levels["grass"]["snakeTail"][movingTo(0)])
+    # Head
+    dev.draw_image(
+        positions[-1][0]*11 + 7, positions[-1][1]*11 + 7, textures.levels["grass"]["snakeHead"][movingTo()])
+    # Body
+    for i, pos in enumerate(positions[1:-1]):
+        dev.draw_image(pos[0]*11 + 7, pos[1]*11 + 7,
+                       textures.levels["grass"]["snakeLine"][movingTo(i)])
+
+
 class PlayerSnake:
     nextX = 1
     nextY = 0
@@ -44,7 +68,7 @@ class PlayerSnake:
         elif self.positions[i][1] < self.positions[i-1][1]:
             return "T"
 
-    def manger(self, pomme, blocks):
+    def manger(self, pomme, blocks,tileIsSpecial):
         if isinstance(pomme, objects.PommeNormale):
             self.score += 1
 
@@ -54,3 +78,15 @@ class PlayerSnake:
         elif isinstance(pomme, objects.PommeBloc):
             bloc = objects.Blocs(self.positions[0][0], self.positions[0][-1])
             blocks.append(bloc)
+
+        elif isinstance(pomme, objects.PommeRetrecir):
+            for i in range(5):
+                pos = self.positions.pop(0)
+                if tileIsSpecial[pos[0]][pos[1]]:
+                    dev.draw_image(
+                        pos[0]*11 + 7, pos[1]*11 + 7, textures.levels["grass"]["special"])
+                else: 
+                    dev.draw_image(
+                    pos[0]*11 + 7, pos[1]*11 + 7, textures.levels["grass"]["normal"])
+                    
+        

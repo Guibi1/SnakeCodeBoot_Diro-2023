@@ -34,6 +34,11 @@ class Apple(Objects):
         dev.draw_image(self.x * 11 + 7, self.y * 11 + 7,
                        textures.levels["grass"]["apples"][self.sorte])
 
+class PommeRetrecir(Pommes):
+    # tex= textures.PommeRetrecir
+    
+    pass
+
 
 def getRandomPomme():
     nbRandom = int(random()*120+1)

@@ -96,7 +96,7 @@ def button_handler(event, resume):
                 net.send(mate.id, [msg_type, "newPomme",
                          pomme.sorte, pomme.x, pomme.y])
         elif playerSnake.positions[-1] == pomme.getPosition():
-            playerSnake.manger(pomme, blocks)
+            playerSnake.manger(pomme, blocks,tileIsSpecial)
             pomme = None
             rallonger = True
 

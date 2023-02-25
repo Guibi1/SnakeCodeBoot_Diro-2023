@@ -1,7 +1,7 @@
 from PIL import Image
 from numpy import asarray
 
-fileName = "assets/GrassFlower.png"
+fileName = "assets/Fence.png"
 
 # Load image
 image = Image.open(fileName)

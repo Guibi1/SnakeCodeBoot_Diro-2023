@@ -10,6 +10,8 @@ import textures
 
 bg = '#000'  # general background color
 currentLevel = "grass"
+width = 11
+height = 18
 
 # game state
 
@@ -57,10 +59,21 @@ def init_game():
     ui.center(x, dev.font_height*5, 'TODO!', '#FFF', bg)
 
 
+tileIsSpecial = []
+for x in range(width):
+    row = []
+    tileIsSpecial.append(row)
+    for y in range(height):
+        row.append(random() > 0.8)
+
+
 def display():
-    for y in range(18):
-        for x in range(11):
-            dev.draw_image(7 + x * 11, 7 + y * 11, textures.)
+    for y in range(height):
+        for x in range(width):
+            if (tileIsSpecial[x][y]):
+                dev.draw_image(7 + x * 11, 7 + y * 11, textures.grassFlower)
+            else:
+                dev.draw_image(7 + x * 11, 7 + y * 11, textures.grass)
 
 
 display()

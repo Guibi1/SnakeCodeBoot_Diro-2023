@@ -6,6 +6,7 @@ import ui
 import random
 import playerSnake as player
 import objects
+import textures
 
 bg = '#000'  # general background color
 
@@ -55,14 +56,22 @@ def init_game():
     ui.center(x, dev.font_height*5, 'TODO!', '#FFF', bg)
 
 
+def display():
+    for y in range(18):
+        for x in range(11):
+            dev.draw_image(7 + x * 11, 7 + y * 11, textures.)
+
+display()
+
 tick_counter = 1
 playerSnake = player.PlayerSnake()
 playerSnake.display()
 pomme = None
+blocks = []
 
 
 def button_handler(event, resume):
-    global ping_timer, pong_timer, tick_counter, pomme
+    global ping_timer, pong_timer, tick_counter, pomme, blocks
     if me is None:
         return  # not yet playing or no longer playing
     if event == 'cancel':
@@ -78,7 +87,7 @@ def button_handler(event, resume):
             pomme = objects.getRandomPomme()
             pomme.display()
         elif playerSnake.positions[-1] == pomme.getPosition():
-            playerSnake.manger(pomme)
+            playerSnake.manger(pomme, blocks)
             pomme = None
             rallonger = True
 

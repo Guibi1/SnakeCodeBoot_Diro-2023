@@ -10,8 +10,7 @@ class Objects():
         return (self.x, self.y)
 
     def display(self):
-        for pos in self.positions:
-            dev.fill_rect(self.x*11 + 7, self.y*11 + 7, 11, 11, "#0f0")
+        dev.fill_rect(self.x*11 + 7, self.y*11 + 7, 11, 11, "#0f0")
 
 
 class Blocs(Objects):

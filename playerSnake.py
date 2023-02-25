@@ -10,7 +10,7 @@ class PlayerSnake:
     nextX = 1
     nextY = 0
     positions = [(0, 0), (0, 1)]
-    score=0
+    score = 0
 
     def __init__(self):
         pass
@@ -35,12 +35,10 @@ class PlayerSnake:
             return "B"
         elif self.positions[-1][1] < self.positions[-2][1]:
             return "T"
-    
-    def manger(self,pomme):
-        if isinstance(pomme,objects.PommeNormale):
-            self.score+=1
-            
-        elif isinstance(pomme,objects.Pomme10):
-            self.score+=10
-            
-       
+
+    def manger(self, pomme):
+        if isinstance(pomme, objects.PommeNormale):
+            self.score += 1
+
+        elif isinstance(pomme, objects.Pomme10):
+            self.score += 10

@@ -86,34 +86,33 @@ def button_handler(event, resume):
         dev.after(ui.time_delta, resume)  # need to wait...
     else:
         msg = '------'
+        to = playerSnake.movingTo()
         if event == 'left_down':
-            match snake.movingTo():
-                case "L":
-                    playerSnake.nextY = 1
-                    playerSnake.nextX = 0
-                case "R":
-                    playerSnake.nextY = -1
-                    playerSnake.nextX = 0
-                case "T":
-                    playerSnake.nextX = -1
-                    playerSnake.nextY = 0
-                case "B":
-                    playerSnake.nextX = -1
-                    playerSnake.nextY = 0
+            if to == "L":
+                playerSnake.nextY = 1
+                playerSnake.nextX = 0
+            if to == "R":
+                playerSnake.nextY = -1
+                playerSnake.nextX = 0
+            if to == "T":
+                playerSnake.nextX = -1
+                playerSnake.nextY = 0
+            if to == "B":
+                playerSnake.nextX = -1
+                playerSnake.nextY = 0
         elif event == 'right_down':
-            match snake.movingTo():
-                case "L":
-                    playerSnake.nextY = -1
-                    playerSnake.nextX = 0
-                case "R":
-                    playerSnake.nextY = 1
-                    playerSnake.nextX = 0
-                case "T":
-                    playerSnake.nextX = 1
-                    playerSnake.nextY = 0
-                case "B":
-                    playerSnake.nextX = 1
-                    playerSnake.nextY = 0
+            if to == "L":
+                playerSnake.nextY = -1
+                playerSnake.nextX = 0
+            if to == "R":
+                playerSnake.nextY = 1
+                playerSnake.nextX = 0
+            if to == "T":
+                playerSnake.nextX = 1
+                playerSnake.nextY = 0
+            if to == "B":
+                playerSnake.nextX = 1
+                playerSnake.nextY = 0
         elif event == 'left_up':
             msg = ' L-UP '
         elif event == 'right_up':

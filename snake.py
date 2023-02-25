@@ -135,7 +135,7 @@ def button_handler(event, resume):
             pass
 
         ui.center(dev.screen_width - 30, dev.font_height *
-                  5, "Score: 0", '#FFF', bg)
+                  5, f"Score: {playerSnake.score}", '#FFF', bg)
         resume()
 
 

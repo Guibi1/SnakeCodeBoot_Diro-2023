@@ -91,26 +91,26 @@ def button_handler(event, resume):
             if to == "L":
                 playerSnake.nextY = 1
                 playerSnake.nextX = 0
-            if to == "R":
+            elif to == "R":
                 playerSnake.nextY = -1
                 playerSnake.nextX = 0
-            if to == "T":
+            elif to == "T":
                 playerSnake.nextX = -1
                 playerSnake.nextY = 0
-            if to == "B":
+            elif to == "B":
                 playerSnake.nextX = -1
                 playerSnake.nextY = 0
         elif event == 'right_down':
             if to == "L":
                 playerSnake.nextY = -1
                 playerSnake.nextX = 0
-            if to == "R":
+            elif to == "R":
                 playerSnake.nextY = 1
                 playerSnake.nextX = 0
-            if to == "T":
+            elif to == "T":
                 playerSnake.nextX = 1
                 playerSnake.nextY = 0
-            if to == "B":
+            elif to == "B":
                 playerSnake.nextX = 1
                 playerSnake.nextY = 0
         elif event == 'left_up':

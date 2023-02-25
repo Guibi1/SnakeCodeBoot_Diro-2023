@@ -87,17 +87,16 @@ def getRandomPomme():
     nbRandom = int(random()*120+1)
     if nbRandom > 110:
         return PommeMulti()
-    if nbRandom > 100:
+    elif nbRandom > 100:
         return PommePortail()
-    if nbRandom > 90:
+    elif nbRandom > 90:
         return PommePoison()
-    if nbRandom > 80:
+    elif nbRandom > 80:
         return PommeChrono()
-    if nbRandom > 70:
+    elif nbRandom > 70:
         return PommeBloc()
-    if nbRandom > 60:
+    elif nbRandom > 60:
         return PommeVitesse()
-    if nbRandom > 50:
+    elif nbRandom > 50:
         return Pomme10()
-    if nbRandom > 40:
-        return PommeNormale()
+    return PommeNormale()

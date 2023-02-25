@@ -34,11 +34,6 @@ class Apple(Objects):
         dev.draw_image(self.x * 11 + 7, self.y * 11 + 7,
                        textures.levels["grass"]["apples"][self.sorte])
 
-class PommeRetrecir(Pommes):
-    # tex= textures.PommeRetrecir
-    
-    pass
-
 
 def getRandomPomme():
     nbRandom = int(random()*120+1)
@@ -59,4 +54,6 @@ def getRandomPomme():
         return Apple("speed", x, y)
     elif nbRandom > 50:
         return Apple("god", x, y)
+    elif nbRandom > 40:
+        return Apple("smallDick", x, y)
     return Apple("mid", x, y)

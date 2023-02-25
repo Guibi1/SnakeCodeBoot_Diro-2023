@@ -2,6 +2,9 @@ class Objects():
     tex = ""
     x = 0
     y = 0
+    
+    def getPostion(self):
+        return (self.x, self.y)
 
 
 class Blocs(Objects):

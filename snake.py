@@ -5,6 +5,7 @@ import apps
 import ui
 import random
 import playerSnake
+import objects
 
 bg = '#000'  # general background color
 
@@ -54,8 +55,8 @@ def init_game():
     ui.center(x, dev.font_height*5, 'TODO!', '#FFF', bg)
 
 
-tick_counter = 0
-playerSnake = PlayerSnake()
+tick_counter = 1
+playerSnake = playerSnake.PlayerSnake()
 
 
 def button_handler(event, resume):
@@ -66,11 +67,12 @@ def button_handler(event, resume):
         quit()
     elif event == 'tick':
         tick_counter += 1
-        if tick_counter % 10 != 9:
+        if tick_counter % 5 != 0:
             dev.after(ui.time_delta, resume)  # need to wait...
             return
 
         playerSnake.move()
+        playerSnake.display()
 
         ui.center(dev.screen_width//2, dev.font_height *
                   7, str(tick_counter), '#FFF', bg)
@@ -85,7 +87,6 @@ def button_handler(event, resume):
                 net.send(mate.id, [msg_type, 'ping'])
         dev.after(ui.time_delta, resume)  # need to wait...
     else:
-        msg = '------'
         to = playerSnake.movingTo()
         if event == 'left_down':
             if to == "L":
@@ -98,7 +99,7 @@ def button_handler(event, resume):
                 playerSnake.nextX = -1
                 playerSnake.nextY = 0
             elif to == "B":
-                playerSnake.nextX = -1
+                playerSnake.nextX = 1
                 playerSnake.nextY = 0
         elif event == 'right_down':
             if to == "L":
@@ -111,17 +112,19 @@ def button_handler(event, resume):
                 playerSnake.nextX = 1
                 playerSnake.nextY = 0
             elif to == "B":
-                playerSnake.nextX = 1
+                playerSnake.nextX = -1
                 playerSnake.nextY = 0
         elif event == 'left_up':
-            msg = ' L-UP '
+            pass
         elif event == 'right_up':
-            msg = ' R-UP '
+            pass
         elif event == 'left_ok':
-            msg = ' L-OK '
+            pass
         elif event == 'right_ok':
-            msg = ' R-OK '
-        ui.center(dev.screen_width//2, dev.font_height*5, msg, '#FFF', bg)
+            pass
+
+        ui.center(dev.screen_width - 30, dev.font_height *
+                  5, "Score: 0", '#FFF', bg)
         resume()
 
 
@@ -135,11 +138,6 @@ def start_game(player):
     reset_mate_timeout()
     ui.track_button_presses(button_handler)  # start tracking button presses
     dev.clear_screen(bg)
-    x = dev.screen_width//2
-    ui.center(x, dev.font_height*10, 'QUIT =', '#FFF', bg)
-    ui.center(x, dev.font_height*11, 'PUSH', '#FFF', bg)
-    ui.center(x, dev.font_height*12, 'BOTH', '#FFF', bg)
-    ui.center(x, dev.font_height*13, 'BUTTONS', '#FFF', bg)
 
 
 def snake_non_networked():

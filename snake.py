@@ -9,6 +9,7 @@ import objects
 import textures
 
 bg = '#000'  # general background color
+currentLevel = "grass"
 
 # game state
 
@@ -61,6 +62,7 @@ def display():
         for x in range(11):
             dev.draw_image(7 + x * 11, 7 + y * 11, textures.)
 
+
 display()
 
 tick_counter = 1
@@ -92,8 +94,12 @@ def button_handler(event, resume):
             rallonger = True
 
         if not rallonger:
-            dev.draw_image(
-                playerSnake.positions[0][0]*11 + 7, playerSnake.positions[0][1]*11 + 7, textures.grass)
+            if tileIsSpecial[playerSnake.positions[0][0]][playerSnake.positions[0][1]]:
+                dev.draw_image(
+                    playerSnake.positions[0][0]*11 + 7, playerSnake.positions[0][1]*11 + 7, textures.levels[currentLevel]["special"])
+            else:
+                dev.draw_image(
+                    playerSnake.positions[0][0]*11 + 7, playerSnake.positions[0][1]*11 + 7, textures.levels[currentLevel]["normal"])
 
         playerSnake.move(rallonger)
         playerSnake.display()

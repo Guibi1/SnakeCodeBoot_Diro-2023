@@ -4,7 +4,7 @@ import ui
 import apps
 import splash
 
-network_id = 'TEAM99'    # replace 99 by your team number
+network_id = 'TEAM11'
 
 wifi_ssid  = 'eero'      # the wifi's SSID and password
 wifi_pwd   = 'wifiwifi'

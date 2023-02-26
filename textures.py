@@ -761,6 +761,42 @@ spatialAppleSpeed = """#223#223#223#223#223#223#472#8d4#223#223#223
 #223#b11#b22#c22#b11#ec1#da1#b11#b11#b11#223
 #6cd#223#b22#b11#b11#c92#b11#b11#b11#223#223
 #223#6cd#223#b22#b11#223#b11#b11#223#223#223"""
+grassRetrecirApple = """#463#250#361#250#453#361#472#8d4#361#352#462
+#453#250#d33#d33#d33#c22#8d4#8d4#c22#462#361
+#454#d33#d33#c22#c22#b22#472#472#b22#d33#473
+#361#fc7#fc7#c22#b22#b22#b22#b22#fc7#fc7#454
+#361#250#fc7#fc7#fc7#fc7#fc7#fc7#fc7#250#361
+#352#361#462#462#fc7#fc7#431#453#250#454#250
+#462#462#462#473#fc7#431#fc7#453#564#361#361
+#250#250#361#fc7#fc7#fc7#fc7#fc7#462#361#361
+#250#352#fc7#fc7#b22#b22#b22#fc7#fc7#462#250
+#462#361#b22#b22#b22#b22#b22#c22#c22#250#361
+#454#473#462#b22#b11#463#b11#b11#361#361#250"""
+
+sandRetrecirApple = """#fe8#fe8#fe8#fe8#fe8#fe8#472#8d4#fe8#fe8#fe8
+#fe8#fe8#d33#d33#d33#c22#8d4#8d4#c22#fe8#fe8
+#fe8#d33#d33#c22#c22#b22#472#472#b22#d33#fe8
+#fe8#fc7#fc7#c22#b22#b22#b22#b22#fc7#fc7#fe8
+#fe8#fe8#fc7#fc7#fc7#fc7#fc7#fc7#fc7#fe8#fe8
+#fe8#fe8#fe8#fe8#fc7#fc7#431#fe8#fe8#fe8#fe8
+#fe8#fe8#fe8#fe8#fc7#431#fc7#fe8#fe8#fe8#fe8
+#fe8#fe8#fe8#fc7#fc7#fc7#fc7#fc7#eb4#fe8#fe8
+#fe8#fe8#fc7#fc7#b22#b22#b22#fc7#fc7#fe8#fe8
+#fe8#fe8#b22#b22#b22#b22#b22#c22#c22#fe8#fe8
+#fe8#fe8#fe8#b22#b11#fe8#b11#b11#fe8#fe8#fe8"""
+
+spatialRetrecirApple = """#223#223#223#223#223#223#472#8d4#223#223#223
+#223#223#d33#d33#d33#c22#8d4#8d4#c22#223#223
+#223#d33#d33#c22#c22#b22#472#472#b22#d33#223
+#223#fc7#fc7#c22#b22#b22#b22#b22#fc7#fc7#223
+#223#223#fc7#fc7#fc7#fc7#fc7#fc7#fc7#223#223
+#223#223#223#223#fc7#fc7#431#223#223#223#223
+#223#223#223#223#fc7#431#fc7#223#223#223#223
+#223#223#223#fc7#fc7#fc7#fc7#fc7#6cd#223#223
+#223#6cd#fc7#fc7#b22#b22#b22#fc7#fc7#6cd#223
+#6cd#223#b22#b22#b22#b22#b22#c22#c22#223#223
+#223#6cd#223#b22#b11#223#b11#b11#223#223#223"""
+
 spatialAppleMulti = spatialApple
 
 snakeHeadSpatial0 = """#223#463#463#6b3#6b3#6b3#6b3#6b3#463#463#223
@@ -966,7 +1002,7 @@ levels = {
             "block": grassBlocApple,
             "speed": grassAppleSpeed,
             "multi": grassAppleMulti,
-            "small": grassApple
+            "small": grassRetrecirApple
         },
         "snakeHead": {
             "B": snakeHeadGrass0,
@@ -1006,7 +1042,7 @@ levels = {
             "block": sandBlocApple,
             "speed": sandAppleSpeed,
             "multi": sandApple,
-            "small": sandApple
+            "small": sandRetrecirApple
         },
         "snakeHead": {
             "B": snakeHeadSand0,
@@ -1045,7 +1081,7 @@ levels = {
             "block": spatialBlocApple,
             "speed": spatialAppleSpeed,
             "multi": spatialAppleMulti,
-            "small": sandApple
+            "small": spatialRetrecirApple
         },
         "snakeHead": {
             "B": snakeHeadSpatial0,

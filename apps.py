@@ -39,13 +39,16 @@ def menu():  # pick an app with a menu and call its handler
                 last_app = item
                 handler()
 
+    titleAnimationIdle = ["titre9", "titre10", "titre11", "titre12", "titre13", "titre14", "titre15", "titre16",
+                          "titre17", "titre18", "titre19", "titre20", "titre21", "titre22", "titre23", "titre24", "titre25", "titre26"]
+
     def animate(i):
         if stop:
             return
-        if i == len(textures.titleAnimationIdle) - 1:
+        if i == len(titleAnimationIdle) - 1:
             animate(0)
             return
-        dev.draw_image(15, 20, textures.titleAnimationIdle[i])
+        dev.draw_image(15, 20, textures.load(titleAnimationIdle[i]))
         dev.after(0.2, lambda: animate(i + 1))
 
     dev.clear_screen(bg)

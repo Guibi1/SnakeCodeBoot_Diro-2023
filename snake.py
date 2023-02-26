@@ -79,12 +79,12 @@ def setCurrentLevel(level):
     textures.currentLevel = level
 
     if currentLevel == "grass":
-        blocks = [()]
+        blocks = []
     elif currentLevel == "sand":
         blocks = [(3, 8), (2, 9), (7, 2), (9, 4),
                   (1, 17), (10, 5), (8, 9), (10, 15)]
     else:
-        blocks = [()]
+        blocks = []
 
     tileIsSpecial = []
     for _ in range(width):
@@ -206,7 +206,6 @@ def displayBlocks():
         print(block)
         dev.draw_image(7 + 11 * block[0], 7 + 11 *
                        block[1], textures.getLevel()["block"])
-
 
 
 def getRandomPos():

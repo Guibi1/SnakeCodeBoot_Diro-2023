@@ -88,12 +88,12 @@ def setCurrentLevel(level):
     textures.currentLevel = level
 
     if currentLevel == "grass":
-        blocks = []
+        blocks = [(9, 16), (9, 15), (9,14), (10,15), (4, 7), (5,7), (8,2),(7,2),(6,2)]
     elif currentLevel == "sand":
         blocks = [(3, 8), (2, 9), (7, 2), (9, 4),
                   (1, 17), (10, 5), (8, 9), (10, 15)]
     else:
-        blocks = []
+        blocks = [(3, 6), (10, 16), (7,8), (9, 1), (5,2)]
 
     tileIsSpecial = []
     for _ in range(width):

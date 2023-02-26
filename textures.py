@@ -337,7 +337,7 @@ grassAppleToxic= """#463#250#361#250#453#361#323#343#361#352#462
 #212#869#869#868#647#424#425#637#868#536#250
 #462#361#748#868#868#868#868#868#868#250#361
 #454#212#462#536#536#463#536#757#361#361#250"""
-
+#mauvais
 grassAppleChrono= """#463#250#361#250#453#361#472#8d4#361#352#462
 #453#250#ddd#ddd#361#444#6a3#8d4#ccc#462#361
 #454#444#ddd#ccc#ddd#444#7c4#ddd#ccc#444#473
@@ -350,7 +350,116 @@ grassAppleChrono= """#463#250#361#250#453#361#472#8d4#361#352#462
 #462#361#ddd#ddd#ddd#444#ddd#ddd#ddd#250#361
 #454#473#462#eee#ddd#463#ddd#ddd#361#361#250"""
 
+grassAppleSpeed=
+sand=  """#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8
+#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8
+#fe8#fe8#fe8#eb4#fe8#fe8#fe8#fe8#eb4#fe8#fe8
+#fe8#fe8#eb4#fe8#fe8#fe8#fe8#eb4#fe8#fe8#fe8
+#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8
+#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8
+#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8
+#fe8#fe8#fe8#eb4#fe8#fe8#fe8#fe8#eb4#fe8#fe8
+#fe8#fe8#eb4#fe8#fe8#fe8#fe8#eb4#fe8#fe8#fe8
+#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8
+#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8"""
 
+sandSkull="""#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8
+#fe8#555#a94#fe8#fe8#fe8#fe8#fe8#fe8#555#a94
+#fe8#555#555#555#fff#fff#fff#555#555#555#a94
+#fe8#fe8#fff#fff#fff#ddd#fff#fff#fff#a94#fe8
+#fe8#fe8#fff#fff#fff#ddd#fff#fff#fff#a94#fe8
+#fe8#fe8#999#fff#fff#fff#fff#fff#999#a94#fe8
+#fe8#fe8#fe8#999#fff#fff#fff#999#a94#fe8#fe8
+#fe8#fe8#fe8#eb4#fff#fff#fff#a94#eb4#fe8#fe8
+#fe8#fe8#eb4#fe8#fff#fff#fff#972#fe8#fe8#fe8
+#fe8#fe8#fe8#fe8#999#fff#999#a94#fe8#fe8#fe8
+#fe8#fe8#fe8#fe8#fe8#fff#a94#fe8#fe8#fe8#fe8"""
+
+sandCactus="""#fe8#fe8#fe8#fe8#fe8#f69#fe8#fe8#fe8#fe8#fe8
+#fe8#fe8#fe8#fe8#f69#fac#f69#fe8#fe8#f69#fe8
+#fe8#fe8#fe8#f69#fac#f69#7a4#fe8#f69#fac#f69
+#fe8#f69#eb4#7a4#f69#593#583#7a5#fe8#f69#7a5
+#f69#fac#f69#8b6#8b5#8b6#694#8b7#fe8#7a5#583
+#7a4#f69#fe8#8b6#eee#694#eee#694#593#7a4#8b5
+#6a3#6a3#8a6#8b6#000#7a4#000#583#583#593#593
+#593#593#8b6#8b5#8b6#7a4#694#583#eb4#fe8#fe8
+#fe8#593#6a4#694#000#000#000#8b6#fe8#fe8#fe8
+#fe8#fe8#fe8#7a5#d44#593#593#583#fe8#fe8#fe8
+#fe8#fe8#fe8#fe8#7b4#6a4#593#fe8#fe8#fe8#fe8"""
+
+sandApple="""#fe8#fe8#fe8#fe8#fe8#fe8#472#8d4#fe8#fe8#fe8
+#fe8#fe8#c22#b22#fe8#6a3#6a3#8d4#c22#fe8#fe8
+#fe8#d33#e55#e66#c22#6b3#7c4#d33#c22#d33#fe8
+#fe8#d55#f77#e44#b22#b22#b22#d33#b22#b22#d33
+#b22#e55#d33#b22#c22#b22#b22#b22#b22#b22#b22
+#b22#b22#c22#c22#b22#b22#b22#b22#b22#b11#b22
+#c22#b22#b22#b22#c22#b11#b22#b22#b22#b11#b22
+#fe8#c22#c22#b11#b22#b11#b11#b11#b11#b11#b11
+#fe8#b11#b22#c22#b11#b11#b11#b11#b11#b11#fe8
+#fe8#fe8#b22#b11#b11#b11#b11#b11#b11#fe8#fe8
+#fe8#fe8#fe8#b22#b11#fe8#b11#b11#fe8#fe8#fe8"""
+
+sandApple10="""#fe8#fe8#fe8#fe3#fe8#fe8#472#8d4#fe8#fe8#fe8
+#fe8#fe8#fe3#ff7#fe3#6a3#6a3#8d4#fd2#fe8#fe8
+#fe8#fe7#fea#fe3#ffe#6b3#7c4#fd6#fd7#fe3#fe8
+#fe8#fea#ffd#ffd#ffe#ffe#fec#fe9#fe3#ff7#fe3
+#fd4#fe9#fea#ffd#ffd#ffd#fec#fe8#fd5#fe3#fd5
+#fd6#fea#ffe#ffe#ffd#feb#feb#fd5#fd7#fd2#fd4
+#fe8#fe9#ffd#fec#fe8#fe8#fd4#fd5#fd5#fd4#fd3
+#fe8#fe8#fd2#fd7#fd7#fea#fe8#fd2#fd3#fd3#ec3
+#fe8#fe3#fd6#fd4#fd5#fd7#fd3#fc3#fc2#fd2#fe8
+#fe3#ff7#fe3#fd5#fd3#fd3#fc2#ec3#fc2#fe8#fe8
+#fe8#fe3#fe8#fd4#fd2#fe8#fc1#fd3#fe8#fe8#fe8"""
+
+sandPortal="""#739#738#c5f#a5c#739#c7e#c5f#738#638#c6d#739
+#637#c5f#c6d#739#738#738#738#637#637#c6f#96a
+#536#c5f#637#536#739#b7c#a6c#739#638#637#d9e
+#739#637#739#a5c#c6f#739#637#95b#738#637#637
+#c5f#738#637#c6f#536#739#637#a6c#638#637#c5f
+#95a#638#738#637#637#a5c#638#c5f#c6d#637#c5f
+#637#738#637#638#739#738#637#638#638#637#637
+#738#739#637#c6d#638#c7f#c5f#638#637#638#637
+#c5f#638#738#a5c#637#638#638#637#739#738#c7e
+#c5f#a5c#738#739#738#739#738#739#738#c5f#c5f
+#739#c5f#739#638#739#738#637#739#c5f#a5c#738"""
+
+sandAppleToxic="""#fe8#fe8#fe8#fe8#fe8#fe8#323#343#fe8#fe8#fe8
+#fe8#fe8#fe8#fe8#fe8#453#453#683#a7b#fe8#fe8
+#fe8#fe8#fe8#eb4#546#343#a8b#656#97a#a7b#fe8
+#fe8#fe8#eb4#fe8#333#546#222#656#545#869#747
+#fe8#fe8#fe8#213#111#435#222#111#435#869#425
+#fe8#fe8#213#111#111#545#222#222#324#647#424
+#313#213#a8b#667#556#435#424#324#424#647#869
+#fe8#a7b#a8b#a7b#435#859#859#424#758#758#536
+#212#869#869#868#647#424#425#637#868#536#fe8
+#fe8#fe8#748#868#868#868#868#868#868#fe8#fe8
+#fe8#212#fe8#536#536#fe8#536#757#fe8#fe8#fe8"""
+sandAppleChrono=
+sandBlocApple="""#fe8#fe8#fe8#fe8#fe8#fe8#472#8d4#fe8#fe8#fe8
+#fe8#fe8#c22#b22#fe8#6a3#6a3#8d4#c22#fe8#fe8
+#fe8#d33#e55#e66#c22#6b3#7c4#d33#c22#d33#fe8
+#fe8#d55#f77#e44#b22#b22#b22#d33#b22#b22#d33
+#b22#e55#d33#b22#c22#b22#b22#b22#b22#b22#b22
+#b22#b22#c22#c22#b22#b22#b22#b22#b22#b11#b22
+#c22#b22#b22#b22#c22#b11#362#582#583#362#362
+#fe8#c22#c22#b11#b22#b11#362#865#362#854#472
+#fe8#b11#b22#c22#b11#b11#754#633#865#965#362
+#fe8#fe8#b22#b11#b11#b11#754#754#854#644#966
+#fe8#fe8#fe8#b22#b11#fe8#a76#865#865#644#755"""
+sandAppleSpeed=
+sandAppleMulti=
+snakeHead
+snakeHead
+snakeHead
+snakeHead
+snakeLine
+snakeLine
+snakeLine
+snakeLine
+snakeTail
+snakeTail
+snakeTail
+snakeTail
 
 
 
@@ -395,7 +504,7 @@ levels = {
         }
     }
     ,"sand":{
-         "normal": grass,
+         "normal": sand,
         "special": grassFlower,
         "block": fence,
         "apples": {
@@ -409,28 +518,28 @@ levels = {
             "multi": apple
         },
         "snakeHead": {
-            "B": snakeHeadGrass0,
-            "R": snakeHeadGrass90,
-            "T": snakeHeadGrass180,
-            "L": snakeHeadGrass270
+            "B": snakeHeadSand0,
+            "R": snakeHeadSand90,
+            "T": snakeHeadSand180,
+            "L": snakeHeadSand270
         },
         "snakeLine": {
-            "B": snakeLineGrass0,
-            "R": snakeLineGrass90,
-            "T": snakeLineGrass180,
-            "L": snakeLineGrass270
+            "B": snakeLineSand0,
+            "R": snakeLineSand90,
+            "T": snakeLineSand180,
+            "L": snakeLineSand270
         },
         "snakeCorner": {
-            "B": snakeCornerGrass0,
-            "R": snakeCornerGrass90,
-            "T": snakeCornerGrass180,
-            "L": snakeCornerGrass270
+            "B": snakeCornerSand0,
+            "R": snakeCornerSand90,
+            "T": snakeCornerSand180,
+            "L": snakeCornerSand270
         },
         "snakeTail": {
-            "B": snakeTailGrass0,
-            "R": snakeTailGrass90,
-            "T": snakeTailGrass180,
-            "L": snakeTailGrass270
+            "B": snakeTailSand0,
+            "R": snakeTailSand90,
+            "T": snakeTailSand180,
+            "L": snakeTailSand270
         }
         
     }

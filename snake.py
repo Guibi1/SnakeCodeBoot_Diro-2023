@@ -232,11 +232,11 @@ def getRandomPomme():
         return objects.Apple("portal", pos[0], pos[1])
     elif nbRandom > 90:
         p = objects.Apple("poison", pos[0], pos[1])
-        dev.after(10, manger(p))
+        dev.after(10, lambda: manger(p))
         return p
     elif nbRandom > 80:
         p = objects.Apple("chrono", pos[0], pos[1])
-        dev.after(10, manger(p))
+        dev.after(10, lambda: manger(p))
         return p
     elif nbRandom > 70:
         return objects.Apple("block", pos[0], pos[1])

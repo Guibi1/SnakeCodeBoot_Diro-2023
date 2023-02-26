@@ -2,7 +2,7 @@ from PIL import Image
 from numpy import asarray
 
 bgFileName = "assets/map_desert.png"
-fileName = "assets/BlocApple.png"
+fileName = "assets/SnakeTail.png"
 
 
 def colorToStr(color):

@@ -447,19 +447,186 @@ sandBlocApple="""#fe8#fe8#fe8#fe8#fe8#fe8#472#8d4#fe8#fe8#fe8
 #fe8#fe8#b22#b11#b11#b11#754#754#854#644#966
 #fe8#fe8#fe8#b22#b11#fe8#a76#865#865#644#755"""
 sandAppleSpeed=
-sandAppleMulti=
-snakeHead
-snakeHead
-snakeHead
-snakeHead
-snakeLine
-snakeLine
-snakeLine
-snakeLine
-snakeTail
-snakeTail
-snakeTail
-snakeTail
+sandAppleMulti=grassApple
+snakeHeadSand0 = """#fe8#463#463#6b3#6b3#6b3#6b3#6b3#463#463#fe8
+#fe8#463#6b3#9d5#9d5#9d5#9d5#9d5#6b3#463#fe8
+#fe8#6b3#9d5#9d5#9d5#9d5#9d5#9d5#9d5#6b3#fe8
+#fe8#9d5#9d5#9d5#9d5#9d5#9d5#9d5#9d5#9d5#fe8
+#fe8#9d5#fff#000#9d5#9d5#9d5#fff#000#9d5#fe8
+#fe8#9d5#9d5#9d5#9d5#9d5#9d5#9d5#9d5#9d5#fe8
+#fe8#fe8#fe3#9d5#6b3#9d5#6b3#9d5#fe3#fe8#fe8
+#fe8#fe8#fe8#fe3#fe3#fe3#fe3#fe3#eb4#fe8#fe8
+#fe8#fe8#eb4#fe8#fe8#e00#fe8#eb4#fe8#fe8#fe8
+#fe8#fe8#fe8#fe8#e00#e00#e00#fe8#fe8#fe8#fe8
+#fe8#fe8#fe8#fe8#e00#fe8#e00#fe8#fe8#fe8#fe8"""
+snakeHeadSand90 = """#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8
+#463#463#6b3#9d5#9d5#9d5#fe8#fe8#fe8#fe8#fe8
+#463#6b3#9d5#9d5#000#9d5#fe3#fe8#eb4#fe8#fe8
+#6b3#9d5#9d5#9d5#fff#9d5#9d5#fe3#fe8#fe8#fe8
+#6b3#9d5#9d5#9d5#9d5#9d5#6b3#fe3#fe8#e00#e00
+#6b3#9d5#9d5#9d5#9d5#9d5#9d5#fe3#e00#e00#fe8
+#6b3#9d5#9d5#9d5#9d5#9d5#6b3#fe3#fe8#e00#e00
+#6b3#9d5#9d5#9d5#000#9d5#9d5#fe3#eb4#fe8#fe8
+#463#6b3#9d5#9d5#fff#9d5#fe3#eb4#fe8#fe8#fe8
+#463#463#6b3#9d5#9d5#9d5#fe8#fe8#fe8#fe8#fe8
+#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8"""
+snakeHeadSand180 = """#fe8#fe8#fe8#fe8#e00#fe8#e00#fe8#fe8#fe8#fe8
+#fe8#fe8#fe8#fe8#e00#e00#e00#fe8#fe8#fe8#fe8
+#fe8#fe8#fe8#eb4#fe8#e00#fe8#fe8#eb4#fe8#fe8
+#fe8#fe8#eb4#fe3#fe3#fe3#fe3#fe3#fe8#fe8#fe8
+#fe8#fe8#fe3#9d5#6b3#9d5#6b3#9d5#fe3#fe8#fe8
+#fe8#9d5#9d5#9d5#9d5#9d5#9d5#9d5#9d5#9d5#fe8
+#fe8#9d5#000#fff#9d5#9d5#9d5#000#fff#9d5#fe8
+#fe8#9d5#9d5#9d5#9d5#9d5#9d5#9d5#9d5#9d5#fe8
+#fe8#6b3#9d5#9d5#9d5#9d5#9d5#9d5#9d5#6b3#fe8
+#fe8#463#6b3#9d5#9d5#9d5#9d5#9d5#6b3#463#fe8
+#fe8#463#463#6b3#6b3#6b3#6b3#6b3#463#463#fe8"""
+snakeHeadSand270 = """#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8
+#fe8#fe8#fe8#fe8#fe8#9d5#9d5#9d5#6b3#463#463
+#fe8#fe8#fe8#eb4#fe3#9d5#fff#9d5#9d5#6b3#463
+#fe8#fe8#eb4#fe3#9d5#9d5#000#9d5#9d5#9d5#6b3
+#e00#e00#fe8#fe3#6b3#9d5#9d5#9d5#9d5#9d5#6b3
+#fe8#e00#e00#fe3#9d5#9d5#9d5#9d5#9d5#9d5#6b3
+#e00#e00#fe8#fe3#6b3#9d5#9d5#9d5#9d5#9d5#6b3
+#fe8#fe8#fe8#fe3#9d5#9d5#fff#9d5#9d5#9d5#6b3
+#fe8#fe8#eb4#fe8#fe3#9d5#000#9d5#9d5#6b3#463
+#fe8#fe8#fe8#fe8#fe8#9d5#9d5#9d5#6b3#463#463
+#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8"""
+
+snakeLineSand0 = """#fe8#fe8#fe8#9d5#9d5#9d5#9d5#9d5#fe8#fe8#fe8
+#fe8#fe8#fe8#9d5#9d5#9d5#9d5#9d5#fe8#fe8#fe8
+#fe8#fe8#fe8#9d5#9d5#9d5#9d5#9d5#eb4#fe8#fe8
+#fe8#fe8#eb4#9d5#463#463#463#9d5#fe8#fe8#fe8
+#fe8#fe8#fe8#463#223#223#223#463#fe8#fe8#fe8
+#fe8#fe8#fe8#223#223#223#223#223#fe8#fe8#fe8
+#fe8#fe8#fe8#223#6b3#6b3#6b3#223#fe8#fe8#fe8
+#fe8#fe8#fe8#6b3#9d5#9d5#9d5#6b3#eb4#fe8#fe8
+#fe8#fe8#eb4#9d5#9d5#9d5#9d5#9d5#fe8#fe8#fe8
+#fe8#fe8#fe8#9d5#9d5#9d5#9d5#9d5#fe8#fe8#fe8
+#fe8#fe8#fe8#9d5#9d5#9d5#9d5#9d5#fe8#fe8#fe8"""
+snakeLineSand90 = """#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8
+#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8
+#fe8#fe8#fe8#eb4#fe8#fe8#fe8#fe8#eb4#fe8#fe8
+#9d5#9d5#9d5#9d5#463#223#223#6b3#9d5#9d5#9d5
+#9d5#9d5#9d5#463#223#223#6b3#9d5#9d5#9d5#9d5
+#9d5#9d5#9d5#463#223#223#6b3#9d5#9d5#9d5#9d5
+#9d5#9d5#9d5#463#223#223#6b3#9d5#9d5#9d5#9d5
+#9d5#9d5#9d5#9d5#463#223#223#6b3#9d5#9d5#9d5
+#fe8#fe8#eb4#fe8#fe8#fe8#fe8#eb4#fe8#fe8#fe8
+#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8
+#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8"""
+snakeLineSand180 = """#fe8#fe8#fe8#9d5#9d5#9d5#9d5#9d5#fe8#fe8#fe8
+#fe8#fe8#fe8#9d5#9d5#9d5#9d5#9d5#fe8#fe8#fe8
+#fe8#fe8#fe8#9d5#9d5#9d5#9d5#9d5#eb4#fe8#fe8
+#fe8#fe8#eb4#6b3#9d5#9d5#9d5#6b3#fe8#fe8#fe8
+#fe8#fe8#fe8#223#6b3#6b3#6b3#223#fe8#fe8#fe8
+#fe8#fe8#fe8#223#223#223#223#223#fe8#fe8#fe8
+#fe8#fe8#fe8#463#223#223#223#463#fe8#fe8#fe8
+#fe8#fe8#fe8#9d5#463#463#463#9d5#eb4#fe8#fe8
+#fe8#fe8#eb4#9d5#9d5#9d5#9d5#9d5#fe8#fe8#fe8
+#fe8#fe8#fe8#9d5#9d5#9d5#9d5#9d5#fe8#fe8#fe8
+#fe8#fe8#fe8#9d5#9d5#9d5#9d5#9d5#fe8#fe8#fe8"""
+snakeLineSand270 = """#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8
+#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8
+#fe8#fe8#fe8#eb4#fe8#fe8#fe8#fe8#eb4#fe8#fe8
+#9d5#9d5#9d5#6b3#223#223#463#9d5#9d5#9d5#9d5
+#9d5#9d5#9d5#9d5#6b3#223#223#463#9d5#9d5#9d5
+#9d5#9d5#9d5#9d5#6b3#223#223#463#9d5#9d5#9d5
+#9d5#9d5#9d5#9d5#6b3#223#223#463#9d5#9d5#9d5
+#9d5#9d5#9d5#6b3#223#223#463#9d5#9d5#9d5#9d5
+#fe8#fe8#eb4#fe8#fe8#fe8#fe8#eb4#fe8#fe8#fe8
+#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8
+#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8"""
+snakeCornerSand0 = """#fe8#fe8#fe8#9d5#9d5#9d5#9d5#9d5#fe8#fe8#fe8
+#fe8#fe8#fe8#9d5#9d5#9d5#9d5#463#fe8#fe8#fe8
+#fe8#fe8#fe8#9d5#9d5#463#463#223#223#fe8#fe8
+#fe8#fe8#eb4#9d5#463#223#223#223#6b3#9d5#9d5
+#fe8#fe8#fe8#463#223#223#223#6b3#9d5#9d5#9d5
+#fe8#fe8#fe8#223#223#223#6b3#9d5#9d5#9d5#9d5
+#fe8#fe8#fe8#fe8#223#6b3#9d5#9d5#9d5#9d5#9d5
+#fe8#fe8#fe8#eb4#fe8#9d5#9d5#9d5#9d5#9d5#9d5
+#fe8#fe8#eb4#fe8#fe8#fe8#fe8#eb4#fe8#fe8#fe8
+#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8
+#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8"""
+snakeCornerSand90 = """#fe8#fe8#fe8#9d5#9d5#9d5#9d5#9d5#fe8#fe8#fe8
+#fe8#fe8#fe8#9d5#9d5#9d5#9d5#9d5#fe8#fe8#fe8
+#fe8#fe8#223#6b3#9d5#9d5#9d5#9d5#eb4#fe8#fe8
+#9d5#463#223#223#6b3#9d5#9d5#9d5#fe8#fe8#fe8
+#9d5#9d5#463#223#223#6b3#9d5#9d5#fe8#fe8#fe8
+#9d5#9d5#463#223#223#223#6b3#9d5#fe8#fe8#fe8
+#9d5#9d5#9d5#463#223#223#223#fe8#fe8#fe8#fe8
+#9d5#9d5#9d5#9d5#463#223#fe8#fe8#eb4#fe8#fe8
+#fe8#fe8#eb4#fe8#fe8#fe8#fe8#eb4#fe8#fe8#fe8
+#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8
+#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8"""
+snakeCornerSand180 = """#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8
+#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8
+#fe8#fe8#fe8#eb4#fe8#fe8#fe8#fe8#eb4#fe8#fe8
+#9d5#9d5#9d5#9d5#9d5#9d5#fe8#eb4#fe8#fe8#fe8
+#9d5#9d5#9d5#9d5#9d5#6b3#223#fe8#fe8#fe8#fe8
+#9d5#9d5#9d5#9d5#6b3#223#223#223#fe8#fe8#fe8
+#9d5#9d5#9d5#6b3#223#223#223#463#fe8#fe8#fe8
+#9d5#9d5#6b3#223#223#223#463#9d5#eb4#fe8#fe8
+#fe8#fe8#223#223#463#463#9d5#9d5#fe8#fe8#fe8
+#fe8#fe8#fe8#463#9d5#9d5#9d5#9d5#fe8#fe8#fe8
+#fe8#fe8#fe8#9d5#9d5#9d5#9d5#9d5#fe8#fe8#fe8"""
+snakeCornerSand270 = """#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8
+#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8
+#fe8#fe8#fe8#eb4#fe8#fe8#fe8#fe8#eb4#fe8#fe8
+#fe8#fe8#eb4#fe8#fe8#223#463#9d5#9d5#9d5#9d5
+#fe8#fe8#fe8#fe8#223#223#223#463#9d5#9d5#9d5
+#fe8#fe8#fe8#9d5#6b3#223#223#223#463#9d5#9d5
+#fe8#fe8#fe8#9d5#9d5#6b3#223#223#463#9d5#9d5
+#fe8#fe8#fe8#9d5#9d5#9d5#6b3#223#223#463#9d5
+#fe8#fe8#eb4#9d5#9d5#9d5#9d5#6b3#223#fe8#fe8
+#fe8#fe8#fe8#9d5#9d5#9d5#9d5#9d5#fe8#fe8#fe8
+#fe8#fe8#fe8#9d5#9d5#9d5#9d5#9d5#fe8#fe8#fe8"""
+snakeTailSand0 = """#fe8#fe8#fe8#9d5#9d5#9d5#9d5#9d5#fe8#fe8#fe8
+#fe8#fe8#fe8#6b3#9d5#9d5#9d5#6b3#fe8#fe8#fe8
+#fe8#fe8#fe8#6b3#9d5#9d5#9d5#6b3#eb4#fe8#fe8
+#fe8#fe8#eb4#fe8#6b3#9d5#6b3#eb4#fe8#fe8#fe8
+#fe8#fe8#fe8#fe8#6b3#9d5#6b3#fe8#fe8#fe8#fe8
+#fe8#fe8#fe8#fe8#fe8#6b3#fe8#fe8#fe8#fe8#fe8
+#fe8#fe8#fe8#fe8#fe8#6b3#fe8#fe8#fe8#fe8#fe8
+#fe8#fe8#fe8#eb4#fe8#fe8#fe8#fe8#eb4#fe8#fe8
+#fe8#fe8#eb4#fe8#fe8#fe8#fe8#eb4#fe8#fe8#fe8
+#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8
+#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8"""
+snakeTailSand90 = """#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8
+#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8
+#fe8#fe8#fe8#eb4#fe8#fe8#fe8#fe8#eb4#fe8#fe8
+#9d5#6b3#6b3#fe8#fe8#fe8#fe8#eb4#fe8#fe8#fe8
+#9d5#9d5#9d5#6b3#6b3#fe8#fe8#fe8#fe8#fe8#fe8
+#9d5#9d5#9d5#9d5#9d5#6b3#6b3#fe8#fe8#fe8#fe8
+#9d5#9d5#9d5#6b3#6b3#fe8#fe8#fe8#fe8#fe8#fe8
+#9d5#6b3#6b3#eb4#fe8#fe8#fe8#fe8#eb4#fe8#fe8
+#fe8#fe8#eb4#fe8#fe8#fe8#fe8#eb4#fe8#fe8#fe8
+#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8
+#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8"""
+snakeTailSand180 = """#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8
+#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8
+#fe8#fe8#fe8#eb4#fe8#fe8#fe8#fe8#eb4#fe8#fe8
+#fe8#fe8#eb4#fe8#fe8#fe8#fe8#eb4#fe8#fe8#fe8
+#fe8#fe8#fe8#fe8#fe8#6b3#fe8#fe8#fe8#fe8#fe8
+#fe8#fe8#fe8#fe8#fe8#6b3#fe8#fe8#fe8#fe8#fe8
+#fe8#fe8#fe8#fe8#6b3#9d5#6b3#fe8#fe8#fe8#fe8
+#fe8#fe8#fe8#eb4#6b3#9d5#6b3#fe8#eb4#fe8#fe8
+#fe8#fe8#eb4#6b3#9d5#9d5#9d5#6b3#fe8#fe8#fe8
+#fe8#fe8#fe8#6b3#9d5#9d5#9d5#6b3#fe8#fe8#fe8
+#fe8#fe8#fe8#9d5#9d5#9d5#9d5#9d5#fe8#fe8#fe8"""
+snakeTailSand270 = """#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8
+#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8
+#fe8#fe8#fe8#eb4#fe8#fe8#fe8#fe8#eb4#fe8#fe8
+#fe8#fe8#eb4#fe8#fe8#fe8#fe8#eb4#6b3#6b3#9d5
+#fe8#fe8#fe8#fe8#fe8#fe8#6b3#6b3#9d5#9d5#9d5
+#fe8#fe8#fe8#fe8#6b3#6b3#9d5#9d5#9d5#9d5#9d5
+#fe8#fe8#fe8#fe8#fe8#fe8#6b3#6b3#9d5#9d5#9d5
+#fe8#fe8#fe8#eb4#fe8#fe8#fe8#fe8#6b3#6b3#9d5
+#fe8#fe8#eb4#fe8#fe8#fe8#fe8#eb4#fe8#fe8#fe8
+#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8
+#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8"""
+
+
 
 
 
@@ -505,16 +672,55 @@ levels = {
     }
     ,"sand":{
          "normal": sand,
-        "special": grassFlower,
-        "block": fence,
+        "special": sandSkull,
+        "block": sandCactus,
         "apples": {
-            "mid": apple,
-            "god": gapple,
-            "portal": apple,
-            "poison": toxicApple,
-            "chrono": chronoApple,
-            "block": apple,
-            "speed": apple,
+            "mid": sandApple,
+            "god": sandApple10,
+            "portal": sandPortal,
+            "poison": sandAppleToxic,
+            "chrono": sandAppleChrono,
+            "block": sandBlocApple,
+            "speed": sandAppleSpeed,
+            "multi": apple
+        },
+        "snakeHead": {
+            "B": snakeHeadSand0,
+            "R": snakeHeadSand90,
+            "T": snakeHeadSand180,
+            "L": snakeHeadSand270
+        },
+        "snakeLine": {
+            "B": snakeLineSand0,
+            "R": snakeLineSand90,
+            "T": snakeLineSand180,
+            "L": snakeLineSand270
+        },
+        "snakeCorner": {
+            "B": snakeCornerSand0,
+            "R": snakeCornerSand90,
+            "T": snakeCornerSand180,
+            "L": snakeCornerSand270
+        },
+        "snakeTail": {
+            "B": snakeTailSand0,
+            "R": snakeTailSand90,
+            "T": snakeTailSand180,
+            "L": snakeTailSand270
+        }
+        
+    },"sand":{
+         "normal": sand,
+        "special": sandSkull,
+        "block": sandCactus,
+        "apples": {
+            "mid": sandApple,
+            "god": sandApple10,
+            "portal": sandPortal,
+            "poison": sandAppleToxic,
+            "chrono": sandAppleChrono,
+            "block": sandBlocApple,
+            "speed": sandAppleSpeed,
             "multi": apple
         },
         "snakeHead": {

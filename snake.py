@@ -46,16 +46,23 @@ def leave():
 
 def init_game():
     global me
-
     me = None
-
     dev.clear_screen(bg)
 
     x = dev.screen_width//2
-    dev.fill_rect(10, 10, 12, 12, "#F00")
 
-    ui.center(x, dev.font_height*4, 'SNAKE', '#FFF', bg)
-    ui.center(x, dev.font_height*5, 'TODO!', '#FFF', bg)
+    ui.center(x, dev.font_height*4, 'READY', '#FFF', bg)
+    dev.after(1, next)
+
+    def next():
+        ui.center(x, dev.font_height*5, 'SSET', '#FFF', bg)
+        dev.after(1, lambda: ui.center(x, dev.font_height*6, 'GO', '#FFF', bg))
+
+
+def gameOver():
+    global me
+    me = None
+    dev.clear_screen(bg)
 
 
 tileIsSpecial = []

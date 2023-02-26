@@ -45,18 +45,23 @@ def leave():
 
 
 def init_game():
-    global me
+    global me, tick_counter, playerSnake, otherSnakes, pomme, blocks
     me = None
+    tick_counter = 1
+    playerSnake = player.PlayerSnake()
+    otherSnakes = {}
+    pomme = None
+    blocks = []
+
     dev.clear_screen(bg)
 
     x = dev.screen_width//2
 
-    ui.center(x, dev.font_height*4, 'READY', '#FFF', bg)
-    dev.after(1, next)
-
     def next():
         ui.center(x, dev.font_height*5, 'SSET', '#FFF', bg)
         dev.after(1, lambda: ui.center(x, dev.font_height*6, 'GO', '#FFF', bg))
+    ui.center(x, dev.font_height*4, 'READY', '#FFF', bg)
+    dev.after(1, next)
 
 
 def gameOver():

@@ -192,10 +192,23 @@ def button_handler(event, resume):
         resume()
 
 
+def getRandomPos():
+    x = int(random()*width)
+    y = int(random()*height)
+    return (x, y)
+
+
 def getRandomPomme():
     nbRandom = int(random()*120+1)
-    x = int(random()*11)
-    y = int(random()*11)
+
+    pos = None
+    posValid = False
+    while not posValid:
+        pos = getRandomPos()
+        posValid = True
+        for p in playerSnake.positions:
+            if p == pos:
+                posValid = False
 
     if nbRandom > 110:
         return objects.Apple("multi", x, y)
@@ -224,7 +237,7 @@ def manger(pomme):
     if playerSnake.positions[-1] != pomme.getPosition():
         if pomme.sorte == "chrono":
             playerSnake.score -= 5
-        pomme = None
+        pomme = getRandomPomme()
         for id in mate.ids:
             net.send(id, [msg_type, "eatPomme"])
         return

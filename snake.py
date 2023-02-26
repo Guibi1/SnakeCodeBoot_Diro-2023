@@ -79,12 +79,12 @@ def setCurrentLevel(level):
     textures.currentLevel = level
 
     if currentLevel == "grass":
-        blocks = [()]
+        blocks = []
     elif currentLevel == "sand":
         blocks = [(3, 8), (2, 9), (7, 2), (9, 4),
                   (1, 17), (10, 5), (8, 9), (10, 15)]
     else:
-        blocks = [()]
+        blocks = []
 
     tileIsSpecial = []
     for _ in range(width):
@@ -265,9 +265,12 @@ def manger(pomme):
         playerSnake.score += 10
 
     elif pomme.sorte == "block":
-        blocks.append(objects.Blocs(
+        blocks.append((
             playerSnake.positions[0][0], playerSnake.positions[0][-1]))
         displayBlocks()
+        if networked:
+            for id in mate.ids:
+                net.send(id, [msg_type, 'setBlocks', blocks])
 
     elif pomme.sorte == "small":
         ranTemp = int((random() * (len(playerSnake.positions)/5))+1)

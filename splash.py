@@ -21,18 +21,14 @@ def mesg():  # draw the message
     ui.center(x, mesg_y+dev.font_height*5, '2023', fg, bg)
 
 
-def logo():  # draw the logo
+def show():
     dev.clear_screen(bg)
 
     def animate(i):
-        if i == len(textures.title) - 1:
+        if i == len(textures.titleAnimation) - 1:
             return
-        dev.draw_image(15, 20, textures.title[i])
+        dev.draw_image(15, 20, textures.titleAnimation[i])
         dev.after(0.2, lambda: animate(i + 1))
 
     animate(0)
-
-
-def show():
-    logo()
     mesg()

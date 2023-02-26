@@ -73,7 +73,7 @@ def gameOver():
     global me
     me = None
     dev.clear_screen(bg)
-    classement().file=open("score")
+    classement().file = open("score")
     classement()
     for i, score in enumerate(classement.classement().getHighscore()):
         ui.center(dev.screen_width//2, 100*(1/i), score, "#fff", bg)
@@ -221,7 +221,6 @@ def button_handler(event, resume):
 
 def displayBlocks():
     for block in blocks:
-        print(block)
         dev.draw_image(7 + 11 * block[0], 7 + 11 *
                        block[1], textures.getLevel()["block"])
 
@@ -283,8 +282,6 @@ def manger(pom):
                 pomme.x*11 + 7, pomme.y*11 + 7, textures.getLevel()["normal"])
 
         pomme = None
-
-        print(pommeTimer)
 
         for id in mate.ids:
             net.send(id, [msg_type, "eatPomme"])

@@ -30,7 +30,6 @@ def displaySnake(positions):
     for i, pos in enumerate(positions[1:-1]):
         next = positions[i + 2]
         last = positions[i]
-        print(last, pos, next)
         type = "snakeLine"
         direction = "L" if pos[0] > next[0] else (
             "R" if pos[0] < next[0] else ("T" if pos[1] > next[1] else "B"))
@@ -40,7 +39,6 @@ def displaySnake(positions):
             direction = "R" if pos[0] > next[0] else (
                 "L" if pos[0] < next[0] else ("B" if pos[1] > next[1] else "T"))
         elif next[0] != last[0] and next[1] != last[1]:
-            print("oof")
             type = "snakeCorner"
             direction = "T" if pos[0] > next[0] else (
                 "B" if pos[0] < next[0] else ("R" if pos[1] > next[1] else "L"))

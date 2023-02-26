@@ -31,7 +31,8 @@ def reset_mate_timeout():
 
 def quit():  # called to quit the game
     if networked:
-        net.send(mate.id, [msg_type, 'quit'])
+        for id in mate.ids:
+            net.send(id, [msg_type, 'quit'])
     leave()
 
 
@@ -67,7 +68,7 @@ for x in range(width):
 tick_counter = 1
 playerSnake = player.PlayerSnake()
 playerSnake.display()
-otherSnakes = []
+otherSnakes = {}
 pomme = None
 blocks = []
 
@@ -90,13 +91,15 @@ def button_handler(event, resume):
 
         rallonger = False
         if pomme is None:
-            pomme = objects.getRandomPomme()
-            pomme.display()
-            if networked:
-                net.send(mate.id, [msg_type, "newPomme",
-                         pomme.sorte, pomme.x, pomme.y])
+            if not networked or master():
+                pomme = objects.getRandomPomme()
+                pomme.display()
+                if networked:
+                    for id in mate.ids:
+                        net.send(id, [msg_type, "newPomme",
+                                      pomme.sorte, pomme.x, pomme.y])
         elif playerSnake.positions[-1] == pomme.getPosition():
-            playerSnake.manger(pomme, blocks,tileIsSpecial)
+            playerSnake.manger(pomme, blocks, tileIsSpecial)
             pomme = None
             rallonger = True
 
@@ -111,8 +114,9 @@ def button_handler(event, resume):
         playerSnake.move(rallonger)
         playerSnake.display()
         if networked:
-            net.send(mate.id, [msg_type, "snakePositions",
-                     playerSnake.positions])
+            for id in mate.ids:
+                net.send(id, [msg_type, "snakePositions",
+                              playerSnake.positions])
 
         if networked:
             pong_timer -= 1
@@ -122,7 +126,9 @@ def button_handler(event, resume):
             ping_timer -= 1
             if ping_timer < 0:
                 ping_timer = int(2 / ui.time_delta)  # send ping every 2 secs
-                net.send(mate.id, [msg_type, 'ping'])
+                for id in mate.ids:
+                    net.send(id, [msg_type, 'ping'])
+
         dev.after(ui.time_delta, resume)  # need to wait...
     else:
         to = playerSnake.movingTo()
@@ -191,14 +197,17 @@ def snake_non_networked():
 
 
 def master():  # the master is the node with the smallest id
-    return net.id < mate.id
+    for id in mate.ids:
+        if net.id > id:
+            return False
+    return True
 
 
 def message_handler(peer, msg):
     global pong_timer
     if peer is None:
-        if msg == 'found_mate':
-            found_mate()
+        if msg == 'start':
+            networkStart()
         else:
             print('system message', msg)  # ignore other messages from system
     elif type(msg) is list and msg[0] == msg_type:
@@ -207,12 +216,13 @@ def message_handler(peer, msg):
         elif msg[1] == 'ping':
             reset_mate_timeout()
         elif msg[1] == 'snakePositions':
-            if tileIsSpecial[otherSnakes[peer][0][0]][otherSnakes[peer][0][1]]:
-                dev.draw_image(
-                    otherSnakes[peer][0][0]*11 + 7, otherSnakes[peer][0][1]*11 + 7, textures.levels[currentLevel]["special"])
-            else:
-                dev.draw_image(
-                    otherSnakes[peer][0][0]*11 + 7, otherSnakes[peer][0][1]*11 + 7, textures.levels[currentLevel]["normal"])
+            if otherSnakes.get(peer, None) != None:
+                if tileIsSpecial[otherSnakes[peer][0][0]][otherSnakes[peer][0][1]]:
+                    dev.draw_image(
+                        otherSnakes[peer][0][0]*11 + 7, otherSnakes[peer][0][1]*11 + 7, textures.levels[currentLevel]["special"])
+                else:
+                    dev.draw_image(
+                        otherSnakes[peer][0][0]*11 + 7, otherSnakes[peer][0][1]*11 + 7, textures.levels[currentLevel]["normal"])
             otherSnakes[peer] = msg[2]
             player.displaySnake(otherSnakes[peer])
         elif msg[1] == 'newPomme':
@@ -224,9 +234,10 @@ def message_handler(peer, msg):
             print('received', peer, msg)
 
 
-def found_mate():
+def networkStart():
     init_game()
-    net.send(mate.id, [msg_type, ""])
+    for id in mate.ids:
+        net.send(id, [msg_type, ""])
 
 
 def snake_networked():

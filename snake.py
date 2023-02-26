@@ -273,7 +273,7 @@ def addRandomPomme():
             if p == pos:
                 posValid = False
         for block in blocks:
-            if block == pos2:
+            if block == pos:
                 posValid = False
 
     if nbRandom > 110:

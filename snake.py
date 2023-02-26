@@ -265,9 +265,12 @@ def manger(pomme):
         playerSnake.score += 10
 
     elif pomme.sorte == "block":
-        blocks.append(objects.Blocs(
+        blocks.append((
             playerSnake.positions[0][0], playerSnake.positions[0][-1]))
         displayBlocks()
+        if networked:
+            for id in mate.ids:
+                net.send(id, [msg_type, 'setBlocks', blocks])
 
     elif pomme.sorte == "small":
         ranTemp = int((random() * (len(playerSnake.positions)/5))+1)

@@ -152,6 +152,16 @@ def button_handler(event, resume):
                 net.send(id, [msg_type, "snakePositions",
                               playerSnake.positions])
 
+        for block in blocks:
+            if playerSnake.positions[-1] == block:
+                gameOver()
+
+        if playerSnake.positions[-1][0] < 0 or playerSnake.positions[-1][0] > width:
+            gameOver()
+
+        elif playerSnake.positions[-1][1] < 0 or playerSnake.positions[-1][1] > height:
+            gameOver()
+
         if networked:
             pong_timer -= 1
             if pong_timer < 0:

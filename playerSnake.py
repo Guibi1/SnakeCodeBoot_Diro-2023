@@ -20,14 +20,14 @@ def displaySnake(positions):
 
     # Tail
     dev.draw_image(
-        positions[0][0]*11 + 7, positions[0][1]*11 + 7, textures.levels["grass"]["snakeTail"][movingTo(0)])
+        positions[0][0]*11 + 7, positions[0][1]*11 + 7, textures.getLevel()["snakeTail"][movingTo(0)])
     # Head
     dev.draw_image(
-        positions[-1][0]*11 + 7, positions[-1][1]*11 + 7, textures.levels["grass"]["snakeHead"][movingTo()])
+        positions[-1][0]*11 + 7, positions[-1][1]*11 + 7, textures.getLevel()["snakeHead"][movingTo()])
     # Body
     for i, pos in enumerate(positions[1:-1]):
         dev.draw_image(pos[0]*11 + 7, pos[1]*11 + 7,
-                       textures.levels["grass"]["snakeLine"][movingTo(i)])
+                       textures.getLevel()["snakeLine"][movingTo(i)])
 
 
 class PlayerSnake:
@@ -42,14 +42,14 @@ class PlayerSnake:
     def display(self):
         # Tail
         dev.draw_image(
-            self.positions[0][0]*11 + 7, self.positions[0][1]*11 + 7, textures.levels["grass"]["snakeTail"][self.movingTo(0)])
+            self.positions[0][0]*11 + 7, self.positions[0][1]*11 + 7, textures.getLevel()["snakeTail"][self.movingTo(0)])
         # Head
         dev.draw_image(
-            self.positions[-1][0]*11 + 7, self.positions[-1][1]*11 + 7, textures.levels["grass"]["snakeHead"][self.movingTo()])
+            self.positions[-1][0]*11 + 7, self.positions[-1][1]*11 + 7, textures.getLevel()["snakeHead"][self.movingTo()])
         # Body
         for i, pos in enumerate(self.positions[1:-1]):
             dev.draw_image(pos[0]*11 + 7, pos[1]*11 + 7,
-                           textures.levels["grass"]["snakeLine"][self.movingTo(i)])
+                           textures.getLevel()["snakeLine"][self.movingTo(i)])
 
     def move(self, rallonger):
         self.positions.append(
@@ -67,5 +67,3 @@ class PlayerSnake:
             return "B"
         elif self.positions[i][1] < self.positions[i-1][1]:
             return "T"
-
-    

@@ -8,7 +8,7 @@ import objects
 import textures
 
 bg = '#000'  # general background color
-currentLevel = "grass"
+currentLevel = "grass"  # grass sand space
 width = 11
 height = 18
 
@@ -19,7 +19,7 @@ me = None  # is 0 when non-networked, and 0 or 1 when networked
 # the following global variables are useful for the networked version
 
 networked = False  # are we playing over the network?
-msg_type = None   # type of the messages sent between the nodes, set later
+msg_type = "SNAKENET"   # type of the messages sent between the nodes, set later
 ping_timer = 0      # used to check that the mate is still with us
 pong_timer = 0
 
@@ -45,13 +45,14 @@ def leave():
 
 
 def init_game():
-    global me, tick_counter, playerSnake, otherSnakes, pomme, blocks
+    global me, tick_counter, playerSnake, otherSnakes, pomme, blocks, tileIsSpecial
     me = None
     tick_counter = 1
     playerSnake = player.PlayerSnake()
     otherSnakes = {}
     pomme = None
     blocks = []
+    setCurrentLevel(currentLevel)
 
     dev.clear_screen(bg)
 
@@ -70,12 +71,19 @@ def gameOver():
     dev.clear_screen(bg)
 
 
-tileIsSpecial = []
-for x in range(width):
-    row = []
-    tileIsSpecial.append(row)
-    for y in range(height):
-        row.append(random() > 0.9)
+def setCurrentLevel(level):
+    global currentLevel, tileIsSpecial
+
+    currentLevel = level
+    textures.currentLevel = level
+
+    tileIsSpecial = []
+    for _ in range(width):
+        row = []
+        tileIsSpecial.append(row)
+        for _ in range(height):
+            row.append(random() > (0.9 if currentLevel == "grass" else 0.98))
+
 
 tick_counter = 1
 playerSnake = player.PlayerSnake()
@@ -83,6 +91,7 @@ playerSnake.display()
 otherSnakes = {}
 pomme = None
 blocks = []
+tileIsSpecial = []
 
 
 
@@ -104,7 +113,6 @@ def button_handler(event, resume):
 
         rallonger = False
         if pomme is None:
-            print(master())
             if not networked or master():
                 pomme = getRandomPomme()
                 pomme.display()
@@ -122,10 +130,10 @@ def button_handler(event, resume):
         if not rallonger:
             if tileIsSpecial[playerSnake.positions[0][0]][playerSnake.positions[0][1]]:
                 dev.draw_image(
-                    playerSnake.positions[0][0]*11 + 7, playerSnake.positions[0][1]*11 + 7, textures.levels[currentLevel]["special"])
+                    playerSnake.positions[0][0]*11 + 7, playerSnake.positions[0][1]*11 + 7, textures.getLevel()["special"])
             else:
                 dev.draw_image(
-                    playerSnake.positions[0][0]*11 + 7, playerSnake.positions[0][1]*11 + 7, textures.levels[currentLevel]["normal"])
+                    playerSnake.positions[0][0]*11 + 7, playerSnake.positions[0][1]*11 + 7, textures.getLevel()["normal"])
 
         playerSnake.move(rallonger)
         playerSnake.display()
@@ -229,10 +237,10 @@ def manger(pomme):
             pos = playerSnake.positions.pop(0)
             if tileIsSpecial[pos[0]][pos[1]]:
                 dev.draw_image(
-                    pos[0]*11 + 7, pos[1]*11 + 7, textures.levels["grass"]["special"])
+                    pos[0]*11 + 7, pos[1]*11 + 7, textures.getLevel()["special"])
             else:
                 dev.draw_image(
-                    pos[0]*11 + 7, pos[1]*11 + 7, textures.levels["grass"]["normal"])
+                    pos[0]*11 + 7, pos[1]*11 + 7, textures.getLevel()["normal"])
 
     elif pomme.sorte == "poison":
         gameOver()
@@ -241,11 +249,11 @@ def manger(pomme):
         if playerSnake.positions[-1] == pomme.getPosition():
             pass
         else:
-            playerSnake.score-=5
-            
+            playerSnake.score -= 5
+
     elif pomme.sorte == "portal":
-        playerSnake.nextX= 5-pomme.x
-        playerSnake.nextY=5-pomme.y
+        playerSnake.nextX = 5-pomme.x
+        playerSnake.nextY = 5-pomme.y
 
 
 def start_game_soon(player):
@@ -262,10 +270,10 @@ def start_game(player):
         for x in range(width):
             if (tileIsSpecial[x][y]):
                 dev.draw_image(7 + x * 11, 7 + y * 11,
-                               textures.levels[currentLevel]["special"])
+                               textures.getLevel()["special"])
             else:
                 dev.draw_image(7 + x * 11, 7 + y * 11,
-                               textures.levels[currentLevel]["normal"])
+                               textures.getLevel()["normal"])
 
 
 def snake_non_networked():
@@ -283,7 +291,7 @@ def master():  # the master is the node with the smallest id
 
 
 def message_handler(peer, msg):
-    global pong_timer, otherSnakes, pomme
+    global pong_timer, otherSnakes, pomme, currentLevel
     if peer is None:
         if msg == 'start':
             networkStart()
@@ -298,10 +306,10 @@ def message_handler(peer, msg):
             if otherSnakes.get(peer, None) != None:
                 if tileIsSpecial[otherSnakes[peer][0][0]][otherSnakes[peer][0][1]]:
                     dev.draw_image(
-                        otherSnakes[peer][0][0]*11 + 7, otherSnakes[peer][0][1]*11 + 7, textures.levels[currentLevel]["special"])
+                        otherSnakes[peer][0][0]*11 + 7, otherSnakes[peer][0][1]*11 + 7, textures.getLevel()["special"])
                 else:
                     dev.draw_image(
-                        otherSnakes[peer][0][0]*11 + 7, otherSnakes[peer][0][1]*11 + 7, textures.levels[currentLevel]["normal"])
+                        otherSnakes[peer][0][0]*11 + 7, otherSnakes[peer][0][1]*11 + 7, textures.getLevel()["normal"])
             otherSnakes[peer] = msg[2]
             player.displaySnake(otherSnakes[peer])
         elif msg[1] == 'newPomme':
@@ -309,6 +317,8 @@ def message_handler(peer, msg):
             pomme.display()
         elif msg[1] == 'eatPomme':
             pomme = None
+        elif msg[1] == 'setLevel':
+            setCurrentLevel(msg[2])
         elif me == None:
             start_game_soon(master() ^ int(random() * 2))
         else:
@@ -321,19 +331,38 @@ def networkStart():
         net.send(id, [msg_type, ""])
 
 
-def snake_networked():
-    global msg_type
-    msg_type = 'SNAKENET'
-    mate.find(msg_type, message_handler)
-
-
 def snake(n):
     global networked
     networked = n
+
     if networked:
-        snake_networked()
+        mate.find(msg_type, message_handler,
+                  lambda m, s: askMap(lambda: start(m, s)))
+
+        def start(start_msg, mateStart):
+            for id in mate.ids:
+                net.send(id, start_msg)
+                net.send(id, [msg_type, "setLevel", currentLevel])
+            mateStart()
     else:
-        snake_non_networked()
+        askMap(snake_non_networked)
+
+
+def askMap(then):
+    color = '#4CF'
+
+    def menu_handler(level, cont):
+        if level is None:
+            cont()
+        elif level is False:
+            apps.menu()
+        else:
+            setCurrentLevel(level.lower())
+            then()
+
+    dev.clear_screen(bg)
+    ui.menu(4, 111, 8, 7, 2, [color, '#000'], lambda: [
+            "Sand", "Grass", "Space"], "Grass", menu_handler)
 
 
 apps.register('SNAKE', lambda: snake(False), False)

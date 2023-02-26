@@ -66,7 +66,7 @@ def peers_menu(activity, menu_handler):
     ui.menu(4, 111, 8, 7, 2, [color, '#000'], peers, "Start", menu_handler)
 
 
-def find(activity, message_handler):  # message_handler called when mate is found
+def find(activity, message_handler, startHandle):  # message_handler called when mate is found
     global ids
 
     ids = []          # no mate found yet
@@ -109,9 +109,7 @@ def find(activity, message_handler):  # message_handler called when mate is foun
             net.pop_handler()  # stop calling app's handler
             apps.menu()
         elif peer == "Start":  # Start
-            for id in ids:
-                net.send(id, start_msg)
-            start()
+            startHandle(start_msg, start)
         else:  # a peer was selected by the menu
             # limit how long to listen for the reply to the mating proposal
             timer = int(reply_timeout / ui.time_delta)

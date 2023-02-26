@@ -51,7 +51,8 @@ def init_game():
     global me, tick_counter, playerSnake, otherSnakes, pomme, blocks, tileIsSpecial
     me = None
     tick_counter = 1
-    playerSnake = player.PlayerSnake()
+    playerSnake = player.PlayerSnake(
+        int(net.id[-1]) if net.id is not None else 5)
     otherSnakes = {}
     pomme = None
 
@@ -88,12 +89,13 @@ def setCurrentLevel(level):
     textures.currentLevel = level
 
     if currentLevel == "grass":
-        blocks = [(9, 16), (9, 15), (9,14), (10,15), (4, 7), (5,7), (8,2),(7,2),(6,2)]
+        blocks = [(9, 16), (9, 15), (9, 14), (10, 15),
+                  (4, 7), (5, 7), (8, 2), (7, 2), (6, 2)]
     elif currentLevel == "sand":
         blocks = [(3, 8), (2, 9), (7, 2), (9, 4),
                   (1, 17), (10, 5), (8, 9), (10, 15)]
     else:
-        blocks = [(3, 6), (10, 16), (7,8), (9, 1), (5,2)]
+        blocks = [(3, 6), (10, 16), (7, 8), (9, 1), (5, 2)]
 
     tileIsSpecial = []
     for _ in range(width):
@@ -104,7 +106,7 @@ def setCurrentLevel(level):
 
 
 tick_counter = 1
-playerSnake = player.PlayerSnake()
+playerSnake = player.PlayerSnake(int(net.id[-1]) if net.id is not None else 5)
 player.displaySnake(playerSnake.positions)
 otherSnakes = {}
 pomme = None

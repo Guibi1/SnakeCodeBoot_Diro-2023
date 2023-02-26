@@ -284,6 +284,8 @@ def addRandomPomme():
 
     if nbRandom > 110:
         addRandomPomme()
+        addRandomPomme()
+        addRandomPomme()
         return
     elif nbRandom > 100:
         pos2 = None

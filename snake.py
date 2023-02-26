@@ -85,6 +85,7 @@ pomme = None
 blocks = []
 
 
+
 def button_handler(event, resume):
     global ping_timer, pong_timer, tick_counter, pomme, blocks
     if me is None:
@@ -105,7 +106,7 @@ def button_handler(event, resume):
         if pomme is None:
             print(master())
             if not networked or master():
-                pomme = objects.getRandomPomme()
+                pomme = getRandomPomme()
                 pomme.display()
                 if networked:
                     for id in mate.ids:
@@ -183,7 +184,6 @@ def button_handler(event, resume):
             pass
         resume()
 
-
 def getRandomPomme():
     nbRandom = int(random()*120+1)
     x = int(random()*11)
@@ -208,6 +208,7 @@ def getRandomPomme():
     elif nbRandom > 40:
         return objects.Apple("smallDick", x, y)
     return objects.Apple("mid", x, y)
+
 
 
 def manger(pomme):

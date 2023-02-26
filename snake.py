@@ -207,33 +207,57 @@ def displayBlocks():
                        block[1], textures.getLevel()["block"])
 
 
+
+def getRandomPos():
+    x = int(random()*width)
+    y = int(random()*height)
+    return (x, y)
+
+
 def getRandomPomme():
     nbRandom = int(random()*120+1)
-    x = int(random()*11)
-    y = int(random()*11)
+
+    pos = None
+    posValid = False
+    while not posValid:
+        pos = getRandomPos()
+        posValid = True
+        for p in playerSnake.positions:
+            if p == pos:
+                posValid = False
 
     if nbRandom > 110:
-        return objects.Apple("multi", x, y)
+        return objects.Apple("multi", pos[0], pos[1])
     elif nbRandom > 100:
-        return objects.Apple("portal", x, y)
+        return objects.Apple("portal", pos[0], pos[1])
     elif nbRandom > 90:
-        return objects.Apple("poison", x, y)
+        p = objects.Apple("poison", pos[0], pos[1])
+        dev.after(10, manger(p))
+        return p
     elif nbRandom > 80:
-        p = objects.Apple("chrono", x, y)
-        dev.after(5, manger(p))
+        p = objects.Apple("chrono", pos[0], pos[1])
+        dev.after(10, manger(p))
         return p
     elif nbRandom > 70:
-        return objects.Apple("block", x, y)
+        return objects.Apple("block", pos[0], pos[1])
     elif nbRandom > 60:
-        return objects.Apple("speed", x, y)
+        return objects.Apple("speed", pos[0], pos[1])
     elif nbRandom > 50:
-        return objects.Apple("god", x, y)
+        return objects.Apple("god", pos[0], pos[1])
     elif nbRandom > 40:
-        return objects.Apple("small", x, y)
-    return objects.Apple("mid", x, y)
+        return objects.Apple("small", pos[0], pos[1])
+    return objects.Apple("mid", pos[0], pos[1])
 
 
 def manger(pomme):
+    if playerSnake.positions[-1] != pomme.getPosition():
+        if pomme.sorte == "chrono":
+            playerSnake.score -= 5
+        pomme = getRandomPomme()
+        for id in mate.ids:
+            net.send(id, [msg_type, "eatPomme"])
+        return
+
     if pomme.sorte == "mid":
         playerSnake.score += 1
 
@@ -259,15 +283,8 @@ def manger(pomme):
     elif pomme.sorte == "poison":
         gameOver()
 
-    elif pomme.sorte == "chrono":
-        if playerSnake.positions[-1] == pomme.getPosition():
-            pass
-        else:
-            playerSnake.score -= 5
-
     elif pomme.sorte == "portal":
-        playerSnake.nextX = 5-pomme.x
-        playerSnake.nextY = 5-pomme.y
+        playerSnake.tpTo = (5, 3)
 
 
 def start_game_soon(player):

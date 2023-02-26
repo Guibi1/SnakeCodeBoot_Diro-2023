@@ -31,6 +31,7 @@ def displaySnake(positions):
 
 
 class PlayerSnake:
+    tpTo = None
     nextX = 1
     nextY = 0
     positions = [(0, 0), (0, 1), (0, 2)]
@@ -52,6 +53,11 @@ class PlayerSnake:
                            textures.getLevel()["snakeLine"][self.movingTo(i)])
 
     def move(self, rallonger):
+        if self.tpTo is not None:
+            self.positions.append(self.tpTo)
+            self.tpTo = None
+            return
+
         self.positions.append(
             (self.positions[-1][0] + self.nextX, self.positions[-1][1] + self.nextY))
         if not rallonger:

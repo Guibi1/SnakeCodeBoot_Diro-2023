@@ -1,8 +1,8 @@
 from PIL import Image
 from numpy import asarray
 
-bgFileName = "assets/MapSelect.png"
-fileName = "assets/MapSelect.png"
+bgFileName = "assets/SpaceAlien.png"
+fileName = "assets/SpaceAlien.png"
 
 def colorToStr(color):
     return "#"+hex(round(color[0] / 255 * 15))[2] + hex(

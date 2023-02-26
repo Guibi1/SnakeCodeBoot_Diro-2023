@@ -980,6 +980,17 @@ snakeTailSpatial270 = """#223#223#223#223#223#223#223#223#223#223#223
 #6cd#223#6cd#223#223#223#223#223#6cd#223#223
 #223#6cd#223#223#223#223#223#223#223#223#223"""
 
+spatialBlock = """#223#223#223#fff#fff#fff#fff#fff#223#223#223
+#223#223#fff#223#223#fff#223#223#fff#223#223
+#223#223#fff#223#f60#f60#fff#223#fff#223#223
+#223#fff#223#f60#f60#f60#f60#f60#223#fff#223
+#223#fff#223#f60#000#f60#f60#000#223#fff#223
+#223#fff#223#fff#f60#f60#f60#f60#223#fff#223
+#223#fff#fff#fff#fff#fff#fff#fff#fff#fff#223
+#bbb#bbb#ddd#ddd#ddd#ddd#ddd#ddd#ddd#bbb#bbb
+#bbb#ddd#ddd#f00#ddd#0f2#ddd#00f#ddd#ddd#bbb
+#223#bbb#ddd#ddd#ddd#ddd#ddd#ddd#ddd#bbb#223
+#223#223#bbb#bbb#bbb#bbb#bbb#bbb#bbb#223#223"""
 
 # Levels
 
@@ -1071,7 +1082,7 @@ levels = {
     }, "space": {
         "normal": spatial,
         "special": spatial2,
-        "block": spatial,
+        "block": spatialBlock,
         "apples": {
             "mid": spatialApple,
             "god": spatialApple10,

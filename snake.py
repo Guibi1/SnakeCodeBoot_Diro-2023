@@ -47,12 +47,12 @@ def leave():
 
 
 def init_game():
-    global me, tick_counter, playerSnake, otherSnakes, pomme, blocks, tileIsSpecial
+    global me, tick_counter, playerSnake, otherSnakes, pommes, blocks, tileIsSpecial
     me = None
     tick_counter = 1
     playerSnake = player.PlayerSnake()
     otherSnakes = {}
-    pomme = None
+    pommes = []
 
     setCurrentLevel(currentLevel)
 
@@ -106,14 +106,14 @@ tick_counter = 1
 playerSnake = player.PlayerSnake()
 player.displaySnake(playerSnake.positions)
 otherSnakes = {}
-pomme = None
+pommes = []
 pommeTimer = 0
 blocks = []
 tileIsSpecial = []
 
 
 def button_handler(event, resume):
-    global ping_timer, pong_timer, tick_counter, pomme, blocks
+    global ping_timer, pong_timer, tick_counter, pommes, blocks
     if me is None:
         return  # not yet playing or no longer playing
     if event == 'cancel':
@@ -129,20 +129,25 @@ def button_handler(event, resume):
             return
 
         rallonger = False
-        if pomme is None:
+        if len(pommes) == 0:
             if not networked or master():
-                pomme = getRandomPomme()
-                pomme.display()
+                addRandomPomme()
+                for pomme in pommes:
+                    pomme.display()
+
                 if networked:
                     for id in mate.ids:
                         net.send(id, [msg_type, "newPomme",
                                       pomme.sorte, pomme.x, pomme.y])
-        elif playerSnake.positions[-1] == pomme.getPosition():
-            manger(pomme)
-            pomme = None
-            rallonger = True
-            for id in mate.ids:
-                net.send(id, [msg_type, "eatPomme"])
+       # pas sur
+
+        for pomme in pommes:
+            if playerSnake.positions[-1] == pomme.getPosition():
+                manger(pomme)
+                pommes = []
+                rallonger = True
+                for id in mate.ids:
+                    net.send(id, [msg_type, "eatPomme", pommes.index(pomme)])
 
         if not rallonger:
             if tileIsSpecial[playerSnake.positions[0][0]][playerSnake.positions[0][1]]:
@@ -241,8 +246,8 @@ def getRandomPos():
     return (x, y)
 
 
-def getRandomPomme():
-    global pommeTimer
+def addRandomPomme():
+    global pommeTimer, pommes
 
     nbRandom = int(random()*120+1)
 
@@ -256,45 +261,69 @@ def getRandomPomme():
                 posValid = False
 
     if nbRandom > 110:
-        return objects.Apple("multi", pos[0], pos[1])
+        addRandomPomme()
+        return
     elif nbRandom > 100:
-        return objects.Apple("portal", pos[0], pos[1])
+        pos2 = None
+        posValid = False
+        while not posValid:
+            pos2 = getRandomPos()
+            posValid = True
+            for p in playerSnake.positions:
+                if p == pos2:
+                    posValid = False
+        p = objects.Apple("portal", pos[0], pos[1])
+        d = objects.Apple("portal", pos2[0], pos2[1])
+        pommeTimer = dev.after(10, lambda: manger(p))
+        pommeTimer = dev.after(10, lambda: manger(d))
+        pommes.append(p)
+        pommes.append(d)
+        return
     elif nbRandom > 90:
         p = objects.Apple("poison", pos[0], pos[1])
         pommeTimer = dev.after(10, lambda: manger(p))
-        return p
+        pommes.append(p)
+        return
     elif nbRandom > 80:
         p = objects.Apple("chrono", pos[0], pos[1])
         pommeTimer = dev.after(10, lambda: manger(p))
-        return p
+        pommes.append(p)
+        return
     elif nbRandom > 70:
-        return objects.Apple("block", pos[0], pos[1])
+        p = objects.Apple("block", pos[0], pos[1])
+        pommes.append(p)
+        return
     elif nbRandom > 60:
-        return objects.Apple("speed", pos[0], pos[1])
+        p = objects.Apple("speed", pos[0], pos[1])
+        pommes.append(p)
+        return
     elif nbRandom > 50:
-        return objects.Apple("god", pos[0], pos[1])
+        p = objects.Apple("god", pos[0], pos[1])
+        pommes.append(p)
+        return
     elif nbRandom > 40:
-        return objects.Apple("small", pos[0], pos[1])
-    return objects.Apple("mid", pos[0], pos[1])
+        p = objects.Apple("small", pos[0], pos[1])
+        return
+    pommes.append(objects.Apple("mid", pos[0], pos[1]))
 
 
 def manger(pom):
-    global pomme, pommeTimer
+    global pommes, pommeTimer
     if not playerSnake.positions[-1] == pom.getPosition():
         if pom.sorte == "chrono":
             playerSnake.score -= 5
+        for pomme in pommes:
+            if tileIsSpecial[pomme.x][pomme.y]:
+                dev.draw_image(
+                    pomme.x*11 + 7, pomme.y*11 + 7, textures.getLevel()["special"])
+            else:
+                dev.draw_image(
+                    pomme.x*11 + 7, pomme.y*11 + 7, textures.getLevel()["normal"])
 
-        if tileIsSpecial[pomme.x][pomme.y]:
-            dev.draw_image(
-                pomme.x*11 + 7, pomme.y*11 + 7, textures.getLevel()["special"])
-        else:
-            dev.draw_image(
-                pomme.x*11 + 7, pomme.y*11 + 7, textures.getLevel()["normal"])
-
-        pomme = None
+        pommes = []
 
         for id in mate.ids:
-            net.send(id, [msg_type, "eatPomme"])
+            net.send(id, [msg_type, "eatPomme", pommes.index(pom)])
         return
 
     if pom.sorte == "mid":
@@ -326,7 +355,9 @@ def manger(pom):
         gameOver()
 
     elif pom.sorte == "portal":
-        playerSnake.tpTo = (5, 3)
+        for pomme in pommes:
+            if pomme.sorte == "portal" and not playerSnake.positions[-1] == pomme.getPosition():
+                playerSnake.tpTo = pomme.getPosition()
 
     if (pommeTimer > 0):
         dev.stopAfter(pommeTimer)
@@ -370,7 +401,7 @@ def master():  # the master is the node with the smallest id
 
 
 def message_handler(peer, msg):
-    global pong_timer, otherSnakes, pomme, currentLevel, blocks
+    global pong_timer, otherSnakes, pommes, currentLevel, blocks
     if peer is None:
         if msg == 'start':
             networkStart()
@@ -394,8 +425,9 @@ def message_handler(peer, msg):
         elif msg[1] == 'newPomme':
             pomme = objects.Apple(msg[2], msg[3], msg[4])
             pomme.display()
+            pommes.append(pomme)
         elif msg[1] == 'eatPomme':
-            pomme = None
+            pommes.pop(msg[2])
         elif msg[1] == 'setLevel':
             setCurrentLevel(msg[2])
         elif msg[1] == 'setBlocks':

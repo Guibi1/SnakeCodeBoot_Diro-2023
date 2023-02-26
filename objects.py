@@ -32,7 +32,7 @@ class Apple(Objects):
 
     def display(self):
         dev.draw_image(self.x * 11 + 7, self.y * 11 + 7,
-                       textures.levels["grass"]["apples"][self.sorte])
+                       textures.getLevel()["apples"][self.sorte])
 
 
 def getRandomPomme():
@@ -49,11 +49,11 @@ def getRandomPomme():
     elif nbRandom > 80:
         return Apple("chrono", x, y)
     elif nbRandom > 70:
-        return Apple("bloc", x, y)
+        return Apple("block", x, y)
     elif nbRandom > 60:
         return Apple("speed", x, y)
     elif nbRandom > 50:
         return Apple("god", x, y)
     elif nbRandom > 40:
-        return Apple("smallDick", x, y)
+        return Apple("small", x, y)
     return Apple("mid", x, y)

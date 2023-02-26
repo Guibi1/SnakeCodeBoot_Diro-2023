@@ -266,7 +266,7 @@ fence = """#ca5#ca5#000#000#000#000#000#000#000#a84#984
 #ba5#a84#000#000#000#000#000#000#000#ca5#cb6
 #a84#b94#000#000#000#000#000#000#000#ca5#983"""
 
-grassPortal= """#739#738#c5f#a5c#739#c7e#c5f#738#638#c6d#739
+grassPortal = """#739#738#c5f#a5c#739#c7e#c5f#738#638#c6d#739
 #637#c5f#c6d#739#738#738#738#637#637#c6f#96a
 #536#c5f#637#536#739#b7c#a6c#739#638#637#d9e
 #739#637#739#a5c#c6f#739#637#95b#738#637#637
@@ -278,7 +278,7 @@ grassPortal= """#739#738#c5f#a5c#739#c7e#c5f#738#638#c6d#739
 #c5f#a5c#738#739#738#739#738#739#738#c5f#c5f
 #739#c5f#739#638#739#738#637#739#c5f#a5c#738"""
 
-grassBlocApple=  """#463#250#361#250#453#361#472#8d4#361#352#462
+grassBlocApple = """#463#250#361#250#453#361#472#8d4#361#352#462
 #453#250#c22#b22#361#6a3#6a3#8d4#c22#462#361
 #454#d33#e55#e66#c22#6b3#7c4#d33#c22#d33#473
 #361#d55#f77#e44#b22#b22#b22#d33#b22#b22#d33
@@ -290,7 +290,7 @@ grassBlocApple=  """#463#250#361#250#453#361#472#8d4#361#352#462
 #462#361#b22#b11#b11#b11#754#754#854#644#966
 #454#473#462#b22#b11#463#a76#865#865#644#755"""
 
-grassFence="""#ca5#ca5#361#250#453#361#250#250#361#a84#984
+grassFence = """#ca5#ca5#361#250#453#361#250#250#361#a84#984
 #b95#ca5#ca5#b95#db6#ca5#b95#973#b94#b95#cb6
 #db6#db6#983#ca5#a94#973#a84#a94#a84#db6#b95
 #a84#ca5#361#352#453#454#462#250#462#db6#984
@@ -302,7 +302,7 @@ grassFence="""#ca5#ca5#361#250#453#361#250#250#361#a84#984
 #ba5#a84#361#250#250#462#462#454#453#ca5#cb6
 #a84#b94#462#462#250#463#352#250#361#ca5#983"""
 
-grassApple= """#463#250#361#250#453#361#472#8d4#361#352#462
+grassApple = """#463#250#361#250#453#361#472#8d4#361#352#462
 #453#250#c22#b22#361#6a3#6a3#8d4#c22#462#361
 #454#d33#e55#e66#c22#6b3#7c4#d33#c22#d33#473
 #361#d55#f77#e44#b22#b22#b22#d33#b22#b22#d33
@@ -314,7 +314,7 @@ grassApple= """#463#250#361#250#453#361#472#8d4#361#352#462
 #462#361#b22#b11#b11#b11#b11#b11#b11#250#361
 #454#473#462#b22#b11#463#b11#b11#361#361#250"""
 
-grassApple10="""#463#250#361#fe3#453#361#472#8d4#361#352#462
+grassApple10 = """#463#250#361#fe3#453#361#472#8d4#361#352#462
 #453#250#fe3#ff7#fe3#6a3#6a3#8d4#fd2#462#361
 #454#fe7#fea#fe3#ffe#6b3#7c4#fd6#fd7#fe3#473
 #361#fea#ffd#ffd#ffe#ffe#fec#fe9#fe3#ff7#fe3
@@ -326,7 +326,7 @@ grassApple10="""#463#250#361#fe3#453#361#472#8d4#361#352#462
 #fe3#ff7#fe3#fd5#fd3#fd3#fc2#ec3#fc2#250#361
 #454#fe3#462#fd4#fd2#463#fc1#fd3#361#361#250"""
 
-grassAppleToxic= """#463#250#361#250#453#361#323#343#361#352#462
+grassAppleToxic = """#463#250#361#250#453#361#323#343#361#352#462
 #453#250#463#352#361#453#453#683#a7b#462#361
 #454#462#462#250#546#343#a8b#656#97a#a7b#473
 #361#361#361#352#333#546#222#656#545#869#747
@@ -338,7 +338,7 @@ grassAppleToxic= """#463#250#361#250#453#361#323#343#361#352#462
 #462#361#748#868#868#868#868#868#868#250#361
 #454#212#462#536#536#463#536#757#361#361#250"""
 
-grassAppleChrono= """#463#250#361#250#453#361#472#8d4#361#352#462
+grassAppleChrono = """#463#250#361#250#453#361#472#8d4#361#352#462
 #453#250#c22#888#888#888#888#777#c22#462#361
 #454#d33#888#ddd#ddd#000#ddd#ddd#777#d33#473
 #361#888#ddd#999#ddd#000#ccc#999#ccc#777#d33
@@ -350,7 +350,7 @@ grassAppleChrono= """#463#250#361#250#453#361#472#8d4#361#352#462
 #462#361#b22#777#444#444#444#444#b11#250#361
 #454#473#462#b22#b11#463#b11#b11#361#361#250"""
 
-grassAppleSpeed="""#463#250#361#250#453#361#472#8d4#361#352#462
+grassAppleSpeed = """#463#250#361#250#453#361#472#8d4#361#352#462
 #453#250#c22#b22#361#6a3#6a3#8d4#c22#462#361
 #454#d33#e55#e66#c22#ed2#7c4#d33#c22#d33#473
 #361#d55#f77#e44#ed2#ed2#b22#d33#b22#b22#d33
@@ -362,11 +362,10 @@ grassAppleSpeed="""#463#250#361#250#453#361#472#8d4#361#352#462
 #462#361#b22#b11#b11#c92#b11#b11#b11#250#361
 #454#473#462#b22#b11#463#b11#b11#361#361#250"""
 
-grassAppleMulti=grassApple
+grassAppleMulti = grassApple
 
 
-
-sand=  """#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8
+sand = """#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8
 #fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8
 #fe8#fe8#fe8#eb4#fe8#fe8#fe8#fe8#eb4#fe8#fe8
 #fe8#fe8#eb4#fe8#fe8#fe8#fe8#eb4#fe8#fe8#fe8
@@ -378,7 +377,7 @@ sand=  """#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8
 #fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8
 #fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8"""
 
-sandSkull="""#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8
+sandSkull = """#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8
 #fe8#555#a94#fe8#fe8#fe8#fe8#fe8#fe8#555#a94
 #fe8#555#555#555#fff#fff#fff#555#555#555#a94
 #fe8#fe8#fff#fff#fff#ddd#fff#fff#fff#a94#fe8
@@ -390,7 +389,7 @@ sandSkull="""#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8
 #fe8#fe8#fe8#fe8#999#fff#999#a94#fe8#fe8#fe8
 #fe8#fe8#fe8#fe8#fe8#fff#a94#fe8#fe8#fe8#fe8"""
 
-sandCactus="""#fe8#fe8#fe8#fe8#fe8#f69#fe8#fe8#fe8#fe8#fe8
+sandCactus = """#fe8#fe8#fe8#fe8#fe8#f69#fe8#fe8#fe8#fe8#fe8
 #fe8#fe8#fe8#fe8#f69#fac#f69#fe8#fe8#f69#fe8
 #fe8#fe8#fe8#f69#fac#f69#7a4#fe8#f69#fac#f69
 #fe8#f69#eb4#7a4#f69#593#583#7a5#fe8#f69#7a5
@@ -402,7 +401,7 @@ sandCactus="""#fe8#fe8#fe8#fe8#fe8#f69#fe8#fe8#fe8#fe8#fe8
 #fe8#fe8#fe8#7a5#d44#593#593#583#fe8#fe8#fe8
 #fe8#fe8#fe8#fe8#7b4#6a4#593#fe8#fe8#fe8#fe8"""
 
-sandApple="""#fe8#fe8#fe8#fe8#fe8#fe8#472#8d4#fe8#fe8#fe8
+sandApple = """#fe8#fe8#fe8#fe8#fe8#fe8#472#8d4#fe8#fe8#fe8
 #fe8#fe8#c22#b22#fe8#6a3#6a3#8d4#c22#fe8#fe8
 #fe8#d33#e55#e66#c22#6b3#7c4#d33#c22#d33#fe8
 #fe8#d55#f77#e44#b22#b22#b22#d33#b22#b22#d33
@@ -414,7 +413,7 @@ sandApple="""#fe8#fe8#fe8#fe8#fe8#fe8#472#8d4#fe8#fe8#fe8
 #fe8#fe8#b22#b11#b11#b11#b11#b11#b11#fe8#fe8
 #fe8#fe8#fe8#b22#b11#fe8#b11#b11#fe8#fe8#fe8"""
 
-sandApple10="""#fe8#fe8#fe8#fe3#fe8#fe8#472#8d4#fe8#fe8#fe8
+sandApple10 = """#fe8#fe8#fe8#fe3#fe8#fe8#472#8d4#fe8#fe8#fe8
 #fe8#fe8#fe3#ff7#fe3#6a3#6a3#8d4#fd2#fe8#fe8
 #fe8#fe7#fea#fe3#ffe#6b3#7c4#fd6#fd7#fe3#fe8
 #fe8#fea#ffd#ffd#ffe#ffe#fec#fe9#fe3#ff7#fe3
@@ -426,7 +425,7 @@ sandApple10="""#fe8#fe8#fe8#fe3#fe8#fe8#472#8d4#fe8#fe8#fe8
 #fe3#ff7#fe3#fd5#fd3#fd3#fc2#ec3#fc2#fe8#fe8
 #fe8#fe3#fe8#fd4#fd2#fe8#fc1#fd3#fe8#fe8#fe8"""
 
-sandPortal="""#739#738#c5f#a5c#739#c7e#c5f#738#638#c6d#739
+sandPortal = """#739#738#c5f#a5c#739#c7e#c5f#738#638#c6d#739
 #637#c5f#c6d#739#738#738#738#637#637#c6f#96a
 #536#c5f#637#536#739#b7c#a6c#739#638#637#d9e
 #739#637#739#a5c#c6f#739#637#95b#738#637#637
@@ -438,7 +437,7 @@ sandPortal="""#739#738#c5f#a5c#739#c7e#c5f#738#638#c6d#739
 #c5f#a5c#738#739#738#739#738#739#738#c5f#c5f
 #739#c5f#739#638#739#738#637#739#c5f#a5c#738"""
 
-sandAppleToxic="""#fe8#fe8#fe8#fe8#fe8#fe8#323#343#fe8#fe8#fe8
+sandAppleToxic = """#fe8#fe8#fe8#fe8#fe8#fe8#323#343#fe8#fe8#fe8
 #fe8#fe8#fe8#fe8#fe8#453#453#683#a7b#fe8#fe8
 #fe8#fe8#fe8#eb4#546#343#a8b#656#97a#a7b#fe8
 #fe8#fe8#eb4#fe8#333#546#222#656#545#869#747
@@ -449,7 +448,7 @@ sandAppleToxic="""#fe8#fe8#fe8#fe8#fe8#fe8#323#343#fe8#fe8#fe8
 #212#869#869#868#647#424#425#637#868#536#fe8
 #fe8#fe8#748#868#868#868#868#868#868#fe8#fe8
 #fe8#212#fe8#536#536#fe8#536#757#fe8#fe8#fe8"""
-sandAppleChrono= """#fe8#fe8#fe8#fe8#fe8#fe8#472#8d4#fe8#fe8#fe8
+sandAppleChrono = """#fe8#fe8#fe8#fe8#fe8#fe8#472#8d4#fe8#fe8#fe8
 #fe8#fe8#c22#888#888#888#888#777#c22#fe8#fe8
 #fe8#d33#888#ddd#ddd#000#ddd#ddd#777#d33#fe8
 #fe8#888#ddd#999#ddd#000#ccc#999#ccc#777#d33
@@ -460,7 +459,7 @@ sandAppleChrono= """#fe8#fe8#fe8#fe8#fe8#fe8#472#8d4#fe8#fe8#fe8
 #fe8#b11#777#ccc#ccc#999#ccc#ccc#444#b11#fe8
 #fe8#fe8#b22#777#444#444#444#444#b11#fe8#fe8
 #fe8#fe8#fe8#b22#b11#fe8#b11#b11#fe8#fe8#fe8"""
-sandBlocApple="""#fe8#fe8#fe8#fe8#fe8#fe8#472#8d4#fe8#fe8#fe8
+sandBlocApple = """#fe8#fe8#fe8#fe8#fe8#fe8#472#8d4#fe8#fe8#fe8
 #fe8#fe8#c22#b22#fe8#6a3#6a3#8d4#c22#fe8#fe8
 #fe8#d33#e55#e66#c22#6b3#7c4#d33#c22#d33#fe8
 #fe8#d55#f77#e44#b22#b22#b22#d33#b22#b22#d33
@@ -471,7 +470,7 @@ sandBlocApple="""#fe8#fe8#fe8#fe8#fe8#fe8#472#8d4#fe8#fe8#fe8
 #fe8#b11#b22#c22#b11#b11#754#633#865#965#362
 #fe8#fe8#b22#b11#b11#b11#754#754#854#644#966
 #fe8#fe8#fe8#b22#b11#fe8#a76#865#865#644#755"""
-sandAppleSpeed= """#fe8#fe8#fe8#fe8#fe8#fe8#472#8d4#fe8#fe8#fe8
+sandAppleSpeed = """#fe8#fe8#fe8#fe8#fe8#fe8#472#8d4#fe8#fe8#fe8
 #fe8#fe8#c22#b22#fe8#6a3#6a3#8d4#c22#fe8#fe8
 #fe8#d33#e55#e66#c22#ed2#7c4#d33#c22#d33#fe8
 #fe8#d55#f77#e44#ed2#ed2#b22#d33#b22#b22#d33
@@ -482,14 +481,7 @@ sandAppleSpeed= """#fe8#fe8#fe8#fe8#fe8#fe8#472#8d4#fe8#fe8#fe8
 #fe8#b11#b22#c22#b11#ec1#da1#b11#b11#b11#fe8
 #fe8#fe8#b22#b11#b11#c92#b11#b11#b11#fe8#fe8
 #fe8#fe8#fe8#b22#b11#fe8#b11#b11#fe8#fe8#fe8"""
-sandAppleMulti=grassApple
-
-
-
-
-
-
-
+sandAppleMulti = grassApple
 
 
 snakeHeadSand0 = """#fe8#463#463#6b3#6b3#6b3#6b3#6b3#463#463#fe8
@@ -671,8 +663,11 @@ snakeTailSand270 = """#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8
 #fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8"""
 
 
+def getLevel():
+    return levels[currentLevel]
 
 
+currentLevel = "grass"
 
 levels = {
     "grass": {
@@ -687,7 +682,8 @@ levels = {
             "chrono": grassAppleChrono,
             "block": grassBlocApple,
             "speed": grassAppleSpeed,
-            "multi": grassAppleMulti
+            "multi": grassAppleMulti,
+            "small": grassApple
         },
         "snakeHead": {
             "B": snakeHeadGrass0,
@@ -713,9 +709,9 @@ levels = {
             "T": snakeTailGrass180,
             "L": snakeTailGrass270
         }
-    }
-    ,"sand":{
-         "normal": sand,
+    },
+    "sand": {
+        "normal": sand,
         "special": sandSkull,
         "block": sandCactus,
         "apples": {
@@ -726,7 +722,8 @@ levels = {
             "chrono": sandAppleChrono,
             "block": sandBlocApple,
             "speed": sandAppleSpeed,
-            "multi": sand
+            "multi": sandApple,
+            "small": sandApple
         },
         "snakeHead": {
             "B": snakeHeadSand0,
@@ -752,9 +749,10 @@ levels = {
             "T": snakeTailSand180,
             "L": snakeTailSand270
         }
-        
-    },"sand":{
-         "normal": sand,
+
+    },
+    "space": {
+        "normal": sand,
         "special": sandSkull,
         "block": sandCactus,
         "apples": {
@@ -765,7 +763,8 @@ levels = {
             "chrono": sandAppleChrono,
             "block": sandBlocApple,
             "speed": sandAppleSpeed,
-            "multi": apple
+            "multi": apple,
+            "small": sandApple
         },
         "snakeHead": {
             "B": snakeHeadSand0,
@@ -791,6 +790,6 @@ levels = {
             "T": snakeTailSand180,
             "L": snakeTailSand270
         }
-        
+
     }
 }

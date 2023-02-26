@@ -94,7 +94,6 @@ blocks = []
 tileIsSpecial = []
 
 
-
 def button_handler(event, resume):
     global ping_timer, pong_timer, tick_counter, pomme, blocks
     if me is None:
@@ -192,6 +191,7 @@ def button_handler(event, resume):
             pass
         resume()
 
+
 def getRandomPomme():
     nbRandom = int(random()*120+1)
     x = int(random()*11)
@@ -202,10 +202,12 @@ def getRandomPomme():
     elif nbRandom > 100:
         return objects.Apple("portal", x, y)
     elif nbRandom > 90:
-        return objects.Apple("poison", x, y)
+        p = objects.Apple("poison", x, y)
+        dev.after(10, manger(p))
+        return p
     elif nbRandom > 80:
         p = objects.Apple("chrono", x, y)
-        dev.after(5, manger(p))
+        dev.after(10, manger(p))
         return p
     elif nbRandom > 70:
         return objects.Apple("block", x, y)
@@ -218,8 +220,13 @@ def getRandomPomme():
     return objects.Apple("mid", x, y)
 
 
-
 def manger(pomme):
+    if playerSnake.positions[-1] != pomme.getPosition():
+        pomme = None
+        for id in mate.ids:
+            net.send(id, [msg_type, "eatPomme"])
+        return
+
     if pomme.sorte == "mid":
         playerSnake.score += 1
 
@@ -246,14 +253,11 @@ def manger(pomme):
         gameOver()
 
     elif pomme.sorte == "chrono":
-        if playerSnake.positions[-1] == pomme.getPosition():
-            pass
-        else:
-            playerSnake.score -= 5
+
+        playerSnake.score -= 5
 
     elif pomme.sorte == "portal":
-        playerSnake.nextX = 5-pomme.x
-        playerSnake.nextY = 5-pomme.y
+        playerSnake.tpTo = (5, 3)
 
 
 def start_game_soon(player):

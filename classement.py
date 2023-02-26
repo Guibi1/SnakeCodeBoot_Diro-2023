@@ -21,7 +21,7 @@ def addHighScore(score):
     for i in range(n):
         # Last i elements are already sorted
         for j in range(0, n-i-1):
-            if highscore[j] > highscore[j+1]:
+            if highscore[j] < highscore[j+1]:
                 # Swap adjacent elements if they are in the wrong order
                 highscore[j], highscore[j+1] = highscore[j+1], highscore[j]
     if len(highscore) > 5:

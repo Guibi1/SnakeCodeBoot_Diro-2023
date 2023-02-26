@@ -1,5 +1,5 @@
 from objects import *
-from playerSnake import*
+from playerSnake import *
 import snake
 import playerSnake as player
 import textures
@@ -7,33 +7,36 @@ import textures
 name = "AI"
 score = 0
 
+
 def comparePathLenght(snakePosition, applesPosition):
     distances = []
-    
+
     for apple in applesPosition:
-        if(snakePosition[1] == apple[1]):
+        if (snakePosition[1] == apple[1]):
             distances.append(0)
         else:
-            distances.append((snakePosition[0] - apple[0] / snakePosition[1] - apple[1]))
-    
+            distances.append(
+                (snakePosition[0] - apple[0] / snakePosition[1] - apple[1]))
+
     smalest = distances[0]
     for i in range(1, len(distances)):
         if distances[i] < smalest:
             smalest = distances[i]
-    
+
     return distances.index(smalest)
 
+
 def pathFindingAlgorithm(apples, pSnake, blocs):
-   
+
     if name in snake.otherSnakes:
         pass
     else:
-        snake.otherSnakes[name] =[(3, 3),(3, 4)]
-        
+        snake.otherSnakes[name] = [(3, 3), (3, 4)]
+
     snake.otherSnakes[name][-1] = snake.otherSnakes[name][-1]
     snakePosition = pSnake.positions[-1]
     applesPosition = []
-  
+
     try:
         for apple in apples:
             if apple.sorte == "poison":
@@ -41,45 +44,48 @@ def pathFindingAlgorithm(apples, pSnake, blocs):
             else:
                 applesPosition.append((apple.x, apple.y))
     except:
-         walkArround(snake.otherSnakes[name])
-            
+        walkArround(snake.otherSnakes[name])
+
     if len(applesPosition) == 0:
         walkArround(snake.otherSnakes[name])
         return
-    
-    posOfSmalest = comparePathLenght((snake.otherSnakes[name][-1][0], snake.otherSnakes[name][-1][1]), applesPosition)    
+
+    posOfSmalest = comparePathLenght(
+        (snake.otherSnakes[name][-1][0], snake.otherSnakes[name][-1][1]), applesPosition)
     theApplePosition = applesPosition[posOfSmalest]
-    
-    
-    
+
     if snake.otherSnakes[name][-1][0] == theApplePosition[0] and snake.otherSnakes[name][-1][1] != theApplePosition[1]:
-        if snake.otherSnakes[name][-1][1] < theApplePosition[1] and isItSafe(apples, blocs, pSnake, (snake.otherSnakes[name][-1][0], snake.otherSnakes[name][-1][1]  +1)):
-            snake.otherSnakes[name][-1] = (snake.otherSnakes[name][-1][0], snake.otherSnakes[name][-1][1]  +1)  #Go down
-            
-        if snake.otherSnakes[name][-1][1] > theApplePosition[1] and isItSafe(apples, blocs, pSnake, (snake.otherSnakes[name][-1][0], snake.otherSnakes[name][-1][1]  +1)):
-            snake.otherSnakes[name][-1] = (snake.otherSnakes[name][-1][0], snake.otherSnakes[name][-1][1] - 1) #Go up
-            
-        
+        if snake.otherSnakes[name][-1][1] < theApplePosition[1] and isItSafe(apples, blocs, pSnake, (snake.otherSnakes[name][-1][0], snake.otherSnakes[name][-1][1] + 1)):
+            snake.otherSnakes[name][-1] = (snake.otherSnakes[name]
+                                           [-1][0], snake.otherSnakes[name][-1][1] + 1)  # Go down
+
+        if snake.otherSnakes[name][-1][1] > theApplePosition[1] and isItSafe(apples, blocs, pSnake, (snake.otherSnakes[name][-1][0], snake.otherSnakes[name][-1][1] + 1)):
+            snake.otherSnakes[name][-1] = (snake.otherSnakes[name]
+                                           [-1][0], snake.otherSnakes[name][-1][1] - 1)  # Go up
+
     elif snake.otherSnakes[name][-1][0] != theApplePosition[0] and snake.otherSnakes[name][-1][1] == theApplePosition[1]:
         if snake.otherSnakes[name][-1][0] < theApplePosition[0]:
-            snake.otherSnakes[name][-1] = (snake.otherSnakes[name][-1][0] + 1, snake.otherSnakes[name][-1][1]) #Go right
-            
+            snake.otherSnakes[name][-1] = (snake.otherSnakes[name]
+                                           [-1][0] + 1, snake.otherSnakes[name][-1][1])  # Go right
+
         else:
-            snake.otherSnakes[name][-1] = (snake.otherSnakes[name][-1][0] - 1, snake.otherSnakes[name][-1][1]) #Go left
-            
-        
+            snake.otherSnakes[name][-1] = (snake.otherSnakes[name]
+                                           [-1][0] - 1, snake.otherSnakes[name][-1][1])  # Go left
+
     elif snake.otherSnakes[name][-1][0] != theApplePosition[0] and snake.otherSnakes[name][-1][1] != theApplePosition[1]:
         if snake.otherSnakes[name][-1][0] < theApplePosition[0]:
-            snake.otherSnakes[name][-1] = (snake.otherSnakes[name][-1][0] + 1, snake.otherSnakes[name][-1][1]) #Go right
-            
-        else: 
-            snake.otherSnakes[name][-1] = (snake.otherSnakes[name][-1][0] - 1, snake.otherSnakes[name][-1][1]) #Go left
-            
+            snake.otherSnakes[name][-1] = (snake.otherSnakes[name]
+                                           [-1][0] + 1, snake.otherSnakes[name][-1][1])  # Go right
+
+        else:
+            snake.otherSnakes[name][-1] = (snake.otherSnakes[name]
+                                           [-1][0] - 1, snake.otherSnakes[name][-1][1])  # Go left
+
     elif snake.otherSnakes[name][-1][0] == theApplePosition[0] and snake.otherSnakes[name][-1][1] == theApplePosition[1]:
-            manger(apples[posOfSmalest])
-            snake.pomme = None
-    return
-        
+        manger(apples[posOfSmalest])
+        snake.pomme = None
+
+
 def manger(pomme):
     global score
     oSnake = snake.otherSnakes[name]
@@ -114,37 +120,42 @@ def manger(pomme):
 
     elif pomme.sorte == "portal":
         snake.otherSnakes[name][-1] = (5, 3)
-        
+
+
 def walkArround(oSnake):
     for i in range(len(oSnake)):
         if oSnake[-1] != (oSnake[i][0] + 1, oSnake[i][1]):
-            snake.otherSnakes[name][-1] = (snake.otherSnakes[name][-1][0] + 1, snake.otherSnakes[name][-1][1])
+            snake.otherSnakes[name][-1] = (snake.otherSnakes[name]
+                                           [-1][0] + 1, snake.otherSnakes[name][-1][1])
         elif oSnake[-1] != (oSnake[i][0] - 1, oSnake[i][1]):
-            snake.otherSnakes[name][-1] = (snake.otherSnakes[name][-1][0] - 1, snake.otherSnakes[name][-1][1])
+            snake.otherSnakes[name][-1] = (snake.otherSnakes[name]
+                                           [-1][0] - 1, snake.otherSnakes[name][-1][1])
         elif oSnake[-1] != (oSnake[i][0], oSnake[i][1] + 1):
-            snake.otherSnakes[name][-1] = (snake.otherSnakes[name][-1][0], snake.otherSnakes[name][-1][1] + 1) 
+            snake.otherSnakes[name][-1] = (snake.otherSnakes[name]
+                                           [-1][0], snake.otherSnakes[name][-1][1] + 1)
         elif oSnake[-1] != (oSnake[i][0], oSnake[i][1] - 1):
-            snake.otherSnakes[name][-1] = (snake.otherSnakes[name][-1][0], snake.otherSnakes[name][-1][1] - 1) 
+            snake.otherSnakes[name][-1] = (snake.otherSnakes[name]
+                                           [-1][0], snake.otherSnakes[name][-1][1] - 1)
         else:
             print("I'm not supposed to see this")
-            
+
+
 def isItSafe(apples, blocs, pSnake, request):
     unsafePlaces = []
-    
+
     for apple in apples:
-        if(apple.sorte == "poison"):
+        if (apple.sorte == "poison"):
             unsafePlaces.append((apple.getPosition()))
-    
+
     for bloc in blocs:
         unsafePlaces.append(bloc)
-        
+
     for pPos in pSnake.positions:
         unsafePlaces.append(pPos)
-        
+
     for oPos in snake.otherSnakes[name]:
         unsafePlaces.append(oPos)
-        
-    print (unsafePlaces)
+
     for threat in unsafePlaces:
         if request == threat:
             return False

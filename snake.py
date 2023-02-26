@@ -15,7 +15,6 @@ width = 11
 height = 18
 
 # game state
-
 me = None  # is 0 when non-networked, and 0 or 1 when networked
 
 # the following global variables are useful for the networked version
@@ -71,15 +70,18 @@ def init_game():
 def gameOver():
     global me
     me = None
+    quitWhenButtonOk()
     classement.addHighScore(playerSnake.score)
 
     dev.clear_screen(bg)
 
     dev.draw_image(17, 10, textures.gameOverText)
 
-    ui.center(dev.screen_width//2, 180, "Meilleurs scores", "#fff", bg)
-    for i, score in enumerate(classement.highscore):
-        ui.center(dev.screen_width//2, 200 + 20 * i, str(score), "#fff", bg)
+    dev.draw_image(30, 120, textures.scoreText)
+    ui.center(dev.screen_width//2, 180,
+              str(playerSnake.score), apps.fg, bg)
+
+    ui.center(dev.screen_width//2, 220, " Quit ", bg, apps.accent)
 
 
 def setCurrentLevel(level):
@@ -119,6 +121,7 @@ def button_handler(event, resume):
     global ping_timer, pong_timer, tick_counter, pomme, blocks
     if me is None:
         return  # not yet playing or no longer playing
+
     if event == 'cancel':
         quit()
     elif event == 'tick':
@@ -217,14 +220,6 @@ def button_handler(event, resume):
             elif to == "B":
                 playerSnake.nextX = -1
                 playerSnake.nextY = 0
-        elif event == 'left_up':
-            pass
-        elif event == 'right_up':
-            pass
-        elif event == 'left_ok':
-            pass
-        elif event == 'right_ok':
-            pass
         resume()
 
 
@@ -304,7 +299,7 @@ def manger(pom):
 
     elif pom.sorte == "block":
         blocks.append((
-            playerSnake.positions[0][0], playerSnake.positions[0][-1]))
+            playerSnake.positions[1][0], playerSnake.positions[1][-1]))
         displayBlocks()
         if networked:
             for id in mate.ids:
@@ -431,31 +426,47 @@ def snake(n, hasAi):
 
 
 def askMap(then):
-    color = '#4CF'
-
     def menu_handler(level, cont):
         if level is None:
             cont()
         elif level is False:
-            apps.menu()
+            quit()
         else:
             setCurrentLevel(level.lower())
             then()
 
     dev.clear_screen(bg)
     dev.draw_image(15, 30, textures.mapSelection)
-    ui.menu(4, 111, 8, 7, 2, [color, '#000'], lambda: [
+    ui.menu(4, 111, 8, 7, 2, [apps.accent, '#000'], lambda: [
         "Sand", "Grass", "Space"], "Grass", menu_handler)
 
 
 def showScore():
+    quitWhenButtonOk()
+
     dev.clear_screen(bg)
 
-    dev.draw_image(17, 10, textures.scoreText)
+    dev.draw_image(27, 10, textures.scoreText)
+    ui.center(dev.screen_width//2, 220, " Quit ", bg, apps.accent)
+
+    if len(classement.highscore) == 0:
+        ui.center(dev.screen_width//2, 100, "No", apps.fg, bg)
+        ui.center(dev.screen_width//2, 120, "scores", apps.fg, bg)
+        ui.center(dev.screen_width//2, 140, "yet", apps.fg, bg)
 
     for i, score in enumerate(classement.highscore):
         ui.center(dev.screen_width//2, 100 + 20 * i, "#" +
-                  str(i + 1) + " " + str(score), "#fff", bg)
+                  str(i + 1) + " " + str(score), apps.fg, bg)
+
+
+def quitWhenButtonOk():
+    def handle(event, resume):
+        if event == 'left_ok' or event == 'right_ok':
+            quit()
+        else:
+            dev.after(0.1, resume)
+
+    ui.track_button_presses(handle)
 
 
 apps.register('SNAKE', lambda: snake(False, False), False)

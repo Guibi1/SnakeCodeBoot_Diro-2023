@@ -2,7 +2,7 @@ import ttgo as dev
 import net
 import ui
 import apps
-import splash
+import textures
 
 network_id = 'TEAM11'
 
@@ -44,26 +44,20 @@ def peers():
 
 
 def peers_menu(activity, menu_handler):
-    color = '#4CF'
+    dev.clear_screen(apps.bg)
 
-    fg = '#FFF'
-    bg = '#A00'
+    dev.draw_image(40, 20, textures.ffaText)
 
-    dev.clear_screen(splash.bg)
+    ui.center(dev.screen_width//2, 38, net.id, apps.accent, apps.bg)
 
-    dev.fill_rect(0, 0, dev.screen_width, 58, bg)
-    ui.center(dev.screen_width//2, 10, activity, fg, bg)
-
-    ui.center(dev.screen_width//2, 38, net.id, color, bg)
-
-    fg = '#FFF'
     bg = '#666'
 
     dev.fill_rect(0, 58, dev.screen_width, 50, bg)
-    ui.center(dev.screen_width//2, 70, 'choose', fg, bg)
-    ui.center(dev.screen_width//2, 86, 'mate', fg, bg)
+    ui.center(dev.screen_width//2, 70, 'choose', apps.fg, bg)
+    ui.center(dev.screen_width//2, 86, 'mate', apps.fg, bg)
 
-    ui.menu(4, 111, 8, 7, 2, [color, '#000'], peers, "Start", menu_handler)
+    ui.menu(4, 111, 8, 7, 2, [apps.accent, apps.bg],
+            peers, "Start", menu_handler)
 
 
 def find(activity, message_handler, startHandle):  # message_handler called when mate is found

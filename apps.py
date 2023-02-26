@@ -8,15 +8,16 @@ last_app = None  # last app used
 
 apps = {}
 
+fg = "#FFF"
+bg = "#000"
+accent = "#9E5"
+
 
 def register(name, handler, networked):
     apps[name] = [handler, networked]
 
 
 def menu():  # pick an app with a menu and call its handler
-
-    fg = '#4CF'
-    bg = splash.bg
     stop = False
 
     def items():
@@ -53,4 +54,4 @@ def menu():  # pick an app with a menu and call its handler
     ui.center(dev.screen_width//2, splash.mesg_y +
               dev.font_height//2, '\x1F\x1FAPPS\x1F\x1F', fg, bg)
     ui.menu(4, splash.mesg_y+16, 8, 5, 2,
-            [fg, bg], items, last_app, menu_handler)
+            [accent, bg], items, last_app, menu_handler)

@@ -275,6 +275,9 @@ def addRandomPomme():
         for p in playerSnake.positions:
             if p == pos:
                 posValid = False
+        for p in blocks.positions:
+                if p==pos2:
+                    posValid =False 
 
     if nbRandom > 110:
         addRandomPomme()
@@ -288,7 +291,6 @@ def addRandomPomme():
             for p in playerSnake.positions:
                 if p == pos2:
                     posValid = False
-            posValid=True
             for p in blocks.positions:
                 if p==pos2:
                     posValid =False    

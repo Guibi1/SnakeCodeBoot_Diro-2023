@@ -59,10 +59,12 @@ def init_game():
 
     x = dev.screen_width//2
 
+    dev.draw_image(17, 30, textures.readySetSnake1)
+
     def next():
-        ui.center(x, dev.font_height*5, 'SSET', '#FFF', bg)
-        dev.after(1, lambda: ui.center(x, dev.font_height*6, 'GO', '#FFF', bg))
-    ui.center(x, dev.font_height*4, 'READY', '#FFF', bg)
+        dev.draw_image(20, 90, textures.readySetSnake2)
+        dev.after(1, lambda: dev.draw_image(
+            15, 160, textures.readySetSnake3))
     dev.after(1, next)
 
 
@@ -400,6 +402,7 @@ def askMap(then):
             then()
 
     dev.clear_screen(bg)
+    dev.draw_image(15, 30, textures.mapSelection)
     ui.menu(4, 111, 8, 7, 2, [color, '#000'], lambda: [
             "Sand", "Grass", "Space"], "Grass", menu_handler)
 

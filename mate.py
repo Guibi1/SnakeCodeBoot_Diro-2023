@@ -47,7 +47,7 @@ def peers_menu(activity, menu_handler):
     dev.clear_screen(apps.bg)
 
     ui.center(dev.screen_width//2, 8, net.id, apps.fg, apps.bg)
-    dev.draw_image(38, 25, textures.ffaText)
+    dev.draw_image(38, 25, textures.loadTitle("ffa-text"))
 
     ui.menu(4, 111, 8, 7, 2, [apps.accent, apps.bg],
             peers, "Start", menu_handler)

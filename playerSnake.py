@@ -22,10 +22,10 @@ def displaySnake(positions):
     tailDirection = "R" if positions[0][0] > positions[1][0] else (
         "L" if positions[0][0] < positions[1][0] else ("B" if positions[0][1] > positions[1][1] else "T"))
     dev.draw_image(
-        positions[0][0]*11 + 7, positions[0][1]*11 + 7, textures.getLevel()["snakeTail"][tailDirection])
+        positions[0][0]*11 + 7, positions[0][1]*11 + 7, textures.loadAsset("snakeTail",tailDirection))
     # Head
     dev.draw_image(
-        positions[-1][0]*11 + 7, positions[-1][1]*11 + 7, textures.getLevel()["snakeHead"][movingTo()])
+        positions[-1][0]*11 + 7, positions[-1][1]*11 + 7, textures.loadAsset("snakeHead",movingTo()))
     # Body
     for i, pos in enumerate(positions[1:-1]):
         next = positions[i + 2]
@@ -44,7 +44,7 @@ def displaySnake(positions):
                 "B" if pos[0] < next[0] else ("R" if pos[1] > next[1] else "L"))
 
         dev.draw_image(pos[0]*11 + 7, pos[1]*11 + 7,
-                       textures.getLevel()[type][direction])
+                       textures.loadAsset(type,direction))
 
 
 class PlayerSnake:

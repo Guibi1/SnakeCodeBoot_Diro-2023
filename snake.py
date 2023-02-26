@@ -58,12 +58,12 @@ def init_game():
     setCurrentLevel(currentLevel)
 
     dev.clear_screen(bg)
-    dev.draw_image(17, 30, textures.readySetSnake1)
+    dev.draw_image(17, 30, textures.loadTitle("readySetSnake1"))
 
     def next():
-        dev.draw_image(20, 90, textures.readySetSnake2)
+        dev.draw_image(20, 90, textures.loadTitle("readySetSnake2"))
         dev.after(1, lambda: dev.draw_image(
-            15, 160, textures.readySetSnake3))
+            15, 160, textures.loadTitle("readySetSnake3")))
     dev.after(1, next)
 
 
@@ -78,9 +78,9 @@ def gameOver():
 
     dev.clear_screen(bg)
 
-    dev.draw_image(17, 10, textures.gameOverText)
+    dev.draw_image(17, 10, textures.loadTitle("gameOverText"))
 
-    dev.draw_image(30, 120, textures.scoreText)
+    dev.draw_image(30, 120, textures.loadTitle("scoreText"))
     ui.center(dev.screen_width//2, 180,
               str(playerSnake.score), apps.fg, bg)
 
@@ -171,10 +171,10 @@ def button_handler(event, resume):
         if not rallonger:
             if tileIsSpecial[playerSnake.positions[0][0]][playerSnake.positions[0][1]]:
                 dev.draw_image(
-                    playerSnake.positions[0][0]*11 + 7, playerSnake.positions[0][1]*11 + 7, textures.getLevel()["special"])
+                    playerSnake.positions[0][0]*11 + 7, playerSnake.positions[0][1]*11 + 7, textures.loadAsset("special"))
             else:
                 dev.draw_image(
-                    playerSnake.positions[0][0]*11 + 7, playerSnake.positions[0][1]*11 + 7, textures.getLevel()["normal"])
+                    playerSnake.positions[0][0]*11 + 7, playerSnake.positions[0][1]*11 + 7, textures.loadAsset("normal"))
 
         if ai:
             AI.pathFindingAlgorithm([pomme], playerSnake, blocks)
@@ -253,7 +253,7 @@ def button_handler(event, resume):
 def displayBlocks():
     for block in blocks:
         dev.draw_image(7 + 11 * block[0], 7 + 11 *
-                       block[1], textures.getLevel()["block"])
+                       block[1], textures.loadAsset("block"))
 
 
 def getRandomPos():
@@ -340,10 +340,10 @@ def manger(pom):
         for pomme in pommes:
             if tileIsSpecial[pomme.x][pomme.y]:
                 dev.draw_image(
-                    pomme.x*11 + 7, pomme.y*11 + 7, textures.getLevel()["special"])
+                    pomme.x*11 + 7, pomme.y*11 + 7, textures.loadAsset("special"))
             else:
                 dev.draw_image(
-                    pomme.x*11 + 7, pomme.y*11 + 7, textures.getLevel()["normal"])
+                    pomme.x*11 + 7, pomme.y*11 + 7, textures.loadAsset("normal"))
 
         pommes = []
 
@@ -371,10 +371,10 @@ def manger(pom):
             pos = playerSnake.positions.pop(0)
             if tileIsSpecial[pos[0]][pos[1]]:
                 dev.draw_image(
-                    pos[0]*11 + 7, pos[1]*11 + 7, textures.getLevel()["special"])
+                    pos[0]*11 + 7, pos[1]*11 + 7, textures.loadAsset("special"))
             else:
                 dev.draw_image(
-                    pos[0]*11 + 7, pos[1]*11 + 7, textures.getLevel()["normal"])
+                    pos[0]*11 + 7, pos[1]*11 + 7, textures.loadAsset("normal"))
 
     elif pom.sorte == "poison":
         gameOver()
@@ -412,10 +412,10 @@ def start_game(player):
         for x in range(width):
             if (tileIsSpecial[x][y]):
                 dev.draw_image(7 + x * 11, 7 + y * 11,
-                               textures.getLevel()["special"])
+                               textures.loadAsset("special"))
             else:
                 dev.draw_image(7 + x * 11, 7 + y * 11,
-                               textures.getLevel()["normal"])
+                               textures.loadAsset("normal"))
     displayBlocks()
 
 
@@ -449,10 +449,10 @@ def message_handler(peer, msg):
             if otherSnakes.get(peer, None) != None:
                 if tileIsSpecial[otherSnakes[peer][0][0]][otherSnakes[peer][0][1]]:
                     dev.draw_image(
-                        otherSnakes[peer][0][0]*11 + 7, otherSnakes[peer][0][1]*11 + 7, textures.getLevel()["special"])
+                        otherSnakes[peer][0][0]*11 + 7, otherSnakes[peer][0][1]*11 + 7, textures.loadAsset("special"))
                 else:
                     dev.draw_image(
-                        otherSnakes[peer][0][0]*11 + 7, otherSnakes[peer][0][1]*11 + 7, textures.getLevel()["normal"])
+                        otherSnakes[peer][0][0]*11 + 7, otherSnakes[peer][0][1]*11 + 7, textures.loadAsset("normal"))
             otherSnakes[peer] = msg[2]
             if me is not None:
                 player.displaySnake(otherSnakes[peer])
@@ -471,10 +471,10 @@ def message_handler(peer, msg):
             for pos in otherSnakes[peer]:
                 if tileIsSpecial[pos[0]][pos[1]]:
                     dev.draw_image(
-                        pos[0]*11 + 7, pos[1]*11 + 7, textures.getLevel()["special"])
+                        pos[0]*11 + 7, pos[1]*11 + 7, textures.loadAsset("special"))
                 else:
                     dev.draw_image(
-                        pos[0]*11 + 7, pos[1]*11 + 7, textures.getLevel()["normal"])
+                        pos[0]*11 + 7, pos[1]*11 + 7, textures.loadAsset("normal"))
         elif me == None:
             start_game_soon(master() ^ int(random() * 2))
         else:
@@ -516,7 +516,7 @@ def askMap(then):
             then()
 
     dev.clear_screen(bg)
-    dev.draw_image(15, 30, textures.mapSelection)
+    dev.draw_image(15, 30, textures.loadTitle("map-selection"))
     ui.menu(4, 111, 8, 7, 2, [apps.accent, '#000'], lambda: [
         "Sand", "Grass", "Space"], "Grass", menu_handler)
 
@@ -526,7 +526,7 @@ def showScore():
 
     dev.clear_screen(bg)
 
-    dev.draw_image(27, 12, textures.meilleurScoreText)
+    dev.draw_image(27, 12, textures.loadTitle("meilleu-score-text"))
     ui.center(dev.screen_width//2, 220, " Quit ", bg, apps.accent)
 
     if len(classement.highscore) == 0:

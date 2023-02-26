@@ -48,7 +48,7 @@ def menu():  # pick an app with a menu and call its handler
         if i == len(titleAnimationIdle) - 1:
             animate(0)
             return
-        dev.draw_image(15, 20, textures.load(titleAnimationIdle[i]))
+        dev.draw_image(15, 20, textures.loadTitle(titleAnimationIdle[i]))
         dev.after(0.2, lambda: animate(i + 1))
 
     dev.clear_screen(bg)

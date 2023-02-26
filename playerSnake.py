@@ -68,24 +68,4 @@ class PlayerSnake:
         elif self.positions[i][1] < self.positions[i-1][1]:
             return "T"
 
-    def manger(self, pomme, blocks, tileIsSpecial):
-        if pomme.sorte == "mid":
-            self.score += 1
-
-        elif pomme.sorte == "god":
-            self.score += 10
-
-        elif pomme.sorte == "block":
-            bloc = objects.Blocs(self.positions[0][0], self.positions[0][-1])
-            blocks.append(bloc)
-
-        elif pomme.sorte == "smallDick":
-            ranTemp= int((random() * (len(self.positions)/5))+1)
-            for i in range(ranTemp):
-                pos = self.positions.pop(0)
-                if tileIsSpecial[pos[0]][pos[1]]:
-                    dev.draw_image(
-                        pos[0]*11 + 7, pos[1]*11 + 7, textures.levels["grass"]["special"])
-                else:
-                    dev.draw_image(
-                        pos[0]*11 + 7, pos[1]*11 + 7, textures.levels["grass"]["normal"])
+    

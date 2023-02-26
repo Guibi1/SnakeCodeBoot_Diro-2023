@@ -999,6 +999,14 @@ def getLevel():
     return levels[currentLevel]
 
 
+def loadAsset(name, type):
+    return open(getLevel() + "-" + name + ("-" + type) if type is not None else "" + ".txt").read()
+
+
+def loadTitle(name):
+    return open(name).read()
+
+
 levels = {
     "grass": {
         "normal": grass,

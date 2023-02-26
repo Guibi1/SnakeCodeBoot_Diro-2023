@@ -46,15 +46,8 @@ def peers():
 def peers_menu(activity, menu_handler):
     dev.clear_screen(apps.bg)
 
-    dev.draw_image(40, 20, textures.ffaText)
-
-    ui.center(dev.screen_width//2, 38, net.id, apps.accent, apps.bg)
-
-    bg = '#666'
-
-    dev.fill_rect(0, 58, dev.screen_width, 50, bg)
-    ui.center(dev.screen_width//2, 70, 'choose', apps.fg, bg)
-    ui.center(dev.screen_width//2, 86, 'mate', apps.fg, bg)
+    ui.center(dev.screen_width//2, 8, net.id, apps.fg, apps.bg)
+    dev.draw_image(38, 25, textures.ffaText)
 
     ui.menu(4, 111, 8, 7, 2, [apps.accent, apps.bg],
             peers, "Start", menu_handler)
@@ -86,6 +79,13 @@ def find(activity, message_handler, startHandle):  # message_handler called when
                 net.send(peer, mating_msg)  # accept mating proposal
                 proposing = None
                 ids.append(peer)
+                dev.fill_rect(0, 80, dev.screen_width,
+                              20 * len(ids) + 1, apps.bg)
+                ui.center(dev.screen_width//2, 80,
+                          "Team", apps.accent, apps.bg)
+                for i, id in enumerate(ids):
+                    ui.center(dev.screen_width//2, 100 + 20 *
+                              i, id, apps.fg, apps.bg)
         elif msg == start_msg:
             start()
         else:

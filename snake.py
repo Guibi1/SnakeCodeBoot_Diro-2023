@@ -6,6 +6,7 @@ import ui
 import playerSnake as player
 import objects
 import textures
+import AI
 
 bg = '#000'  # general background color
 currentLevel = "grass"  # grass sand space

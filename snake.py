@@ -7,6 +7,7 @@ import playerSnake as player
 import objects
 import textures
 import AI
+import classement
 
 bg = '#000'  # general background color
 currentLevel = "grass"  # grass sand space
@@ -72,6 +73,10 @@ def gameOver():
     global me
     me = None
     dev.clear_screen(bg)
+    classement().file=open("score")
+    classement()
+    for i, score in enumerate(classement.classement().getHighscore()):
+        ui.center(dev.screen_width//2, 100*(1/i), score, "#fff", bg)
 
 
 def setCurrentLevel(level):
@@ -157,10 +162,10 @@ def button_handler(event, resume):
             if playerSnake.positions[-1] == block:
                 gameOver()
 
-        if playerSnake.positions[-1][0] < 0 or playerSnake.positions[-1][0] > width:
+        if playerSnake.positions[-1][0] < 0 or playerSnake.positions[-1][0] >= width:
             gameOver()
 
-        elif playerSnake.positions[-1][1] < 0 or playerSnake.positions[-1][1] > height:
+        elif playerSnake.positions[-1][1] < 0 or playerSnake.positions[-1][1] >= height:
             gameOver()
 
         if networked:

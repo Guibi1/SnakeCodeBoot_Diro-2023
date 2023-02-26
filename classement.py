@@ -1,13 +1,14 @@
 import playerSnake
 
 
-class classement():
+class classement:
     highscore = []
 
     def __init__(self):
 
         file = open("score")
         highscore = file.read().split(";")
+
         pass
 
     def addHighScore(self):
@@ -26,4 +27,8 @@ class classement():
         for score in self.highscore:
             file.write(score)
             file.write(";")
-            
+
+        file.close()
+
+    def getHighscore(self):
+        return self.highscore

@@ -80,7 +80,8 @@ class PlayerSnake:
             blocks.append(bloc)
 
         elif pomme.sorte == "smallDick":
-            for i in range(5):
+            ranTemp= int((random() * (len(self.positions)/5))+1)
+            for i in range(ranTemp):
                 pos = self.positions.pop(0)
                 if tileIsSpecial[pos[0]][pos[1]]:
                     dev.draw_image(

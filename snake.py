@@ -101,6 +101,7 @@ playerSnake = player.PlayerSnake()
 player.displaySnake(playerSnake.positions)
 otherSnakes = {}
 pomme = None
+pommeTimer = 0
 blocks = []
 tileIsSpecial = []
 
@@ -227,6 +228,8 @@ def getRandomPos():
 
 
 def getRandomPomme():
+    global pommeTimer
+
     nbRandom = int(random()*120+1)
 
     pos = None
@@ -244,11 +247,11 @@ def getRandomPomme():
         return objects.Apple("portal", pos[0], pos[1])
     elif nbRandom > 90:
         p = objects.Apple("poison", pos[0], pos[1])
-        dev.after(1, lambda: manger(p))
+        pommeTimer = dev.after(10, lambda: manger(p))
         return p
     elif nbRandom > 80:
         p = objects.Apple("chrono", pos[0], pos[1])
-        dev.after(10, lambda: manger(p))
+        pommeTimer = dev.after(10, lambda: manger(p))
         return p
     elif nbRandom > 70:
         return objects.Apple("block", pos[0], pos[1])
@@ -261,22 +264,34 @@ def getRandomPomme():
     return objects.Apple("mid", pos[0], pos[1])
 
 
-def manger(pomme):
-    if playerSnake.positions[-1] != pomme.getPosition():
-        if pomme.sorte == "chrono":
+def manger(pom):
+    global pomme, pommeTimer
+    if not playerSnake.positions[-1] == pom.getPosition():
+        if pom.sorte == "chrono":
             playerSnake.score -= 5
-        pomme = getRandomPomme()
+
+        if tileIsSpecial[pomme.x][pomme.y]:
+            dev.draw_image(
+                pomme.x*11 + 7, pomme.y*11 + 7, textures.getLevel()["special"])
+        else:
+            dev.draw_image(
+                pomme.x*11 + 7, pomme.y*11 + 7, textures.getLevel()["normal"])
+
+        pomme = None
+
+        print(pommeTimer)
+
         for id in mate.ids:
             net.send(id, [msg_type, "eatPomme"])
         return
 
-    if pomme.sorte == "mid":
+    if pom.sorte == "mid":
         playerSnake.score += 1
 
-    elif pomme.sorte == "god":
+    elif pom.sorte == "god":
         playerSnake.score += 10
 
-    elif pomme.sorte == "block":
+    elif pom.sorte == "block":
         blocks.append((
             playerSnake.positions[0][0], playerSnake.positions[0][-1]))
         displayBlocks()
@@ -284,7 +299,7 @@ def manger(pomme):
             for id in mate.ids:
                 net.send(id, [msg_type, 'setBlocks', blocks])
 
-    elif pomme.sorte == "small":
+    elif pom.sorte == "small":
         ranTemp = int((random() * (len(playerSnake.positions)/5))+1)
         for i in range(ranTemp):
             pos = playerSnake.positions.pop(0)
@@ -295,11 +310,15 @@ def manger(pomme):
                 dev.draw_image(
                     pos[0]*11 + 7, pos[1]*11 + 7, textures.getLevel()["normal"])
 
-    elif pomme.sorte == "poison":
+    elif pom.sorte == "poison":
         gameOver()
 
-    elif pomme.sorte == "portal":
+    elif pom.sorte == "portal":
         playerSnake.tpTo = (5, 3)
+
+    if (pommeTimer > 0):
+        dev.stopAfter(pommeTimer)
+        pommeTimer = 0
 
 
 def start_game_soon(player):

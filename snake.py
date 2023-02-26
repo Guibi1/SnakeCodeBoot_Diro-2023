@@ -222,6 +222,8 @@ def getRandomPomme():
 
 def manger(pomme):
     if playerSnake.positions[-1] != pomme.getPosition():
+        if pomme.sorte == "chrono":
+            playerSnake.score -= 5
         pomme = None
         for id in mate.ids:
             net.send(id, [msg_type, "eatPomme"])
@@ -251,10 +253,6 @@ def manger(pomme):
 
     elif pomme.sorte == "poison":
         gameOver()
-
-    elif pomme.sorte == "chrono":
-
-        playerSnake.score -= 5
 
     elif pomme.sorte == "portal":
         playerSnake.tpTo = (5, 3)

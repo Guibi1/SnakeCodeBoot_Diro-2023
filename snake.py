@@ -6,6 +6,7 @@ import ui
 import playerSnake as player
 import objects
 import textures
+import AI
 
 bg = '#000'  # general background color
 currentLevel = "grass"  # grass sand space
@@ -78,12 +79,12 @@ def setCurrentLevel(level):
     textures.currentLevel = level
 
     if currentLevel == "grass":
-        blocks = [()]
+        blocks = []
     elif currentLevel == "sand":
         blocks = [(3, 8), (2, 9), (7, 2), (9, 4),
                   (1, 17), (10, 5), (8, 9), (10, 15)]
     else:
-        blocks = [()]
+        blocks = []
 
     tileIsSpecial = []
     for _ in range(width):
@@ -207,7 +208,6 @@ def displayBlocks():
                        block[1], textures.getLevel()["block"])
 
 
-
 def getRandomPos():
     x = int(random()*width)
     y = int(random()*height)
@@ -232,11 +232,11 @@ def getRandomPomme():
         return objects.Apple("portal", pos[0], pos[1])
     elif nbRandom > 90:
         p = objects.Apple("poison", pos[0], pos[1])
-        dev.after(10, manger(p))
+        dev.after(10, lambda: manger(p))
         return p
     elif nbRandom > 80:
         p = objects.Apple("chrono", pos[0], pos[1])
-        dev.after(10, manger(p))
+        dev.after(10, lambda: manger(p))
         return p
     elif nbRandom > 70:
         return objects.Apple("block", pos[0], pos[1])

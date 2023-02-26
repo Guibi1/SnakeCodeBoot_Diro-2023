@@ -517,7 +517,7 @@ def showScore():
 
     dev.clear_screen(bg)
 
-    dev.draw_image(27, 10, textures.scoreText)
+    dev.draw_image(27, 12, textures.meilleurScoreText)
     ui.center(dev.screen_width//2, 220, " Quit ", bg, apps.accent)
 
     if len(classement.highscore) == 0:

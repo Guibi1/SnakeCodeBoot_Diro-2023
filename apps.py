@@ -47,6 +47,7 @@ def menu():  # pick an app with a menu and call its handler
         dev.draw_image(15, 20, textures.titleAnimationIdle[i])
         dev.after(0.2, lambda: animate(i + 1))
 
+    dev.clear_screen(bg)
     animate(0)
 
     ui.center(dev.screen_width//2, splash.mesg_y +

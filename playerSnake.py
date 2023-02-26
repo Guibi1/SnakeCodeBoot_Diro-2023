@@ -19,8 +19,10 @@ def displaySnake(positions):
             return "T"
 
     # Tail
+    tailDirection = "R" if positions[0][0] >= positions[1][0] else (
+        "T" if positions[0][0] <= positions[1][0] else ("L" if positions[0][1] >= positions[1][1] else "R"))
     dev.draw_image(
-        positions[0][0]*11 + 7, positions[0][1]*11 + 7, textures.getLevel()["snakeTail"][movingTo(0)])
+        positions[0][0]*11 + 7, positions[0][1]*11 + 7, textures.getLevel()["snakeTail"][tailDirection])
     # Head
     dev.draw_image(
         positions[-1][0]*11 + 7, positions[-1][1]*11 + 7, textures.getLevel()["snakeHead"][movingTo()])

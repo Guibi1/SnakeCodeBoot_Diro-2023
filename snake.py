@@ -208,7 +208,6 @@ def displayBlocks():
                        block[1], textures.getLevel()["block"])
 
 
-
 def getRandomPos():
     x = int(random()*width)
     y = int(random()*height)
@@ -233,7 +232,7 @@ def getRandomPomme():
         return objects.Apple("portal", pos[0], pos[1])
     elif nbRandom > 90:
         p = objects.Apple("poison", pos[0], pos[1])
-        dev.after(10, lambda: manger(p))
+        dev.after(1, lambda: manger(p))
         return p
     elif nbRandom > 80:
         p = objects.Apple("chrono", pos[0], pos[1])

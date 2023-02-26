@@ -51,7 +51,7 @@ def init_game():
     playerSnake = player.PlayerSnake()
     otherSnakes = {}
     pomme = None
-    blocks = []
+
     setCurrentLevel(currentLevel)
 
     dev.clear_screen(bg)
@@ -72,10 +72,18 @@ def gameOver():
 
 
 def setCurrentLevel(level):
-    global currentLevel, tileIsSpecial
+    global currentLevel, tileIsSpecial, blocks
 
     currentLevel = level
     textures.currentLevel = level
+
+    if currentLevel == "grass":
+        blocks = [()]
+    elif currentLevel == "sand":
+        blocks = [(3, 8), (2, 9), (7, 2), (9, 4),
+                  (1, 17), (10, 5), (8, 9), (10, 15)]
+    else:
+        blocks = [()]
 
     tileIsSpecial = []
     for _ in range(width):
@@ -92,7 +100,6 @@ otherSnakes = {}
 pomme = None
 blocks = []
 tileIsSpecial = []
-
 
 
 def button_handler(event, resume):
@@ -192,6 +199,14 @@ def button_handler(event, resume):
             pass
         resume()
 
+
+def displayBlocks():
+    for block in blocks:
+        print(block)
+        dev.draw_image(7 + 11 * block[0], 7 + 11 *
+                       block[1], textures.getLevel()["block"])
+
+
 def getRandomPomme():
     nbRandom = int(random()*120+1)
     x = int(random()*11)
@@ -218,7 +233,6 @@ def getRandomPomme():
     return objects.Apple("mid", x, y)
 
 
-
 def manger(pomme):
     if pomme.sorte == "mid":
         playerSnake.score += 1
@@ -227,9 +241,9 @@ def manger(pomme):
         playerSnake.score += 10
 
     elif pomme.sorte == "block":
-        bloc = objects.Blocs(
-            playerSnake.positions[0][0], playerSnake.positions[0][-1])
-        blocks.append(bloc)
+        blocks.append(objects.Blocs(
+            playerSnake.positions[0][0], playerSnake.positions[0][-1]))
+        displayBlocks()
 
     elif pomme.sorte == "small":
         ranTemp = int((random() * (len(playerSnake.positions)/5))+1)
@@ -266,6 +280,7 @@ def start_game(player):
     reset_mate_timeout()
     ui.track_button_presses(button_handler)  # start tracking button presses
     dev.clear_screen(bg)
+
     for y in range(height):
         for x in range(width):
             if (tileIsSpecial[x][y]):
@@ -274,6 +289,7 @@ def start_game(player):
             else:
                 dev.draw_image(7 + x * 11, 7 + y * 11,
                                textures.getLevel()["normal"])
+    displayBlocks()
 
 
 def snake_non_networked():
@@ -291,7 +307,7 @@ def master():  # the master is the node with the smallest id
 
 
 def message_handler(peer, msg):
-    global pong_timer, otherSnakes, pomme, currentLevel
+    global pong_timer, otherSnakes, pomme, currentLevel, blocks
     if peer is None:
         if msg == 'start':
             networkStart()
@@ -319,6 +335,9 @@ def message_handler(peer, msg):
             pomme = None
         elif msg[1] == 'setLevel':
             setCurrentLevel(msg[2])
+        elif msg[1] == 'setBlocks':
+            blocks = msg[2]
+            displayBlocks()
         elif me == None:
             start_game_soon(master() ^ int(random() * 2))
         else:

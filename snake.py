@@ -94,6 +94,7 @@ blocks = []
 tileIsSpecial = []
 
 
+
 def button_handler(event, resume):
     global ping_timer, pong_timer, tick_counter, pomme, blocks
     if me is None:
@@ -191,7 +192,6 @@ def button_handler(event, resume):
             pass
         resume()
 
-
 def getRandomPomme():
     nbRandom = int(random()*120+1)
     x = int(random()*11)
@@ -216,6 +216,7 @@ def getRandomPomme():
     elif nbRandom > 40:
         return objects.Apple("small", x, y)
     return objects.Apple("mid", x, y)
+
 
 
 def manger(pomme):

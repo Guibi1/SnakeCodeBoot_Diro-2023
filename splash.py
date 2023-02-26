@@ -20,12 +20,15 @@ def mesg():  # draw the message
 
 
 def show():
+    titleAnimation = ["titre1", "titre2", "titre3", "titre4",
+                      "titre5", "titre6", "titre7", "titre8", "titre9", "titre10"]
+
     dev.clear_screen(apps.bg)
 
     def animate(i):
-        if i == len(textures.titleAnimation) - 1:
+        if i == len(titleAnimation) - 1:
             return
-        dev.draw_image(15, 20, textures.titleAnimation[i])
+        dev.draw_image(15, 20, textures.loadTitle(titleAnimation[i]))
         dev.after(0.2, lambda: animate(i + 1))
 
     animate(0)

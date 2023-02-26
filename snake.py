@@ -73,6 +73,9 @@ def gameOver():
     quitWhenButtonOk()
     classement.addHighScore(playerSnake.score)
 
+    for id in mate.ids:
+        net.send(id, [msg_type, "dead"])
+
     dev.clear_screen(bg)
 
     dev.draw_image(17, 10, textures.gameOverText)
@@ -101,7 +104,7 @@ def setCurrentLevel(level):
                   (2, 13), (3, 13),                      (7, 13), (8, 13)
                   ]
     elif currentLevel == "sand":
-        blocks = [(3, 8), (2, 9), (7, 2), (9, 4),
+        blocks = [(3, 8), (7, 2), (9, 4),
                   (1, 17), (10, 5), (8, 9), (10, 15)]
     else:
         blocks = [(1, 10), (3, 10), (5, 10), (7, 10), (9, 10),
@@ -451,7 +454,8 @@ def message_handler(peer, msg):
                     dev.draw_image(
                         otherSnakes[peer][0][0]*11 + 7, otherSnakes[peer][0][1]*11 + 7, textures.getLevel()["normal"])
             otherSnakes[peer] = msg[2]
-            player.displaySnake(otherSnakes[peer])
+            if me is not None:
+                player.displaySnake(otherSnakes[peer])
         elif msg[1] == 'newPomme':
             pomme = objects.Apple(msg[2], msg[3], msg[4])
             pomme.display()
@@ -463,6 +467,14 @@ def message_handler(peer, msg):
         elif msg[1] == 'setBlocks':
             blocks = msg[2]
             displayBlocks()
+        elif msg[1] == "dead":
+            for pos in otherSnakes[peer]:
+                if tileIsSpecial[pos[0]][pos[1]]:
+                    dev.draw_image(
+                        pos[0]*11 + 7, pos[1]*11 + 7, textures.getLevel()["special"])
+                else:
+                    dev.draw_image(
+                        pos[0]*11 + 7, pos[1]*11 + 7, textures.getLevel()["normal"])
         elif me == None:
             start_game_soon(master() ^ int(random() * 2))
         else:

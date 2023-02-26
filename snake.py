@@ -131,7 +131,7 @@ timeSlowDownRatio = 5
 
 
 def button_handler(event, resume):
-    global ping_timer, pong_timer, tick_counter, pommes, blocks
+    global ping_timer, pong_timer, tick_counter, pommes, blocks, otherSnakes
     if me is None:
         return  # not yet playing or no longer playing
 
@@ -150,14 +150,17 @@ def button_handler(event, resume):
         rallonger = False
         if len(pommes) == 0:
             if not networked or master():
+                oldPommes = pommes
                 addRandomPomme()
                 for pomme in pommes:
                     pomme.display()
 
                 if networked:
-                    for id in mate.ids:
-                        net.send(id, [msg_type, "newPomme",
-                                      pomme.sorte, pomme.x, pomme.y])
+                    for pomme in pommes:
+                        if pomme not in oldPommes:
+                            for id in mate.ids:
+                                net.send(id, [msg_type, "newPomme",
+                                              pomme.sorte, pomme.x, pomme.y])
        # pas sur
 
         for pomme in pommes:
@@ -202,9 +205,9 @@ def button_handler(event, resume):
             if playerSnake.positions[-1] == position:
                 gameOver()
 
-        for ennemy in otherSnakes:
-            for position in ennemy:
-                if playerSnake.positions[-1] == position:
+        for name in otherSnakes:
+            for position in otherSnakes[name]:
+                if playerSnake.positions[-1][0] == position[0] and playerSnake.positions[-1][1] == position[1]:
                     gameOver()
 
         if networked:
@@ -446,13 +449,14 @@ def message_handler(peer, msg):
         elif msg[1] == 'ping':
             reset_mate_timeout()
         elif msg[1] == 'snakePositions':
-            if otherSnakes.get(peer, None) != None:
-                if tileIsSpecial[otherSnakes[peer][0][0]][otherSnakes[peer][0][1]]:
-                    dev.draw_image(
-                        otherSnakes[peer][0][0]*11 + 7, otherSnakes[peer][0][1]*11 + 7, textures.getLevel()["special"])
-                else:
-                    dev.draw_image(
-                        otherSnakes[peer][0][0]*11 + 7, otherSnakes[peer][0][1]*11 + 7, textures.getLevel()["normal"])
+            if me is not None:
+                if otherSnakes.get(peer, None) != None:
+                    if tileIsSpecial[otherSnakes[peer][0][0]][otherSnakes[peer][0][1]]:
+                        dev.draw_image(
+                            otherSnakes[peer][0][0]*11 + 7, otherSnakes[peer][0][1]*11 + 7, textures.getLevel()["special"])
+                    else:
+                        dev.draw_image(
+                            otherSnakes[peer][0][0]*11 + 7, otherSnakes[peer][0][1]*11 + 7, textures.getLevel()["normal"])
             otherSnakes[peer] = msg[2]
             if me is not None:
                 player.displaySnake(otherSnakes[peer])

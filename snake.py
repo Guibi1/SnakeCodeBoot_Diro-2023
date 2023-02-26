@@ -113,7 +113,7 @@ def button_handler(event, resume):
         rallonger = False
         if pomme is None:
             if not networked or master():
-                pomme = objects.getRandomPomme()
+                pomme = getRandomPomme()
                 pomme.display()
                 if networked:
                     for id in mate.ids:
@@ -236,10 +236,10 @@ def manger(pomme):
             pos = playerSnake.positions.pop(0)
             if tileIsSpecial[pos[0]][pos[1]]:
                 dev.draw_image(
-                    pos[0]*11 + 7, pos[1]*11 + 7, textures.levels["grass"]["special"])
+                    pos[0]*11 + 7, pos[1]*11 + 7, textures.getLevel()["special"])
             else:
                 dev.draw_image(
-                    pos[0]*11 + 7, pos[1]*11 + 7, textures.levels["grass"]["normal"])
+                    pos[0]*11 + 7, pos[1]*11 + 7, textures.getLevel()["normal"])
 
     elif pomme.sorte == "poison":
         gameOver()
@@ -248,11 +248,11 @@ def manger(pomme):
         if playerSnake.positions[-1] == pomme.getPosition():
             pass
         else:
-            playerSnake.score-=5
-            
+            playerSnake.score -= 5
+
     elif pomme.sorte == "portal":
-        playerSnake.nextX= 5-pomme.x
-        playerSnake.nextY=5-pomme.y
+        playerSnake.nextX = 5-pomme.x
+        playerSnake.nextY = 5-pomme.y
 
 
 def start_game_soon(player):

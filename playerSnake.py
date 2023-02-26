@@ -19,8 +19,8 @@ def displaySnake(positions):
             return "T"
 
     # Tail
-    tailDirection = "R" if positions[0][0] >= positions[1][0] else (
-        "T" if positions[0][0] <= positions[1][0] else ("L" if positions[0][1] >= positions[1][1] else "R"))
+    tailDirection = "R" if positions[0][0] > positions[1][0] else (
+        "L" if positions[0][0] < positions[1][0] else ("B" if positions[0][1] > positions[1][1] else "T"))
     dev.draw_image(
         positions[0][0]*11 + 7, positions[0][1]*11 + 7, textures.getLevel()["snakeTail"][tailDirection])
     # Head
@@ -28,8 +28,25 @@ def displaySnake(positions):
         positions[-1][0]*11 + 7, positions[-1][1]*11 + 7, textures.getLevel()["snakeHead"][movingTo()])
     # Body
     for i, pos in enumerate(positions[1:-1]):
+        next = positions[i + 2]
+        last = positions[i]
+        print(last, pos, next)
+        type = "snakeLine"
+        direction = "L" if pos[0] > next[0] else (
+            "R" if pos[0] < next[0] else ("T" if pos[1] > next[1] else "B"))
+
+        if (pos[1] == last[1] and pos[1] - next[1] == last[0] - pos[0]) or (pos[0] == last[0] and next[0] - pos[0] == last[1] - pos[1]):
+            type = "snakeCorner"
+            direction = "R" if pos[0] > next[0] else (
+                "L" if pos[0] < next[0] else ("B" if pos[1] > next[1] else "T"))
+        elif next[0] != last[0] and next[1] != last[1]:
+            print("oof")
+            type = "snakeCorner"
+            direction = "T" if pos[0] > next[0] else (
+                "B" if pos[0] < next[0] else ("R" if pos[1] > next[1] else "L"))
+
         dev.draw_image(pos[0]*11 + 7, pos[1]*11 + 7,
-                       textures.getLevel()["snakeLine"][movingTo(i)])
+                       textures.getLevel()[type][direction])
 
 
 class PlayerSnake:
@@ -41,18 +58,6 @@ class PlayerSnake:
 
     def __init__(self):
         pass
-
-    def display(self):
-        # Tail
-        dev.draw_image(
-            self.positions[0][0]*11 + 7, self.positions[0][1]*11 + 7, textures.getLevel()["snakeTail"][self.movingTo(0)])
-        # Head
-        dev.draw_image(
-            self.positions[-1][0]*11 + 7, self.positions[-1][1]*11 + 7, textures.getLevel()["snakeHead"][self.movingTo()])
-        # Body
-        for i, pos in enumerate(self.positions[1:-1]):
-            dev.draw_image(pos[0]*11 + 7, pos[1]*11 + 7,
-                           textures.getLevel()["snakeLine"][self.movingTo(i)])
 
     def move(self, rallonger):
         if self.tpTo is not None:

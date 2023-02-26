@@ -103,7 +103,7 @@ def setCurrentLevel(level):
 
 tick_counter = 1
 playerSnake = player.PlayerSnake()
-playerSnake.display()
+player.displaySnake(playerSnake.positions)
 otherSnakes = {}
 pomme = None
 pommeTimer = 0
@@ -152,11 +152,11 @@ def button_handler(event, resume):
                     playerSnake.positions[0][0]*11 + 7, playerSnake.positions[0][1]*11 + 7, textures.getLevel()["normal"])
 
         playerSnake.move(rallonger)
-        playerSnake.display()
         if networked:
             for id in mate.ids:
                 net.send(id, [msg_type, "snakePositions",
                               playerSnake.positions])
+        player.displaySnake(playerSnake.positions)
 
         for block in blocks:
             if playerSnake.positions[-1] == block:

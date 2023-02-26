@@ -275,6 +275,9 @@ def addRandomPomme():
         for p in playerSnake.positions:
             if p == pos:
                 posValid = False
+        for p in blocks.positions:
+                if p==pos2:
+                    posValid =False 
 
     if nbRandom > 110:
         addRandomPomme()
@@ -288,6 +291,9 @@ def addRandomPomme():
             for p in playerSnake.positions:
                 if p == pos2:
                     posValid = False
+            for p in blocks.positions:
+                if p==pos2:
+                    posValid =False    
         p = objects.Apple("portal", pos[0], pos[1])
         d = objects.Apple("portal", pos2[0], pos2[1])
         pommeTimer = dev.after(10, lambda: manger(p))

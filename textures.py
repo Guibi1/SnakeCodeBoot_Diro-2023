@@ -1043,7 +1043,8 @@ levels = {
             "chrono": spatialAppleChrono,
             "block": spatialBlocApple,
             "speed": spatialAppleSpeed,
-            "multi": spatialAppleMulti
+            "multi": spatialAppleMulti,
+            "small": sandApple
         },
         "snakeHead": {
             "B": snakeHeadSpatial0,

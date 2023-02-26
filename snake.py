@@ -82,7 +82,7 @@ def setCurrentLevel(level):
         row = []
         tileIsSpecial.append(row)
         for _ in range(height):
-            row.append(random() > (0.9 if currentLevel == "grass" else 0.98))
+            row.append(random() > (0.99 if currentLevel == "sand" else 0.9))
 
 
 tick_counter = 1
@@ -120,7 +120,7 @@ def button_handler(event, resume):
                         net.send(id, [msg_type, "newPomme",
                                       pomme.sorte, pomme.x, pomme.y])
         elif playerSnake.positions[-1] == pomme.getPosition():
-            playerSnake.manger(pomme, blocks, tileIsSpecial, gameOver)
+            manger(pomme)
             pomme = None
             rallonger = True
             for id in mate.ids:
@@ -214,7 +214,7 @@ def getRandomPomme():
     elif nbRandom > 50:
         return objects.Apple("god", x, y)
     elif nbRandom > 40:
-        return objects.Apple("smallDick", x, y)
+        return objects.Apple("small", x, y)
     return objects.Apple("mid", x, y)
 
 
@@ -230,7 +230,7 @@ def manger(pomme):
             playerSnake.positions[0][0], playerSnake.positions[0][-1])
         blocks.append(bloc)
 
-    elif pomme.sorte == "smallDick":
+    elif pomme.sorte == "small":
         ranTemp = int((random() * (len(playerSnake.positions)/5))+1)
         for i in range(ranTemp):
             pos = playerSnake.positions.pop(0)

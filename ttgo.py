@@ -44,7 +44,11 @@ def button(index):
 
 
 def after(delay, callback):
-    js.setTimeout(callback, delay*1000)
+    return js.setTimeout(callback, delay*1000)
+
+
+def stopAfter(id):
+    js.clearTimeout(id)
 
 
 def stop():

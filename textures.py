@@ -1000,7 +1000,7 @@ def getLevel():
 
 
 def loadAsset(name, type):
-    return open(getLevel() + "-" + name + ("-" + type) if type is not None else "" + ".txt").read()
+    return open(getLevel() + "-" + name + ("-" + type) if type is not None else "").read()
 
 
 def loadTitle(name):

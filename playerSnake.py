@@ -51,10 +51,13 @@ class PlayerSnake:
     tpTo = None
     nextX = 1
     nextY = 0
-    positions = [(0, 0), (0, 1), (0, 2)]
+    positions = []
     score = 0
 
-    def __init__(self):
+    def __init__(self, x):
+        self.positions.append((x, 1))
+        self.positions.append((x, 2))
+        self.positions.append((x, 3))
         pass
 
     def move(self, rallonger):

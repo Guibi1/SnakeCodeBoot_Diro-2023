@@ -20,6 +20,7 @@ me = None  # is 0 when non-networked, and 0 or 1 when networked
 
 # the following global variables are useful for the networked version
 
+ai = False
 networked = False  # are we playing over the network?
 msg_type = "SNAKENET"   # type of the messages sent between the nodes, set later
 ping_timer = 0      # used to check that the mate is still with us
@@ -50,7 +51,8 @@ def init_game():
     global me, tick_counter, playerSnake, otherSnakes, pommes, blocks, tileIsSpecial
     me = None
     tick_counter = 1
-    playerSnake = player.PlayerSnake()
+    playerSnake = player.PlayerSnake(
+        int(net.id[-1]) if net.id is not None else 5)
     otherSnakes = {}
     pommes = []
 
@@ -87,12 +89,13 @@ def setCurrentLevel(level):
     textures.currentLevel = level
 
     if currentLevel == "grass":
-        blocks = []
+        blocks = [(9, 16), (9, 15), (9, 14), (10, 15),
+                  (4, 7), (5, 7), (8, 2), (7, 2), (6, 2)]
     elif currentLevel == "sand":
         blocks = [(3, 8), (2, 9), (7, 2), (9, 4),
                   (1, 17), (10, 5), (8, 9), (10, 15)]
     else:
-        blocks = []
+        blocks = [(3, 6), (10, 16), (7, 8), (9, 1), (5, 2)]
 
     tileIsSpecial = []
     for _ in range(width):
@@ -103,7 +106,7 @@ def setCurrentLevel(level):
 
 
 tick_counter = 1
-playerSnake = player.PlayerSnake()
+playerSnake = player.PlayerSnake(int(net.id[-1]) if net.id is not None else 5)
 player.displaySnake(playerSnake.positions)
 otherSnakes = {}
 pommes = []
@@ -156,6 +159,11 @@ def button_handler(event, resume):
             else:
                 dev.draw_image(
                     playerSnake.positions[0][0]*11 + 7, playerSnake.positions[0][1]*11 + 7, textures.getLevel()["normal"])
+
+        if ai:
+            AI.pathFindingAlgorithm([pomme], playerSnake, blocks)
+            print(otherSnakes[AI.name])
+            player.displaySnake(otherSnakes[AI.name])
 
         playerSnake.move(rallonger)
         if networked:
@@ -445,9 +453,10 @@ def networkStart():
         net.send(id, [msg_type, ""])
 
 
-def snake(n):
-    global networked
+def snake(n, hasAi):
+    global networked, ai
     networked = n
+    ai = hasAi
 
     if networked:
         mate.find(msg_type, message_handler,
@@ -480,5 +489,17 @@ def askMap(then):
         "Sand", "Grass", "Space"], "Grass", menu_handler)
 
 
-apps.register('SNAKE', lambda: snake(False), False)
-apps.register('SNAKENET', lambda: snake(True), True)
+def showScore():
+    dev.clear_screen(bg)
+
+    dev.draw_image(17, 10, textures.scoreText)
+
+    for i, score in enumerate(classement.highscore):
+        ui.center(dev.screen_width//2, 100 + 20 * i, "#" +
+                  str(i + 1) + " " + str(score), "#fff", bg)
+
+
+apps.register('SNAKE', lambda: snake(False, False), False)
+apps.register('SNAKENET', lambda: snake(True, False), True)
+apps.register('SCORE', lambda: showScore(), False)
+apps.register('SNAKEAI', lambda: snake(False, True), False)

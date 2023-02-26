@@ -91,13 +91,25 @@ def setCurrentLevel(level):
     textures.currentLevel = level
 
     if currentLevel == "grass":
-        blocks = [(9, 16), (9, 15), (9, 14), (10, 15),
-                  (4, 7), (5, 7), (8, 2), (7, 2), (6, 2)]
+        blocks = [(2,6),(3, 6),                      (7, 6), (8,6),
+                  (2,7),                                    (8, 7),
+                  (2,8),                                    (8, 8),
+
+
+                  (2,11),                                   (8,11),
+                  (2,12),                                   (8,12),
+                  (2,13),(3,13),                      (7,13),(8,13)
+                  ]
     elif currentLevel == "sand":
         blocks = [(3, 8), (2, 9), (7, 2), (9, 4),
                   (1, 17), (10, 5), (8, 9), (10, 15)]
     else:
-        blocks = [(3, 6), (10, 16), (7, 8), (9, 1), (5, 2)]
+        blocks = [  (1,10) , (3,10) , (5,10) , (7,10) , (9,10)  ,
+
+                    (1,13) , (3,13) , (5,13) , (7,13) , (9,13)
+
+
+                                     ,(5,17)]
 
     tileIsSpecial = []
     for _ in range(width):
@@ -319,7 +331,10 @@ def manger(pom):
     global pommes, pommeTimer, timeSlowDownRatio
     if not playerSnake.positions[-1] == pom.getPosition():
         if pom.sorte == "chrono":
-            playerSnake.score -= 5
+            if playerSnake.score - 5 < 0:
+                playerSnake.score = 0
+            else:
+                playerSnake.score -= 5
         for pomme in pommes:
             if tileIsSpecial[pomme.x][pomme.y]:
                 dev.draw_image(

@@ -113,6 +113,7 @@ pommes = []
 pommeTimer = 0
 blocks = []
 tileIsSpecial = []
+timeSlowDownRatio = 5
 
 
 def button_handler(event, resume):
@@ -127,7 +128,7 @@ def button_handler(event, resume):
         ui.center(dev.screen_width//2, dev.screen_height -
                   16, "Score " + str(playerSnake.score), '#FFF', bg)
 
-        if tick_counter % 5 != 0:
+        if tick_counter % timeSlowDownRatio != 0:
             dev.after(ui.time_delta, resume)  # need to wait...
             return
 
@@ -316,7 +317,7 @@ def addRandomPomme():
 
 
 def manger(pom):
-    global pommes, pommeTimer
+    global pommes, pommeTimer, timeSlowDownRatio
     if not playerSnake.positions[-1] == pom.getPosition():
         if pom.sorte == "chrono":
             playerSnake.score -= 5
@@ -366,6 +367,14 @@ def manger(pom):
         for pomme in pommes:
             if pomme.sorte == "portal" and not playerSnake.positions[-1] == pomme.getPosition():
                 playerSnake.tpTo = pomme.getPosition()
+    elif pom.sorte == "speed":
+        timeSlowDownRatio = 3
+
+        def l():
+            global timeSlowDownRatio
+            timeSlowDownRatio = 5
+
+        dev.after(3, l)
 
     if (pommeTimer > 0):
         dev.stopAfter(pommeTimer)

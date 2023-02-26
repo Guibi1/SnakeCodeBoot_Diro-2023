@@ -14,14 +14,6 @@ class Objects():
         dev.draw_image(self.x * 11 + 7, self.y * 11 + 7, self.tex)
 
 
-class Blocs(Objects):
-    tex = textures.fence
-
-    def __init__(self, x, y):
-        self.x = x
-        self.y = y
-
-
 class Apple(Objects):
     sorte = ""
 

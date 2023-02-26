@@ -232,7 +232,7 @@ def getRandomPomme():
         return objects.Apple("portal", pos[0], pos[1])
     elif nbRandom > 90:
         p = objects.Apple("poison", pos[0], pos[1])
-        dev.after(10, lambda: manger(p))
+        dev.after(1, lambda: manger(p))
         return p
     elif nbRandom > 80:
         p = objects.Apple("chrono", pos[0], pos[1])
@@ -265,9 +265,12 @@ def manger(pomme):
         playerSnake.score += 10
 
     elif pomme.sorte == "block":
-        blocks.append(objects.Blocs(
+        blocks.append((
             playerSnake.positions[0][0], playerSnake.positions[0][-1]))
         displayBlocks()
+        if networked:
+            for id in mate.ids:
+                net.send(id, [msg_type, 'setBlocks', blocks])
 
     elif pomme.sorte == "small":
         ranTemp = int((random() * (len(playerSnake.positions)/5))+1)

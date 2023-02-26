@@ -404,7 +404,7 @@ def askMap(then):
     dev.clear_screen(bg)
     dev.draw_image(15, 30, textures.mapSelection)
     ui.menu(4, 111, 8, 7, 2, [color, '#000'], lambda: [
-            "Sand", "Grass", "Space"], "Grass", menu_handler)
+        "Sand", "Grass", "Space"], "Grass", menu_handler)
 
 
 apps.register('SNAKE', lambda: snake(False), False)

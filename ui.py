@@ -4,11 +4,15 @@ import net
 time_delta = 0.05  # time increment for polling buttons, etc
 long_press = 0.5   # after 0.5 seconds button press is "long"
 
+
 def pad(text, width):  # pad text with spaces at end
     return text + ' ' * (width - len(text))
 
+
 def center(x, y, text, fg, bg):
-    dev.draw_text(x-len(text)*dev.font_width//2, y-dev.font_height//2, text, fg, bg)
+    dev.draw_text(x-len(text)*dev.font_width//2, y -
+                  dev.font_height//2, text, fg, bg)
+
 
 def draw_status(lines, direction, fg, bg):
     x = dev.screen_width//2
@@ -22,11 +26,13 @@ def draw_status(lines, direction, fg, bg):
     for i in range(len(lines)):
         center(x, y + dev.font_height*direction*i, lines[i], fg, bg)
 
+
 def when_buttons_released(done):  # call done when both buttons not pressed
     if dev.button(0) or dev.button(1):
         dev.after(time_delta, lambda: when_buttons_released(done))
     else:
         done()
+
 
 def track_button_presses(handler):  # call handler according to button presses
 
@@ -74,13 +80,15 @@ def track_button_presses(handler):  # call handler according to button presses
                         handle('tick', main_loop)  # ignore button press
                 else:
                     # long press of one button: generate "ok" event
-                    handle('left_ok' if b0 else 'right_ok', main_loop_when_released)
+                    handle('left_ok' if b0 else 'right_ok',
+                           main_loop_when_released)
             else:
                 timer -= 1
                 handle('tick', inner_loop)  # check again soon
 
         # indicate start of button press
         handle('left_down' if b0 else 'right_down', inner_loop)
+
 
 def menu(x, y, width, height, linespacing, colors, get_choices, selection, handler):
 
@@ -97,7 +105,7 @@ def menu(x, y, width, height, linespacing, colors, get_choices, selection, handl
         return sort(list(get_choices()))
 
     choices = get_choices_sorted()
-        
+
     def get_selected(default):
         return choices[selected] if selected < len(choices) else default
 
@@ -126,7 +134,7 @@ def menu(x, y, width, height, linespacing, colors, get_choices, selection, handl
 
     def refresh():
         nonlocal timer, choices
-        timer = int(1 / time_delta) # refresh every second
+        timer = int(1 / time_delta)  # refresh every second
         new_choices = get_choices_sorted()
         if new_choices != choices:
             choices = new_choices
@@ -157,7 +165,8 @@ def menu(x, y, width, height, linespacing, colors, get_choices, selection, handl
             if result is None:
                 refresh_and_start()
             elif result == start_selection:
-                dev.draw_text(x, cursor_y, pad(selection, width), '#000', '#FF0')
+                dev.draw_text(x, cursor_y, pad(
+                    selection, width), '#000', '#FF0')
                 handle(result, invalid_choice)
             else:
                 when_buttons_released(refresh_and_start)
@@ -167,7 +176,7 @@ def menu(x, y, width, height, linespacing, colors, get_choices, selection, handl
             timer -= 1
             if timer < 0:
                 refresh()
-            handle(None, resume) # need to wait... event is continuation
+            handle(None, resume)  # need to wait... event is continuation
 
     def refresh_and_start():
         refresh()
@@ -179,6 +188,7 @@ def menu(x, y, width, height, linespacing, colors, get_choices, selection, handl
 
     set_selected(selection)
     when_buttons_released(start)
+
 
 def sort(lst):
     lst = lst[:]

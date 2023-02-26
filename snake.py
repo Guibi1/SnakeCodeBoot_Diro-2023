@@ -120,7 +120,7 @@ def button_handler(event, resume):
                         net.send(id, [msg_type, "newPomme",
                                       pomme.sorte, pomme.x, pomme.y])
         elif playerSnake.positions[-1] == pomme.getPosition():
-            playerSnake.manger(pomme, blocks, tileIsSpecial)
+            playerSnake.manger(pomme, blocks, tileIsSpecial, gameOver)
             pomme = None
             rallonger = True
             for id in mate.ids:
@@ -190,6 +190,69 @@ def button_handler(event, resume):
         elif event == 'right_ok':
             pass
         resume()
+
+
+def getRandomPomme():
+    nbRandom = int(random()*120+1)
+    x = int(random()*11)
+    y = int(random()*11)
+
+    if nbRandom > 110:
+        return objects.Apple("multi", x, y)
+    elif nbRandom > 100:
+        return objects.Apple("portal", x, y)
+    elif nbRandom > 90:
+        return objects.Apple("poison", x, y)
+    elif nbRandom > 80:
+        p = objects.Apple("chrono", x, y)
+        dev.after(5, manger(p))
+        return p
+    elif nbRandom > 70:
+        return objects.Apple("block", x, y)
+    elif nbRandom > 60:
+        return objects.Apple("speed", x, y)
+    elif nbRandom > 50:
+        return objects.Apple("god", x, y)
+    elif nbRandom > 40:
+        return objects.Apple("smallDick", x, y)
+    return objects.Apple("mid", x, y)
+
+
+def manger(pomme):
+    if pomme.sorte == "mid":
+        playerSnake.score += 1
+
+    elif pomme.sorte == "god":
+        playerSnake.score += 10
+
+    elif pomme.sorte == "block":
+        bloc = objects.Blocs(
+            playerSnake.positions[0][0], playerSnake.positions[0][-1])
+        blocks.append(bloc)
+
+    elif pomme.sorte == "smallDick":
+        ranTemp = int((random() * (len(playerSnake.positions)/5))+1)
+        for i in range(ranTemp):
+            pos = playerSnake.positions.pop(0)
+            if tileIsSpecial[pos[0]][pos[1]]:
+                dev.draw_image(
+                    pos[0]*11 + 7, pos[1]*11 + 7, textures.levels["grass"]["special"])
+            else:
+                dev.draw_image(
+                    pos[0]*11 + 7, pos[1]*11 + 7, textures.levels["grass"]["normal"])
+
+    elif pomme.sorte == "poison":
+        gameOver()
+
+    elif pomme.sorte == "chrono":
+        if playerSnake.positions[-1] == pomme.getPosition():
+            pass
+        else:
+            playerSnake.score-=5
+            
+    elif pomme.sorte == "portal":
+        playerSnake.nextX= 5-pomme.x
+        playerSnake.nextY=5-pomme.y
 
 
 def start_game_soon(player):

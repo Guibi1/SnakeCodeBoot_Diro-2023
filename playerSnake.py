@@ -53,6 +53,7 @@ class PlayerSnake:
     nextY = 0
     positions = []
     score = 0
+    baseLen = 1
 
     def __init__(self, x):
         self.positions.append((x, 1))

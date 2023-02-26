@@ -1,8 +1,8 @@
 from PIL import Image
 from numpy import asarray
 
-bgFileName = "assets/title/sna_title_frame26.png"
-fileName = "assets/title/sna_title_frame26.png"
+bgFileName = "assets/sna_snake.png"
+fileName = "assets/sna_snake.png"
 
 
 def colorToStr(color):

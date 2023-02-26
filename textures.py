@@ -266,9 +266,136 @@ fence = """#ca5#ca5#000#000#000#000#000#000#000#a84#984
 #ba5#a84#000#000#000#000#000#000#000#ca5#cb6
 #a84#b94#000#000#000#000#000#000#000#ca5#983"""
 
+grassPortal= """#739#738#c5f#a5c#739#c7e#c5f#738#638#c6d#739
+#637#c5f#c6d#739#738#738#738#637#637#c6f#96a
+#536#c5f#637#536#739#b7c#a6c#739#638#637#d9e
+#739#637#739#a5c#c6f#739#637#95b#738#637#637
+#c5f#738#637#c6f#536#739#637#a6c#638#637#c5f
+#95a#638#738#637#637#a5c#638#c5f#c6d#637#c5f
+#637#738#637#638#739#738#637#638#638#637#637
+#738#739#637#c6d#638#c7f#c5f#638#637#638#637
+#c5f#638#738#a5c#637#638#638#637#739#738#c7e
+#c5f#a5c#738#739#738#739#738#739#738#c5f#c5f
+#739#c5f#739#638#739#738#637#739#c5f#a5c#738"""
+
+grassBlocApple=  """#463#250#361#250#453#361#472#8d4#361#352#462
+#453#250#c22#b22#361#6a3#6a3#8d4#c22#462#361
+#454#d33#e55#e66#c22#6b3#7c4#d33#c22#d33#473
+#361#d55#f77#e44#b22#b22#b22#d33#b22#b22#d33
+#b22#e55#d33#b22#c22#b22#b22#b22#b22#b22#b22
+#b22#b22#c22#c22#b22#b22#b22#b22#b22#b11#b22
+#c22#b22#b22#b22#c22#b11#362#582#583#362#362
+#250#c22#c22#b11#b22#b11#362#865#362#854#472
+#250#b11#b22#c22#b11#b11#754#633#865#965#362
+#462#361#b22#b11#b11#b11#754#754#854#644#966
+#454#473#462#b22#b11#463#a76#865#865#644#755"""
+
+grassFence="""#ca5#ca5#361#250#453#361#250#250#361#a84#984
+#b95#ca5#ca5#b95#db6#ca5#b95#973#b94#b95#cb6
+#db6#db6#983#ca5#a94#973#a84#a94#a84#db6#b95
+#a84#ca5#361#352#453#454#462#250#462#db6#984
+#984#b94#473#453#453#454#564#463#250#db6#b94
+#db6#b95#db6#ca5#db6#db6#db6#ca5#a84#db6#b95
+#ca5#db6#db6#db6#b95#a84#db6#db6#db6#b95#cb6
+#b94#a94#361#462#462#250#463#462#462#cb5#db6
+#cb5#a84#462#462#462#250#462#250#462#a84#a94
+#ba5#a84#361#250#250#462#462#454#453#ca5#cb6
+#a84#b94#462#462#250#463#352#250#361#ca5#983"""
+
+grassApple= """#463#250#361#250#453#361#472#8d4#361#352#462
+#453#250#c22#b22#361#6a3#6a3#8d4#c22#462#361
+#454#d33#e55#e66#c22#6b3#7c4#d33#c22#d33#473
+#361#d55#f77#e44#b22#b22#b22#d33#b22#b22#d33
+#b22#e55#d33#b22#c22#b22#b22#b22#b22#b22#b22
+#b22#b22#c22#c22#b22#b22#b22#b22#b22#b11#b22
+#c22#b22#b22#b22#c22#b11#b22#b22#b22#b11#b22
+#250#c22#c22#b11#b22#b11#b11#b11#b11#b11#b11
+#250#b11#b22#c22#b11#b11#b11#b11#b11#b11#250
+#462#361#b22#b11#b11#b11#b11#b11#b11#250#361
+#454#473#462#b22#b11#463#b11#b11#361#361#250"""
+
+grassApple10="""#463#250#361#fe3#453#361#472#8d4#361#352#462
+#453#250#fe3#ff7#fe3#6a3#6a3#8d4#fd2#462#361
+#454#fe7#fea#fe3#ffe#6b3#7c4#fd6#fd7#fe3#473
+#361#fea#ffd#ffd#ffe#ffe#fec#fe9#fe3#ff7#fe3
+#fd4#fe9#fea#ffd#ffd#ffd#fec#fe8#fd5#fe3#fd5
+#fd6#fea#ffe#ffe#ffd#feb#feb#fd5#fd7#fd2#fd4
+#fe8#fe9#ffd#fec#fe8#fe8#fd4#fd5#fd5#fd4#fd3
+#250#fe8#fd2#fd7#fd7#fea#fe8#fd2#fd3#fd3#ec3
+#250#fe3#fd6#fd4#fd5#fd7#fd3#fc3#fc2#fd2#250
+#fe3#ff7#fe3#fd5#fd3#fd3#fc2#ec3#fc2#250#361
+#454#fe3#462#fd4#fd2#463#fc1#fd3#361#361#250"""
+
+grassAppleToxic= """#463#250#361#250#453#361#323#343#361#352#462
+#453#250#463#352#361#453#453#683#a7b#462#361
+#454#462#462#250#546#343#a8b#656#97a#a7b#473
+#361#361#361#352#333#546#222#656#545#869#747
+#361#250#473#213#111#435#222#111#435#869#425
+#352#361#213#111#111#545#222#222#324#647#424
+#313#213#a8b#667#556#435#424#324#424#647#869
+#250#a7b#a8b#a7b#435#859#859#424#758#758#536
+#212#869#869#868#647#424#425#637#868#536#250
+#462#361#748#868#868#868#868#868#868#250#361
+#454#212#462#536#536#463#536#757#361#361#250"""
+
+grassAppleChrono= """#463#250#361#250#453#361#472#8d4#361#352#462
+#453#250#ddd#ddd#361#444#6a3#8d4#ccc#462#361
+#454#444#ddd#ccc#ddd#444#7c4#ddd#ccc#444#473
+#361#eee#444#ddd#ccc#ddd#eee#ccc#444#ccc#ccc
+#ddd#ddd#ddd#ddd#444#ddd#ddd#eee#ccc#ccc#ccc
+#444#444#ccc#ddd#444#444#ddd#ddd#ddd#444#444
+#ccc#ccc#ddd#ddd#ddd#000#ddd#ddd#ccc#ccc#eee
+#250#ddd#ddd#444#ddd#ddd#444#ddd#eee#ccc#ddd
+#250#eee#444#ddd#ddd#ddd#ccc#444#ddd#eee#250
+#462#361#ddd#ddd#ddd#444#ddd#ddd#ddd#250#361
+#454#473#462#eee#ddd#463#ddd#ddd#361#361#250"""
+
+
+
+
+
 levels = {
     "grass": {
         "normal": grass,
+        "special": grassFlower,
+        "block": grassFence,
+        "apples": {
+            "mid": grassApple,
+            "god": grassApple10,
+            "portal": grassPortal,
+            "poison": grassAppleToxic,
+            "chrono": grassAppleChrono,
+            "block": grassBlocApple,
+            "speed": apple,
+            "multi": apple
+        },
+        "snakeHead": {
+            "B": snakeHeadGrass0,
+            "R": snakeHeadGrass90,
+            "T": snakeHeadGrass180,
+            "L": snakeHeadGrass270
+        },
+        "snakeLine": {
+            "B": snakeLineGrass0,
+            "R": snakeLineGrass90,
+            "T": snakeLineGrass180,
+            "L": snakeLineGrass270
+        },
+        "snakeCorner": {
+            "B": snakeCornerGrass0,
+            "R": snakeCornerGrass90,
+            "T": snakeCornerGrass180,
+            "L": snakeCornerGrass270
+        },
+        "snakeTail": {
+            "B": snakeTailGrass0,
+            "R": snakeTailGrass90,
+            "T": snakeTailGrass180,
+            "L": snakeTailGrass270
+        }
+    }
+    ,"sand":{
+         "normal": grass,
         "special": grassFlower,
         "block": fence,
         "apples": {
@@ -305,5 +432,6 @@ levels = {
             "T": snakeTailGrass180,
             "L": snakeTailGrass270
         }
+        
     }
 }

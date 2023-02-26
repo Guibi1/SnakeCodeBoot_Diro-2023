@@ -44,7 +44,6 @@ def peers():
 
 
 def peers_menu(activity, menu_handler):
-
     color = '#4CF'
 
     fg = '#FFF'
@@ -76,6 +75,13 @@ def find(activity, message_handler):  # message_handler called when mate is foun
     # message sent to peer to propose and accept to mate for this activity
     mating_msg = [None, activity]
     start_msg = ["START", activity]
+    starting = False
+
+    def start():
+        nonlocal starting
+        starting = True
+        net.pop_handler()  # stop calling mate_message_handler
+        message_handler(None, 'start')
 
     def mate_message_handler(peer, msg):
         global ids
@@ -83,7 +89,6 @@ def find(activity, message_handler):  # message_handler called when mate is foun
 
         if msg == mating_msg:  # mating reply proposal or acceptance?
             if (proposing is None or proposing == peer) and peer not in ids:
-                print("MATE " + peer)
                 net.send(peer, mating_msg)  # accept mating proposal
                 proposing = None
                 ids.append(peer)
@@ -92,14 +97,12 @@ def find(activity, message_handler):  # message_handler called when mate is foun
         else:
             return True  # allow previous handler to handle message
 
-    def start():
-        net.pop_handler()  # stop calling mate_message_handler
-        message_handler(None, 'start')
-
     def menu_handler(peer, cont):
         nonlocal proposing
 
-        if peer is None:  # menu is asking to wait?
+        if starting:
+            return
+        elif peer is None:  # menu is asking to wait?
             dev.after(ui.time_delta, cont)
         elif peer is False:  # cancel?
             net.pop_handler()  # stop calling mate_message_handler

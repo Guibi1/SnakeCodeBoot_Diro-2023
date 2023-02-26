@@ -1,3 +1,4 @@
+import textures
 import ttgo as dev
 import ui
 
@@ -24,21 +25,7 @@ def logo():  # draw the logo
 
     dev.clear_screen(bg)
 
-    dev.draw_text(49,154+logo_y, '\xDB', um, bg)
-    dev.draw_text(71,154+logo_y, '\xDB', um, bg)
-    dev.draw_text(44, 96+logo_y, '\xDB \xDB', um, bg)
-    dev.draw_text(44,112+logo_y, '\xDB \xDB', um, bg)
-    dev.draw_text(44,128+logo_y, '\xDB \xDB', um, bg)
-    dev.draw_text(44,144+logo_y, '\xDB \xDB', um, bg)
-    dev.draw_text(22,170+logo_y, '\xDB', um, bg)
-    dev.draw_text(31,170+logo_y, '\xDB', um, bg)
-    dev.draw_text(55,170+logo_y, '\xDB', um, bg)
-    dev.draw_text(66,170+logo_y, '\xDB', um, bg)
-    dev.draw_text(89,170+logo_y, '\xDB', um, bg)
-    dev.draw_text(98,170+logo_y, '\xDB', um, bg)
-    dev.draw_text(12,184+logo_y, '\xDB \xDB \xDB \xDB', um, bg)
-    dev.draw_text(12,200+logo_y, '\xDB \xDB \xDB \xDB', um, bg)
-    dev.draw_text(12,210+logo_y, '\xDB \xDB \xDB \xDB', um, bg)
+    dev.draw_image(10, 20, textures.title[0], um, bg)
 
 def show():
     logo()

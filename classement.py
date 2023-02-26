@@ -1,31 +1,38 @@
-class classement:
-    highscore = []
+highscore = []
 
-    def __init__(self):
 
-        file = open("score")
-        highscore = file.read().split(";")
+def loadHighScores():
+    global highscore
 
-        pass
+    file = open("score")
+    for score in file.read().split(";"):
+        if (len(score) > 0):
+            highscore.append(int(score))
 
-    def addHighScore(self):
-        arr = self.highscore
-        n = len(arr)
-        for i in range(n):
-            # Last i elements are already sorted
-            for j in range(0, n-i-1):
-                if arr[j] > arr[j+1]:
-                    # Swap adjacent elements if they are in the wrong order
-                    arr[j], arr[j+1] = arr[j+1], arr[j]
-                if len(arr) > 5:
-                    arr.pop(5)
 
-        file = open("score", "w")
-        for score in self.highscore:
-            file.write(score)
-            file.write(";")
+def addHighScore(score):
+    global highscore
+    if score == 0:
+        return
 
-        file.close()
+    highscore.append(score)
 
-    def getHighscore(self):
-        return self.highscore
+    n = len(highscore)
+    for i in range(n):
+        # Last i elements are already sorted
+        for j in range(0, n-i-1):
+            if highscore[j] > highscore[j+1]:
+                # Swap adjacent elements if they are in the wrong order
+                highscore[j], highscore[j+1] = highscore[j+1], highscore[j]
+    if len(highscore) > 5:
+        highscore.pop(5)
+
+    file = open("score", "w")
+    for score in highscore:
+        file.write(str(score))
+        file.write(";")
+
+    file.close()
+
+
+loadHighScores()

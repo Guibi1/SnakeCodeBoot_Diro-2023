@@ -57,9 +57,6 @@ def init_game():
     setCurrentLevel(currentLevel)
 
     dev.clear_screen(bg)
-
-    x = dev.screen_width//2
-
     dev.draw_image(17, 30, textures.readySetSnake1)
 
     def next():
@@ -72,11 +69,15 @@ def init_game():
 def gameOver():
     global me
     me = None
+    classement.addHighScore(playerSnake.score)
+
     dev.clear_screen(bg)
-    classement().file = open("score")
-    classement()
-    for i, score in enumerate(classement.classement().getHighscore()):
-        ui.center(dev.screen_width//2, 100*(1/i), score, "#fff", bg)
+
+    dev.draw_image(17, 10, textures.gameOverText)
+
+    ui.center(dev.screen_width//2, 180, "Meilleurs scores", "#fff", bg)
+    for i, score in enumerate(classement.highscore):
+        ui.center(dev.screen_width//2, 200 + 20 * i, str(score), "#fff", bg)
 
 
 def setCurrentLevel(level):

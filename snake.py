@@ -103,6 +103,7 @@ def button_handler(event, resume):
 
         rallonger = False
         if pomme is None:
+            print(master())
             if not networked or master():
                 pomme = objects.getRandomPomme()
                 pomme.display()
@@ -114,6 +115,8 @@ def button_handler(event, resume):
             playerSnake.manger(pomme, blocks, tileIsSpecial)
             pomme = None
             rallonger = True
+            for id in mate.ids:
+                net.send(id, [msg_type, "eatPomme"])
 
         if not rallonger:
             if tileIsSpecial[playerSnake.positions[0][0]][playerSnake.positions[0][1]]:
@@ -216,7 +219,7 @@ def master():  # the master is the node with the smallest id
 
 
 def message_handler(peer, msg):
-    global pong_timer
+    global pong_timer, otherSnakes, pomme
     if peer is None:
         if msg == 'start':
             networkStart()
@@ -240,6 +243,8 @@ def message_handler(peer, msg):
         elif msg[1] == 'newPomme':
             pomme = objects.Apple(msg[2], msg[3], msg[4])
             pomme.display()
+        elif msg[1] == 'eatPomme':
+            pomme = None
         elif me == None:
             start_game_soon(master() ^ int(random() * 2))
         else:

@@ -337,20 +337,35 @@ grassAppleToxic= """#463#250#361#250#453#361#323#343#361#352#462
 #212#869#869#868#647#424#425#637#868#536#250
 #462#361#748#868#868#868#868#868#868#250#361
 #454#212#462#536#536#463#536#757#361#361#250"""
-#mauvais
-grassAppleChrono= """#463#250#361#250#453#361#472#8d4#361#352#462
-#453#250#ddd#ddd#361#444#6a3#8d4#ccc#462#361
-#454#444#ddd#ccc#ddd#444#7c4#ddd#ccc#444#473
-#361#eee#444#ddd#ccc#ddd#eee#ccc#444#ccc#ccc
-#ddd#ddd#ddd#ddd#444#ddd#ddd#eee#ccc#ccc#ccc
-#444#444#ccc#ddd#444#444#ddd#ddd#ddd#444#444
-#ccc#ccc#ddd#ddd#ddd#000#ddd#ddd#ccc#ccc#eee
-#250#ddd#ddd#444#ddd#ddd#444#ddd#eee#ccc#ddd
-#250#eee#444#ddd#ddd#ddd#ccc#444#ddd#eee#250
-#462#361#ddd#ddd#ddd#444#ddd#ddd#ddd#250#361
-#454#473#462#eee#ddd#463#ddd#ddd#361#361#250"""
 
-grassAppleSpeed=
+grassAppleChrono= """#463#250#361#250#453#361#472#8d4#361#352#462
+#453#250#c22#888#888#888#888#777#c22#462#361
+#454#d33#888#ddd#ddd#000#ddd#ddd#777#d33#473
+#361#888#ddd#999#ddd#000#ccc#999#ccc#777#d33
+#b22#888#ddd#000#ccc#000#ccc#ccc#ccc#777#b22
+#b22#888#999#ddd#000#000#ccc#ccc#999#444#b22
+#c22#888#ddd#ccc#ccc#000#ccc#ccc#ccc#444#b22
+#250#777#ccc#999#ccc#ccc#ccc#999#ccc#444#b11
+#250#b11#777#ccc#ccc#999#ccc#ccc#444#b11#250
+#462#361#b22#777#444#444#444#444#b11#250#361
+#454#473#462#b22#b11#463#b11#b11#361#361#250"""
+
+grassAppleSpeed="""#463#250#361#250#453#361#472#8d4#361#352#462
+#453#250#c22#b22#361#6a3#6a3#8d4#c22#462#361
+#454#d33#e55#e66#c22#ed2#7c4#d33#c22#d33#473
+#361#d55#f77#e44#ed2#ed2#b22#d33#b22#b22#d33
+#b22#e55#d33#ed2#dd3#ec1#b22#b22#b22#b22#b22
+#b22#b22#ed2#dd3#ec1#ec1#ec1#ec1#ec1#b11#b22
+#c22#b22#ed2#ec1#ec1#ec1#ec1#ec1#da1#b11#b22
+#250#c22#c22#b11#b22#ec1#da1#da1#b11#b11#b11
+#250#b11#b22#c22#b11#ec1#da1#b11#b11#b11#250
+#462#361#b22#b11#b11#c92#b11#b11#b11#250#361
+#454#473#462#b22#b11#463#b11#b11#361#361#250"""
+
+grassAppleMulti=grassApple
+
+
+
 sand=  """#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8
 #fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8#fe8
 #fe8#fe8#fe8#eb4#fe8#fe8#fe8#fe8#eb4#fe8#fe8
@@ -434,7 +449,17 @@ sandAppleToxic="""#fe8#fe8#fe8#fe8#fe8#fe8#323#343#fe8#fe8#fe8
 #212#869#869#868#647#424#425#637#868#536#fe8
 #fe8#fe8#748#868#868#868#868#868#868#fe8#fe8
 #fe8#212#fe8#536#536#fe8#536#757#fe8#fe8#fe8"""
-sandAppleChrono=
+sandAppleChrono= """#fe8#fe8#fe8#fe8#fe8#fe8#472#8d4#fe8#fe8#fe8
+#fe8#fe8#c22#888#888#888#888#777#c22#fe8#fe8
+#fe8#d33#888#ddd#ddd#000#ddd#ddd#777#d33#fe8
+#fe8#888#ddd#999#ddd#000#ccc#999#ccc#777#d33
+#b22#888#ddd#000#ccc#000#ccc#ccc#ccc#777#b22
+#b22#888#999#ddd#000#000#ccc#ccc#999#444#b22
+#c22#888#ddd#ccc#ccc#000#ccc#ccc#ccc#444#b22
+#fe8#777#ccc#999#ccc#ccc#ccc#999#ccc#444#b11
+#fe8#b11#777#ccc#ccc#999#ccc#ccc#444#b11#fe8
+#fe8#fe8#b22#777#444#444#444#444#b11#fe8#fe8
+#fe8#fe8#fe8#b22#b11#fe8#b11#b11#fe8#fe8#fe8"""
 sandBlocApple="""#fe8#fe8#fe8#fe8#fe8#fe8#472#8d4#fe8#fe8#fe8
 #fe8#fe8#c22#b22#fe8#6a3#6a3#8d4#c22#fe8#fe8
 #fe8#d33#e55#e66#c22#6b3#7c4#d33#c22#d33#fe8
@@ -446,8 +471,27 @@ sandBlocApple="""#fe8#fe8#fe8#fe8#fe8#fe8#472#8d4#fe8#fe8#fe8
 #fe8#b11#b22#c22#b11#b11#754#633#865#965#362
 #fe8#fe8#b22#b11#b11#b11#754#754#854#644#966
 #fe8#fe8#fe8#b22#b11#fe8#a76#865#865#644#755"""
-sandAppleSpeed=
+sandAppleSpeed= """#fe8#fe8#fe8#fe8#fe8#fe8#472#8d4#fe8#fe8#fe8
+#fe8#fe8#c22#b22#fe8#6a3#6a3#8d4#c22#fe8#fe8
+#fe8#d33#e55#e66#c22#ed2#7c4#d33#c22#d33#fe8
+#fe8#d55#f77#e44#ed2#ed2#b22#d33#b22#b22#d33
+#b22#e55#d33#ed2#dd3#ec1#b22#b22#b22#b22#b22
+#b22#b22#ed2#dd3#ec1#ec1#ec1#ec1#ec1#b11#b22
+#c22#b22#ed2#ec1#ec1#ec1#ec1#ec1#da1#b11#b22
+#fe8#c22#c22#b11#b22#ec1#da1#da1#b11#b11#b11
+#fe8#b11#b22#c22#b11#ec1#da1#b11#b11#b11#fe8
+#fe8#fe8#b22#b11#b11#c92#b11#b11#b11#fe8#fe8
+#fe8#fe8#fe8#b22#b11#fe8#b11#b11#fe8#fe8#fe8"""
 sandAppleMulti=grassApple
+
+
+
+
+
+
+
+
+
 snakeHeadSand0 = """#fe8#463#463#6b3#6b3#6b3#6b3#6b3#463#463#fe8
 #fe8#463#6b3#9d5#9d5#9d5#9d5#9d5#6b3#463#fe8
 #fe8#6b3#9d5#9d5#9d5#9d5#9d5#9d5#9d5#6b3#fe8
@@ -642,8 +686,8 @@ levels = {
             "poison": grassAppleToxic,
             "chrono": grassAppleChrono,
             "block": grassBlocApple,
-            "speed": apple,
-            "multi": apple
+            "speed": grassAppleSpeed,
+            "multi": grassAppleMulti
         },
         "snakeHead": {
             "B": snakeHeadGrass0,
@@ -682,7 +726,7 @@ levels = {
             "chrono": sandAppleChrono,
             "block": sandBlocApple,
             "speed": sandAppleSpeed,
-            "multi": apple
+            "multi": sand
         },
         "snakeHead": {
             "B": snakeHeadSand0,

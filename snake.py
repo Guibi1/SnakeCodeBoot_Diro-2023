@@ -169,6 +169,15 @@ def button_handler(event, resume):
         elif playerSnake.positions[-1][1] < 0 or playerSnake.positions[-1][1] >= height:
             gameOver()
 
+        for position in playerSnake.positions[:-1]:
+            if playerSnake.positions[-1] == position:
+                gameOver()
+
+        for ennemy in otherSnakes:
+            for position in ennemy:
+                if playerSnake.positions[-1] == position:
+                    gameOver()
+
         if networked:
             pong_timer -= 1
             if pong_timer < 0:

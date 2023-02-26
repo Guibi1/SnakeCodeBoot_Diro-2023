@@ -289,8 +289,8 @@ def addRandomPomme():
                 if p == pos2:
                     posValid = False
             for block in blocks:
-            if block == pos2:
-                posValid = False
+                if block == pos2:
+                    posValid = False
         p = objects.Apple("portal", pos[0], pos[1])
         d = objects.Apple("portal", pos2[0], pos2[1])
         pommeTimer = dev.after(10, lambda: manger(p))

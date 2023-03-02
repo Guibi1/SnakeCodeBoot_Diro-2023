@@ -24,4 +24,4 @@ class Apple(Objects):
 
     def display(self):
         dev.draw_image(self.x * 11 + 7, self.y * 11 + 7,
-                       textures.loadAsset("apples", self.sorte))
+                       textures.getLevel()["apples"][self.sorte])

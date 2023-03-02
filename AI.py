@@ -110,10 +110,10 @@ def manger(pomme):
             pos = oSnake[0].pop(0)
             if tileIsSpecial[pos[0]][pos[1]]:
                 dev.draw_image(
-                    pos[0]*11 + 7, pos[1]*11 + 7, textures.loadAsset("special"))
+                    pos[0]*11 + 7, pos[1]*11 + 7, textures.getLevel()["special"])
             else:
                 dev.draw_image(
-                    pos[0]*11 + 7, pos[1]*11 + 7, textures.loadAsset("normal"))
+                    pos[0]*11 + 7, pos[1]*11 + 7, textures.getLevel()["normal"])
 
     elif pomme.sorte == "poison":
         snake.gameOver()

@@ -55,10 +55,7 @@ class PlayerSnake:
     score = 0
 
     def __init__(self, x):
-        self.positions.append((x, 1))
-        self.positions.append((x, 2))
-        self.positions.append((x, 3))
-        pass
+        self.positions = [(x, 1),(x, 2),(x, 3)]
 
     def move(self, rallonger):
         if self.tpTo is not None:

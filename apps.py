@@ -4,20 +4,17 @@ import net
 import splash
 import textures
 
-last_app = None  # last app used
-
+last_app = None
 apps = {}
 
 fg = "#FFF"
 bg = "#000"
 accent = "#9E5"
 
-
 def register(name, handler, networked):
     apps[name] = [handler, networked]
 
-
-def menu():  # pick an app with a menu and call its handler
+def menu():
     stop = False
 
     def items():
